@@ -4,17 +4,24 @@ import com.view.model.Model_Card;
 import com.view.model.StatusType;
 import com.view.swing.ScrollBar;
 import java.awt.Color;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class Form_Home extends javax.swing.JPanel {
 
+    private String dir = null;
+
     public Form_Home() {
+        String path = "src\\main\\java\\com\\view\\icon";
+        File file = new File(path);
+        String absolutePath = file.getAbsolutePath();
+        dir = absolutePath;
         initComponents();
-        card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/view/icon/stock.png")), "Stock Total", "$200000", "Increased by 60%"));
-        card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/view/icon/profit.png")), "Total Profit", "$15000", "Increased by 25%"));
-        card3.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/view/icon/flag.png")), "Unique Visitors", "$300000", "Increased by 70%"));
+        card1.setData(new Model_Card(new ImageIcon(dir+"stock.png"), "Stock Total", "$200000", "Increased by 60%"));
+        card2.setData(new Model_Card(new ImageIcon(dir+"profit.png"), "Total Profit", "$15000", "Increased by 25%"));
+        card3.setData(new Model_Card(new ImageIcon(dir+"flag.png"), "Unique Visitors", "$300000", "Increased by 70%"));
         //  add row table
         spTable.setVerticalScrollBar(new ScrollBar());
         spTable.getVerticalScrollBar().setBackground(Color.WHITE);

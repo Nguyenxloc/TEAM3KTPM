@@ -48,7 +48,7 @@
           <Color blue="6a" green="6a" red="6a" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Form 2"/>
+        <Property name="text" type="java.lang.String" value="Thong bao form here v"/>
       </Properties>
     </Component>
   </SubComponents>

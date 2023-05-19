@@ -44,7 +44,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/com/view/icon/search.png&quot;))" type="code"/>
+          <Connection code="new javax.swing.ImageIcon(dir+&quot;search.png&quot;)" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -53,7 +53,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/com/view/icon/menu.png&quot;))" type="code"/>
+          <Connection code="new javax.swing.ImageIcon(dir+&quot;menu.png&quot;)" type="code"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">

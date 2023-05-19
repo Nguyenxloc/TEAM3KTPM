@@ -3,10 +3,17 @@ package com.view.component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.io.File;
 
 public class Header extends javax.swing.JPanel {
 
+    private String dir = null;
+
     public Header() {
+        String path = "src\\main\\java\\com\\view\\icon";
+        File file = new File(path);
+        String absolutePath = file.getAbsolutePath();
+        dir = absolutePath;
         initComponents();
         setOpaque(false);
     }
@@ -21,9 +28,9 @@ public class Header extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/view/icon/search.png")));
+        jLabel1.setIcon(new javax.swing.ImageIcon(dir+"search.png"));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/view/icon/menu.png")));
+        jLabel2.setIcon(new javax.swing.ImageIcon(dir+"menu.png"));
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -6,9 +6,10 @@
 package com.view.main;
 
 import com.view.event.EventMenuSelected;
-import com.view.form.Form_1;
-import com.view.form.Form_2;
-import com.view.form.Form_3;
+import com.view.form.DangKyDVForm;
+import com.view.form.ThongBaoForm;
+import com.view.form.LichHocForm;
+import com.view.form.DiemForm;
 import com.view.form.Form_Home;
 import java.awt.Color;
 import javax.swing.JComponent;
@@ -23,34 +24,42 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     private Form_Home home;
-    private Form_1 form1;
-    private Form_2 form2;
-    private Form_3 form3;
+    private ThongBaoForm form1;
+    private LichHocForm form2;
+    private DiemForm form3;
+    private DangKyDVForm form4;
 
     public Main() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         home = new Form_Home();
-        form1 = new Form_1();
-        form2 = new Form_2();
-        form3 = new Form_3();
+        form1 = new ThongBaoForm();
+        form2 = new LichHocForm();
+        form3 = new DiemForm();
         menu.initMoving(Main.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 0) {
+                if (index == 5) {
                     setForm(home);
-                } else if (index == 1) {
+                }
+                else if (index ==6) {
+//                    setForm(form4);
+                }
+                else if (index == 0) {
                     setForm(form1);
-                } else if (index == 2) {
+                }
+                else if (index == 1) {
                     setForm(form2);
+                } else if (index == 2) {
+                    setForm(form3);
                 } else if (index == 3) {
                     setForm(form3);
                 }
             }
         });
         //  set when system open start with home form
-        setForm(new Form_Home());
+        setForm(new ThongBaoForm());
     }
 
     private void setForm(JComponent com) {
@@ -78,6 +87,12 @@ public class Main extends javax.swing.JFrame {
         setUndecorated(true);
 
         panelBorder1.setBackground(new java.awt.Color(242, 242, 242));
+
+        menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuMouseClicked(evt);
+            }
+        });
 
         header2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
 
@@ -122,6 +137,10 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -131,24 +150,8 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

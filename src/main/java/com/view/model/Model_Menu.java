@@ -1,9 +1,12 @@
 package com.view.model;
 
+import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Model_Menu {
+
+    private String dir = null;
 
     public String getIcon() {
         return icon;
@@ -30,12 +33,17 @@ public class Model_Menu {
     }
 
     public Model_Menu(String icon, String name, MenuType type) {
+        String path = "src\\main\\java\\com\\view\\icon";
+        File file = new File(path);
+        String absolutePath = file.getAbsolutePath();
+        dir = absolutePath;
         this.icon = icon;
         this.name = name;
         this.type = type;
     }
 
     public Model_Menu() {
+
     }
 
     private String icon;
@@ -43,7 +51,8 @@ public class Model_Menu {
     private MenuType type;
 
     public Icon toIcon() {
-        return new ImageIcon(getClass().getResource("/com/view/icon/" + icon + ".png"));
+        System.out.println(dir+"\\"+icon+".png");
+        return new ImageIcon(dir+"\\"+icon+".png");
     }
 
     public static enum MenuType {

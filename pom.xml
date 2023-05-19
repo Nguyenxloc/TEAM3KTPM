@@ -11,5 +11,6 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.mycompany.team3project.Team3Project</exec.mainClass>
     </properties>
+    
     <name>KTMTTeam3</name>
 </project>

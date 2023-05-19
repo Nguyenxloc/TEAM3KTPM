@@ -9,12 +9,12 @@ package com.view.form;
  *
  * @author RAVEN
  */
-public class Form_3 extends javax.swing.JPanel {
+public class DiemForm extends javax.swing.JPanel {
 
     /**
      * Creates new form Form_1
      */
-    public Form_3() {
+    public DiemForm() {
         initComponents();
     }
 
@@ -34,7 +34,7 @@ public class Form_3 extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(106, 106, 106));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Form 3");
+        jLabel1.setText("Diem form here");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -6,8 +6,11 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.io.File;
 
 public class Card extends javax.swing.JPanel {
+
+    private String dir = null;
 
     public Color getColor1() {
         return color1;
@@ -29,6 +32,10 @@ public class Card extends javax.swing.JPanel {
     private Color color2;
 
     public Card() {
+        String path = "src\\main\\java\\com\\view\\icon";
+        File file = new File(path);
+        String absolutePath = file.getAbsolutePath();
+        dir = absolutePath;
         initComponents();
         setOpaque(false);
         color1 = Color.BLACK;
@@ -51,7 +58,7 @@ public class Card extends javax.swing.JPanel {
         lbValues = new javax.swing.JLabel();
         lbDescription = new javax.swing.JLabel();
 
-        lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/view/icon/stock.png")));
+        lbIcon.setIcon(new javax.swing.ImageIcon(dir+"stock.png"));
 
         lbTitle.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         lbTitle.setForeground(new java.awt.Color(255, 255, 255));
