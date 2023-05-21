@@ -10,7 +10,7 @@ import com.view.form.DangKyDVForm;
 import com.view.form.ThongBaoForm;
 import com.view.form.LichHocForm;
 import com.view.form.DiemForm;
-import com.view.form.Form_Home;
+import com.view.form.WalletForm;
 import java.awt.Color;
 import javax.swing.JComponent;
 
@@ -18,25 +18,25 @@ import javax.swing.JComponent;
  *
  * @author RAVEN
  */
-public class Main extends javax.swing.JFrame {
+public class MainOfSV extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    private Form_Home home;
-    private ThongBaoForm form1;
-    private LichHocForm form2;
-    private DiemForm form3;
+    private WalletForm home;
+    private ThongBaoForm formThongbao;
+    private LichHocForm formLichHoc;
+    private DiemForm formDiem;
     private DangKyDVForm form4;
 
-    public Main() {
+    public MainOfSV() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        home = new Form_Home();
-        form1 = new ThongBaoForm();
-        form2 = new LichHocForm();
-        form3 = new DiemForm();
-        menu.initMoving(Main.this);
+        home = new WalletForm();
+        formThongbao = new ThongBaoForm();
+        formLichHoc = new LichHocForm();
+        formDiem = new DiemForm();
+        menu.initMoving(MainOfSV.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
@@ -47,14 +47,14 @@ public class Main extends javax.swing.JFrame {
 //                    setForm(form4);
                 }
                 else if (index == 0) {
-                    setForm(form1);
+                    setForm(formThongbao);
                 }
                 else if (index == 1) {
-                    setForm(form2);
+                    setForm(formLichHoc);
                 } else if (index == 2) {
-                    setForm(form3);
+                    setForm(formDiem);
                 } else if (index == 3) {
-                    setForm(form3);
+                    setForm(formDiem);
                 }
             }
         });
@@ -144,21 +144,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.view.component.Header header2;
