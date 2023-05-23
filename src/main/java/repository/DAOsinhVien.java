@@ -17,10 +17,10 @@ import ultilities.DBConnection;
  */
 public class DAOsinhVien{
   
-  final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] ([Name],[Price],[Category_Id])VALUES(?,?,?)";
+  final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?)";
   final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [Name] = ? WHERE [Id] = ?";
   final String DELETE_SQL = "DELETE FROM [dbo].[SINHVIEN] WHERE [Id] = ?";
-  final String SELECT_BY_SQL = "SELECT * FROM [dbo].[SINHVIEN] WHERE [Id] = ?";
+  final String SELECT_BY_SQL = "SELECT * FROM [dbo].[SINHVIEN] WHERE [MaSV] = ?";
   final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[SINHVIEN]";
   private SinhVien sinhVien;
   private ArrayList<SinhVien> _lstSV;
@@ -40,7 +40,8 @@ public class DAOsinhVien{
   }
 
   public SinhVien save(SinhVien sv) {   
-    DBConnection.ExcuteDungna(INSERT_SQL, sv.getHoten(),sv.getNienKhoa(),sv.getHoten(),sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai());
+    DBConnection.ExcuteDungna(INSERT_SQL, sv.getHoten(),sv.getNienKhoa(),sv.getHoten()
+            ,sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai());
     return sv;
   }
 
@@ -67,6 +68,5 @@ public class DAOsinhVien{
       throw new RuntimeException();
     }
   }
-
-             
+       
 }
