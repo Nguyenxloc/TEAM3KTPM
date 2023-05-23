@@ -10,8 +10,8 @@ package com.view.main;
  */
 public class MainController {
     public static void main(String[] args) {
-        int triggerNum = 0;/// example that parament must be change follow up actor
-        
+        int triggerNum = 1;/// example that parament must be change follow up actor
+        //// tạo ra những biến để chuyển tab
         if(triggerNum==0){
              java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

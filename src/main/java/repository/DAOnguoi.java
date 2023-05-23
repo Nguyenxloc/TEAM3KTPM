@@ -6,15 +6,13 @@ package repository;
 
 import java.awt.List;
 import java.util.ArrayList;
-import model.Nguoi;
 
 /**
  *
  * @author 84374
  */
 public interface DAOnguoi {
-   ArrayList<Nguoi> getBaseInfo();
    
-    
-    
+   
+        
 }

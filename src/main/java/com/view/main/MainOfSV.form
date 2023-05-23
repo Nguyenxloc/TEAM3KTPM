@@ -70,7 +70,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="com.view.component.Menu" name="menu">
+        <Component class="com.view.component.MenuOfSV" name="menu">
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuMouseClicked"/>
           </Events>

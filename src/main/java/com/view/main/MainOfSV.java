@@ -79,7 +79,7 @@ public class MainOfSV extends javax.swing.JFrame {
     private void initComponents() {
 
         panelBorder1 = new com.view.swing.PanelBorder();
-        menu = new com.view.component.Menu();
+        menu = new com.view.component.MenuOfSV();
         header2 = new com.view.component.Header();
         mainPanel = new javax.swing.JPanel();
 
@@ -149,7 +149,7 @@ public class MainOfSV extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.view.component.Header header2;
     private javax.swing.JPanel mainPanel;
-    private com.view.component.Menu menu;
+    private com.view.component.MenuOfSV menu;
     private com.view.swing.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.io.File;
 import javax.swing.JFrame;
 
-public class Menu extends javax.swing.JPanel {
+public class MenuOfGV extends javax.swing.JPanel {
 
     private EventMenuSelected event;
     private String dir;
@@ -23,7 +23,7 @@ public class Menu extends javax.swing.JPanel {
         listMenu1.addEventMenuSelected(event);
     }
 
-    public Menu() {
+    public MenuOfGV() {
 
         String path = "src\\main\\java\\com\\view\\icon\\logo.png";
         File file = new File(path);
