@@ -4,12 +4,18 @@
  */
 package com.view.main;
 
+import ultilities.DBConnection;
+
 /**
  *
  * @author 84374
  */
 public class MainController {
     public static void main(String[] args) {
+        System.out.println("===================Test git=================");
+        DBConnection dbconn  = new DBConnection();
+        System.out.println(dbconn.openDbConnection());
+        System.out.println("=============================================");
         int triggerNum = 1;/// example that parament must be change follow up actor
         //// tạo ra những biến để chuyển tab
         if(triggerNum==0){
