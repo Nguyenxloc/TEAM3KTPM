@@ -217,7 +217,8 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
-//        verify(user, passWord);
+        verify(user, passWord);
+        this.dispose();
     }//GEN-LAST:event_kButton1ActionPerformed
 
     /**

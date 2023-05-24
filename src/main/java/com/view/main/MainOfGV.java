@@ -13,6 +13,7 @@ import com.view.form.DiemForm;
 import com.view.form.WalletForm;
 import java.awt.Color;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,6 +56,14 @@ public class MainOfGV extends javax.swing.JFrame {
                     setForm(formDiem);
                 } else if (index == 3) {
                     setForm(formDiem);
+                }else if (index == 9){
+                    int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn đăng xuất không?");
+                    if(hoi != JOptionPane.YES_OPTION){
+                        return;
+                    }
+                    dispose();
+                    LoginFrame login = new LoginFrame();
+                    login.setVisible(true);
                 }
             }
         });
