@@ -11,13 +11,34 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>com.mycompany.team3project.Team3Project</exec.mainClass>
     </properties>
-    
-     <dependencies>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+    <dependencies>
         <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>11.2.2.jre8</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>KControls-2.0</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>KGradientPanel</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
@@ -51,6 +72,7 @@
                 <directory>images</directory>
                 <includes>
                     <include>*.jpg</include>
+                    <include>*.png</include>
                 </includes>
             </resource>
         </resources>
