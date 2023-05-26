@@ -34,7 +34,7 @@ public class LoginFrame extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
-        kButton1.setkBorderRadius(15);
+        kButton1.setkBorderRadius(30);
     }
 
     public void verify(String userPara, String passWordPara) {
@@ -108,13 +108,14 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel5.setText("username");
 
         kButton1.setBackground(new java.awt.Color(255, 255, 255));
+        kButton1.setBorder(null);
         kButton1.setText("Login");
         kButton1.setAlignmentX(1.0F);
         kButton1.setAlignmentY(1.0F);
         kButton1.setDisplayedMnemonicIndex(1);
         kButton1.setIconTextGap(6);
         kButton1.setkBackGroundColor(new java.awt.Color(255, 51, 204));
-        kButton1.setkBorderRadius(15);
+        kButton1.setkBorderRadius(30);
         kButton1.setkEndColor(new java.awt.Color(102, 102, 255));
         kButton1.setkHoverColor(new java.awt.Color(0, 0, 0));
         kButton1.setkHoverEndColor(new java.awt.Color(102, 255, 255));
@@ -149,9 +150,9 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                            .addComponent(txtUser)
-                            .addComponent(txtPassword)))
+                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                            .addComponent(txtPassword)
+                            .addComponent(kButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,11 +194,11 @@ public class LoginFrame extends javax.swing.JFrame {
         System.out.println("Test link: "+dir+"\\baomat1.png");
         kGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 520, 340));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Slogan");
-        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 190, 50));
+        jLabel6.setText("<html>\nNEVER STOP LEARNING\n<br>\nBECAUSE LIFE NEVER STOPS TEACHING\n");
+        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 500, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
