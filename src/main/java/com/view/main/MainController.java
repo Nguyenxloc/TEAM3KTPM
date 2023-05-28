@@ -14,7 +14,7 @@ public class MainController {
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainOfSV().setVisible(true);
+                new LoginFrame().setVisible(true);
             }
         });
         System.out.println("===================Test git=================");

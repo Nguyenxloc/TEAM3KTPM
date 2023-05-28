@@ -17,6 +17,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private int vaiTro = 2;
     private String dir = null;
 
+    private MessageFrame messageFrame;
     ////// query sql -- get vaiTro
     //select *from taikhoan
     // if vaiTro=1--->sv--->form sv
@@ -30,38 +31,36 @@ public class LoginFrame extends javax.swing.JFrame {
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();
         dir = absolutePath;
-        
-        
+
         initComponents();
         setLocationRelativeTo(null);
-        kButton1.setkBorderRadius(30);
+        btnLogin.setkBorderRadius(30);
     }
 
-    public void verify(String userPara, String passWordPara) {
-        if (userPara.equalsIgnoreCase(user) && passWordPara.equalsIgnoreCase(passWord)) {
-            vaiTro = 1;/// ////// query sql --   //select vaiTro from taikhoan where user=userPara this.passWord= passWordPara
-            if (vaiTro == 1) {
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new MainOfSV().setVisible(true);
-                    }
-                });
-            } else if (vaiTro == 2) {
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new MainOfGV().setVisible(true);
-                    }
-                });
-            } else {
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new MainOfCB().setVisible(true);
-                    }
-                });
-            }
-        }
-    }
-
+//    public void verify(String userPara, String passWordPara) {
+//        if (userPara.equalsIgnoreCase(user) && passWordPara.equalsIgnoreCase(passWord)) {
+//            vaiTro = 2;/// ////// query sql --   //select vaiTro from taikhoan where user=userPara this.passWord= passWordPara
+//            if (vaiTro == 1) {
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//                    public void run() {
+//                        new MainOfSV().setVisible(true);
+//                    }
+//                });
+//            } else if (vaiTro == 2) {
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//                    public void run() {
+//                        new MainOfGV().setVisible(true);
+//                    }
+//                });
+//            } else {
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//                    public void run() {
+//                        new MainOfCB().setVisible(true);
+//                    }
+//                });
+//            }
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +76,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnLogin = new com.k33ptoo.components.KButton();
         txtUser = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
@@ -107,27 +106,27 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("username");
 
-        kButton1.setBackground(new java.awt.Color(255, 255, 255));
-        kButton1.setBorder(null);
-        kButton1.setText("Login");
-        kButton1.setAlignmentX(1.0F);
-        kButton1.setAlignmentY(1.0F);
-        kButton1.setDisplayedMnemonicIndex(1);
-        kButton1.setIconTextGap(6);
-        kButton1.setkBackGroundColor(new java.awt.Color(255, 51, 204));
-        kButton1.setkBorderRadius(30);
-        kButton1.setkEndColor(new java.awt.Color(102, 102, 255));
-        kButton1.setkHoverColor(new java.awt.Color(0, 0, 0));
-        kButton1.setkHoverEndColor(new java.awt.Color(102, 255, 255));
-        kButton1.setkHoverForeGround(new java.awt.Color(0, 0, 0));
-        kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 255));
-        kButton1.setkIndicatorThickness(7);
-        kButton1.setkPressedColor(new java.awt.Color(255, 255, 255));
-        kButton1.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton1.setkStartColor(new java.awt.Color(255, 102, 255));
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogin.setBorder(null);
+        btnLogin.setText("Login");
+        btnLogin.setAlignmentX(1.0F);
+        btnLogin.setAlignmentY(1.0F);
+        btnLogin.setDisplayedMnemonicIndex(1);
+        btnLogin.setIconTextGap(6);
+        btnLogin.setkBackGroundColor(new java.awt.Color(255, 51, 204));
+        btnLogin.setkBorderRadius(30);
+        btnLogin.setkEndColor(new java.awt.Color(102, 102, 255));
+        btnLogin.setkHoverColor(new java.awt.Color(0, 0, 0));
+        btnLogin.setkHoverEndColor(new java.awt.Color(102, 255, 255));
+        btnLogin.setkHoverForeGround(new java.awt.Color(0, 0, 0));
+        btnLogin.setkHoverStartColor(new java.awt.Color(255, 153, 255));
+        btnLogin.setkIndicatorThickness(7);
+        btnLogin.setkPressedColor(new java.awt.Color(255, 255, 255));
+        btnLogin.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnLogin.setkStartColor(new java.awt.Color(255, 102, 255));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -152,7 +151,7 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                             .addComponent(txtPassword)
-                            .addComponent(kButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +183,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
 
@@ -216,11 +215,21 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        verify(user, passWord);
-        this.dispose();
-    }//GEN-LAST:event_kButton1ActionPerformed
+//        verify(user, passWord);
+
+        if (txtUser.getText().equals("locdeptraino1") && txtPassword.getText().equals("8888")) {
+            new MainOfCB().setVisible(true);
+            this.dispose();
+        } else if (txtUser.getText().equals("giangvien") && txtPassword.getText().equals("8888")) {
+            new MainOfGV(this.messageFrame).setVisible(true);
+            this.dispose();
+        } else if (txtUser.getText().equals("sinhvien") && txtPassword.getText().equals("8888")) {
+            new MainOfSV().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +262,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.k33ptoo.components.KButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -261,7 +271,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private com.k33ptoo.components.KButton kButton1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;

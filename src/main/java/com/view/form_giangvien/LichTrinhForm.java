@@ -1,6 +1,11 @@
 package com.view.form_giangvien;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.LichHoc;
+import model.LichThi;
 
 /**
  *
@@ -9,6 +14,9 @@ import java.io.File;
 public class LichTrinhForm extends javax.swing.JPanel {
     
     String dir = null;
+    List<LichHoc> lstLichHoc = new ArrayList<>();
+    List<LichThi> lstLichThi = new ArrayList<>();
+    DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form LichHoc_LichThiForm
      */
@@ -19,8 +27,42 @@ public class LichTrinhForm extends javax.swing.JPanel {
         
         dir = absolutePath;
         initComponents();
+        
+        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        
+        model = (DefaultTableModel) tblLichDay.getModel();
+        fillToTableLichHoc();
+        
+        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
+        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
+        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
+        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
+        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
+        
+        model = (DefaultTableModel) tblLichThi.getModel();
+        fillToTableLichThi();
     }
 
+    public void fillToTableLichHoc(){
+        int i=1;
+        model.setRowCount(0);
+        for (LichHoc lichHoc : lstLichHoc) {
+            model.addRow(new Object[]{i++, lichHoc.getNgay(), lichHoc.getMaPhongHoc(), lichHoc.getMaMonHoc(), lichHoc.getMaLopHoc(), lichHoc.getMaGiangVien(), lichHoc.getThoiGian()});
+        }
+    }
+    
+    public void fillToTableLichThi(){
+        int i=1;
+        model.setRowCount(0);
+        for (LichThi lichThi : lstLichThi) {
+            model.addRow(new Object[]{i++, lichThi.getNgay(), lichThi.getMaPhongHoc(), lichThi.getMaMonHoc(), lichThi.getMaLopHoc(), lichThi.getMaGiangVien(), lichThi.getThoiGian()});
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,12 +80,12 @@ public class LichTrinhForm extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblLichDay = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblLichThi = new javax.swing.JTable();
         jPanel22 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
@@ -82,7 +124,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Lịch dạy học");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblLichDay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -90,7 +132,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
                 "STT", "Ngày", "Phòng", "Môn", "Lớp", "Giảng viên", "Thời gian"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblLichDay);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -139,7 +181,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Lịch coi thi");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblLichThi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -147,7 +189,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
                 "STT", "Ngày", "Phòng", "Môn", "Lớp", "Giảng viên", "Thời gian"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblLichThi);
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -250,7 +292,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane8;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblLichDay;
+    private javax.swing.JTable tblLichThi;
     // End of variables declaration//GEN-END:variables
 }

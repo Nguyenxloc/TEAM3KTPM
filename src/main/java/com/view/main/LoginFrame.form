@@ -80,7 +80,7 @@
                                   <Component id="jLabel5" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
                                   <Component id="txtUser" alignment="0" pref="349" max="32767" attributes="0"/>
                                   <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="kButton1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btnLogin" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -122,7 +122,7 @@
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Component id="txtPassword" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="kButton1" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnLogin" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -159,7 +159,7 @@
                 <Property name="text" type="java.lang.String" value="username"/>
               </Properties>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton1">
+            <Component class="com.k33ptoo.components.KButton" name="btnLogin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -203,7 +203,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUser">

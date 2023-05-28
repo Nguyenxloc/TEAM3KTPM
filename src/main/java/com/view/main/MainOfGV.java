@@ -11,6 +11,8 @@ import com.view.form_giangvien.BaoCaoForm;
 import com.view.form_giangvien.LichTrinhForm;
 import com.view.form_giangvien.QuanLyDiemForm;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
@@ -27,9 +29,11 @@ public class MainOfGV extends javax.swing.JFrame {
     private BaoCaoForm formBaoCao;
     private LichTrinhForm formLichTrinh;
     private QuanLyDiemForm formQuanLyDiem;
-
-    public MainOfGV() {
+    private MessageFrame messageFrame;
+    
+    public MainOfGV(MessageFrame mess) {
         initComponents();
+        this.messageFrame = mess;
         setBackground(new Color(0, 0, 0, 0));
         formThongbao = new ThongBaoForm();
         formLichTrinh = new LichTrinhForm();
@@ -48,13 +52,24 @@ public class MainOfGV extends javax.swing.JFrame {
                 } else if (index == 3) {
                     setForm(formBaoCao);
                 } else if (index == 4){
-                    int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn đăng xuất không?");
-                    if (hoi != JOptionPane.YES_OPTION) {
-                        return;
-                    }
-                    dispose();
-                    LoginFrame login = new LoginFrame();
-                    login.setVisible(true);
+                    messageFrame = new MessageFrame();
+                    messageFrame.show();
+                    messageFrame.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
+                    messageFrame.setButtonOK(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            dispose();
+                            messageFrame.dispose();
+                            new LoginFrame().setVisible(true);
+                        }
+                    });
+                    
+                    messageFrame.setButtonCancel(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            messageFrame.dispose();
+                        }
+                    });
                 }
             }
         });

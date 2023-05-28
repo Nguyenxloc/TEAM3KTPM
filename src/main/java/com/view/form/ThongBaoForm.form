@@ -25,7 +25,11 @@
               <Component id="jPanel1" min="-2" pref="450" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
               <EmptySpace pref="16" max="32767" attributes="0"/>
+=======
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,17 +61,17 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel5" min="-2" pref="187" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel14" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="lblTBHocTap3" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel3" min="-2" pref="187" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="lblTBHocTap2" min="-2" pref="245" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lbl1" min="-2" pref="187" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" pref="239" max="-2" attributes="0"/>
+                          <Component id="lblTBHocTap1" min="-2" pref="239" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -81,12 +85,12 @@
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lbl1" min="-2" pref="105" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="lblTBHocTap1" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" pref="105" max="-2" attributes="0"/>
-                      <Component id="jLabel12" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="lblTBHocTap2" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -95,7 +99,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                          <Component id="jLabel14" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="lblTBHocTap3" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="107" max="32767" attributes="0"/>
@@ -128,7 +132,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jLabel5.setIcon(new javax.swing.ImageIcon(dir+&quot;\\tintuc2.png&quot;));"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="lblTBHocTap1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -136,7 +140,7 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Th&#xf4;ng b&#xe1;o &#x111;&#x103;ng k&#xed; chuy&#x1ec3;n ng&#xe0;nh,&#xa;&lt;br&gt;&#xa;chuy&#xea;n ng&#xe0;nh h&#x1eb9;p v&#xe0; chuy&#x1ec3;n c&#x1a1; s&#x1edf;&#xa;&lt;br&gt;&#xa;h&#x1ecd;c k&#xec; Summer 2023"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
+        <Component class="javax.swing.JLabel" name="lblTBHocTap2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -144,7 +148,7 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Th&#xf4;ng b&#xe1;o thay &#x111;&#x1ed5;i quy &#x111;&#x1ecb;nh &#x111;i&#x1ec1;u ki&#x1ec7;n&#xa;&lt;br&gt;&#xa;d&#x1ef1; thi cu&#x1ed1;i m&#xf4;n h&#x1ecd;c t&#x1eeb; k&#xec; Fall 2023"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
+        <Component class="javax.swing.JLabel" name="lblTBHocTap3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -164,26 +168,26 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel6" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" pref="187" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel6" min="-2" pref="187" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel15" min="-2" pref="237" max="-2" attributes="0"/>
-                              <Component id="jLabel17" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblTinTuc2" min="-2" pref="237" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="139" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel8" min="-2" pref="187" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblTinTuc1" min="-2" pref="237" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel2" min="-2" pref="139" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< Updated upstream
                   <EmptySpace pref="14" max="32767" attributes="0"/>
+=======
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
@@ -192,15 +196,15 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel8" min="-2" pref="105" max="-2" attributes="0"/>
-                      <Component id="jLabel17" min="-2" pref="51" max="-2" attributes="0"/>
-                  </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel8" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="lblTinTuc1" min="-2" pref="51" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" min="-2" pref="105" max="-2" attributes="0"/>
-                      <Component id="jLabel15" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="lblTinTuc2" min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -227,7 +231,7 @@
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jLabel6.setIcon(new javax.swing.ImageIcon(dir+&quot;\\baohiem.png&quot;));"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel15">
+        <Component class="javax.swing.JLabel" name="lblTinTuc2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
@@ -235,7 +239,7 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Th&#xf4;ng b&#xe1;o gia h&#x1ea1;n &#x111;&#x103;ng k&#xed; b&#x1ea3;o hi&#x1ec3;m y t&#x1ebf; &#xa;&lt;br&gt;&#xa;n&#x103;m 2023"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel17">
+        <Component class="javax.swing.JLabel" name="lblTinTuc1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="13" style="0"/>
