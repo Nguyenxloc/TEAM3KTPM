@@ -10,9 +10,16 @@ import com.view.form.DangKyDVForm;
 import com.view.form.ThongBaoForm;
 import com.view.form.LichHocForm;
 import com.view.form.DiemForm;
-import com.view.form.WalletForm;
+import com.view.form.sinhvien.BaoCaoSVForm;
+import com.view.form.sinhvien.DangKyDVSVForm;
+import com.view.form.sinhvien.DiemSVForm;
+import com.view.form.sinhvien.HocPhiSVForm;
+import com.view.form.sinhvien.LichHocSVForm;
+import com.view.form.sinhvien.ThongTinCaNhanForm;
+import com.view.form_giangvien.BaoCaoForm;
 import java.awt.Color;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,38 +30,50 @@ public class MainOfSV extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-    private WalletForm home;
+    private HocPhiSVForm formHocPhiSV;
     private ThongBaoForm formThongbao;
-    private LichHocForm formLichHoc;
-    private DiemForm formDiem;
-    private DangKyDVForm form4;
+    private LichHocSVForm formLichHocSV;
+    private DiemSVForm formDiemSV;
+    private DangKyDVSVForm formDKDVSV;
+    private ThongTinCaNhanForm formThongTinSV;
+    private BaoCaoSVForm formBaoCaoSV;
 
     public MainOfSV() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        home = new WalletForm();
+        formHocPhiSV = new HocPhiSVForm();
         formThongbao = new ThongBaoForm();
-        formLichHoc = new LichHocForm();
-        formDiem = new DiemForm();
+        formLichHocSV = new LichHocSVForm();
+        formDiemSV = new DiemSVForm();
+        formDKDVSV = new  DangKyDVSVForm();
+        formThongTinSV = new ThongTinCaNhanForm();
+        formBaoCaoSV = new BaoCaoSVForm();
         menu.initMoving(MainOfSV.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 5) {
-                    setForm(home);
-                }
-                else if (index ==6) {
-//                    setForm(form4);
-                }
-                else if (index == 0) {
+                if (index == 0) {
                     setForm(formThongbao);
-                }
-                else if (index == 1) {
-                    setForm(formLichHoc);
+                } else if (index == 1) {
+                    setForm(formThongTinSV);
                 } else if (index == 2) {
-                    setForm(formDiem);
+                    setForm(formLichHocSV);
                 } else if (index == 3) {
-                    setForm(formDiem);
+                    setForm(formDiemSV);
+                } else if (index == 4) {
+                    setForm(formHocPhiSV);
+                } else if (index == 5) {
+                    setForm(formBaoCaoSV);
+                } else if (index ==6) {
+                    setForm(formDKDVSV);
+                } else if (index == 7) {
+                    int hoi = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát không ?");
+                    if (hoi != JOptionPane.YES_NO_OPTION) {
+                        return;
+                    };
+                    dispose();
+                    LoginFrame login = new LoginFrame();
+                    login.setVisible(true);
                 }
             }
         });
@@ -80,8 +99,11 @@ public class MainOfSV extends javax.swing.JFrame {
 
         panelBorder1 = new com.view.swing.PanelBorder();
         menu = new com.view.component.MenuOfSV();
-        header2 = new com.view.component.Header();
         mainPanel = new javax.swing.JPanel();
+        header2 = new com.view.component.Header();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -94,31 +116,64 @@ public class MainOfSV extends javax.swing.JFrame {
             }
         });
 
-        header2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-
         mainPanel.setOpaque(false);
         mainPanel.setLayout(new java.awt.BorderLayout());
+
+        header2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel1.setText("Người dùng: ");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Sinh Viên");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
+        );
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header2, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 963, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -126,7 +181,7 @@ public class MainOfSV extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, 1180, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,6 +203,9 @@ public class MainOfSV extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.view.component.Header header2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainPanel;
     private com.view.component.MenuOfSV menu;
     private com.view.swing.PanelBorder panelBorder1;

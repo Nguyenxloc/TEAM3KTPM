@@ -39,7 +39,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     public void verify(String userPara, String passWordPara) {
         if (userPara.equalsIgnoreCase(user) && passWordPara.equalsIgnoreCase(passWord)) {
-            vaiTro = 2;/// ////// query sql --   //select vaiTro from taikhoan where user=userPara this.passWord= passWordPara
+            vaiTro = 1;/// ////// query sql --   //select vaiTro from taikhoan where user=userPara this.passWord= passWordPara
             if (vaiTro == 1) {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
