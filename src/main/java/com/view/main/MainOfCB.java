@@ -11,9 +11,16 @@ import com.view.form.ThongBaoForm;
 import com.view.form.LichHocForm;
 import com.view.form.DiemForm;
 import com.view.form.WalletForm;
+import com.view.form_canbo.FormLichHoc;
+import com.view.form_canbo.Form_BaoCao;
+import com.view.form_canbo.Form_DKDichVu;
+import com.view.form_canbo.Form_Diem;
+import com.view.form_canbo.Form_QlThongTinSV;
+import com.view.form_canbo.Form_ThongBaoCB;
 import java.awt.Color;
 import static java.awt.SystemColor.menu;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,41 +31,66 @@ public class MainOfCB extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-    private WalletForm home;
+       private WalletForm home;
     private ThongBaoForm formThongbao;
     private LichHocForm formLichHoc;
     private DiemForm formDiem;
     private DangKyDVForm form4;
+    private FormLichHoc formQLLHoc;
+    private Form_Diem formQLDiem;
+    private Form_QlThongTinSV formQLTin;
+    private Form_DKDichVu fromDKDV;
+    private Form_BaoCao formBaoCao;
+    private Form_ThongBaoCB formQLTbao;
+
 
     public MainOfCB() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        home = new WalletForm();
+                home = new WalletForm();
         formThongbao = new ThongBaoForm();
         formLichHoc = new LichHocForm();
         formDiem = new DiemForm();
+        formQLLHoc = new FormLichHoc();
+        formQLDiem = new Form_Diem();
+        formQLTin = new Form_QlThongTinSV();
+        fromDKDV = new Form_DKDichVu();
+        formBaoCao = new Form_BaoCao();
+        formQLTbao = new Form_ThongBaoCB();
+
         menuOfCB1.initMoving(MainOfCB.this);
         menuOfCB1.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 5) {
-                    setForm(home);
+                                if (index == 5) {
+                    setForm(fromDKDV);
                 }
                 else if (index ==6) {
-//                    setForm(form4);
+                    setForm(formBaoCao);
                 }
                 else if (index == 0) {
-                    setForm(formThongbao);
+                    setForm(formQLTbao);
                 }
                 else if (index == 1) {
-                    setForm(formLichHoc);
+                    setForm(formQLLHoc);
                 } else if (index == 2) {
-                    setForm(formDiem);
+                    setForm(formQLDiem);
                 } else if (index == 3) {
-                    setForm(formDiem);
+                    setForm(formQLTin);
+                }else if (index == 4) {
+                    setForm(home);
+                }else if (index == 7){
+                    int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn đăng xuất không?");
+                    if (hoi != JOptionPane.YES_OPTION) {
+                        return;
+                    }
+                    dispose();
+                    LoginFrame login = new LoginFrame();
+                    login.setVisible(true);
                 }
             }
         });
+
         //  set when system open start with home form
         setForm(new ThongBaoForm());
     }
