@@ -25,7 +25,7 @@ public class MenuOfSV extends javax.swing.JPanel {
 
     public MenuOfSV() {
 
-        String path = "src\\main\\java\\com\\view\\icon\\logo.png";
+        String path = "src\\main\\java\\com\\view\\icon\\team3.png";
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();
         dir = absolutePath;
@@ -58,10 +58,10 @@ public class MenuOfSV extends javax.swing.JPanel {
 
         panelMoving.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 19)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(dir));
-        jLabel1.setText("Application");
+        jLabel1.setText("<html>\nQuản lý\n<br>\n_sinh viên");
 
         javax.swing.GroupLayout panelMovingLayout = new javax.swing.GroupLayout(panelMoving);
         panelMoving.setLayout(panelMovingLayout);
@@ -76,7 +76,7 @@ public class MenuOfSV extends javax.swing.JPanel {
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

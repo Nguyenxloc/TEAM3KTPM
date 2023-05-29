@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="954" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -57,7 +57,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jPanel4" min="-2" pref="225" max="-2" attributes="0"/>
+                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel9" max="32767" attributes="0"/>
                           </Group>
@@ -102,16 +102,16 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox4" max="32767" attributes="0"/>
-                                              <Component id="jComboBox1" alignment="1" pref="200" max="32767" attributes="0"/>
+                                              <Component id="jComboBox3" linkSize="13" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jComboBox4" linkSize="13" max="32767" attributes="0"/>
+                                              <Component id="jComboBox1" linkSize="13" alignment="1" pref="200" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jComboBox13" max="32767" attributes="0"/>
-                                              <Component id="jComboBox2" max="32767" attributes="0"/>
+                                              <Component id="jComboBox13" linkSize="13" min="-2" pref="200" max="-2" attributes="0"/>
+                                              <Component id="jComboBox2" linkSize="13" min="-2" pref="200" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -127,33 +127,33 @@
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" linkSize="1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jTextField1" linkSize="1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jButton1" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBox13" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jComboBox13" linkSize="14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jLabel13" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBox2" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jComboBox2" linkSize="14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jLabel5" linkSize="1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" linkSize="1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jComboBox1" linkSize="14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" linkSize="1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jComboBox3" linkSize="14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" linkSize="1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jComboBox4" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jComboBox4" linkSize="14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -294,7 +294,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel12" linkSize="3" min="-2" pref="78" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField7" min="-2" pref="171" max="-2" attributes="0"/>
+                                          <Component id="jTextField7" linkSize="15" min="-2" pref="171" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -306,7 +306,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel11" linkSize="3" min="-2" pref="78" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField6" max="32767" attributes="0"/>
+                                              <Component id="jTextField6" linkSize="15" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -317,10 +317,10 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jTextField4" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="jTextField2" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="jTextField3" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="jTextField5" min="-2" pref="170" max="-2" attributes="0"/>
+                                                  <Component id="jTextField4" linkSize="15" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="jTextField2" linkSize="15" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="jTextField3" linkSize="15" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="jTextField5" linkSize="15" min="-2" pref="170" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -483,7 +483,8 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="8" rowCount="5">
+                          <Table columnCount="9" rowCount="5">
+                            <Column editable="true" title="M&#xe3; sinh vi&#xea;n" type="java.lang.Object"/>
                             <Column editable="true" title="Lab 1" type="java.lang.Object"/>
                             <Column editable="true" title="Lab 2" type="java.lang.Object"/>
                             <Column editable="true" title="Lab 3" type="java.lang.Object"/>
@@ -523,7 +524,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="956" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="954" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -590,25 +591,33 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel15" alignment="0" pref="86" max="32767" attributes="0"/>
-                                  <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel31" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel15" alignment="0" pref="86" max="32767" attributes="0"/>
+                                          <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jComboBox7" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jComboBox5" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jComboBox6" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jTextField9" min="-2" pref="116" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jComboBox7" linkSize="16" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBox5" linkSize="16" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBox6" linkSize="16" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jTextField9" min="-2" pref="116" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jComboBox8" linkSize="16" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jComboBox8" max="32767" attributes="0"/>
+                                  <Component id="jComboBox14" linkSize="16" min="-2" pref="194" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -621,29 +630,34 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel14" linkSize="7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jTextField9" linkSize="7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="jButton4" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox6" linkSize="7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jComboBox14" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jLabel31" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jComboBox6" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jLabel18" linkSize="7" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" linkSize="7" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="jComboBox5" linkSize="7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jComboBox5" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel16" linkSize="7" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="jComboBox7" linkSize="7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jComboBox7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel17" linkSize="7" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="jComboBox8" linkSize="7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jComboBox8" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="37" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -739,6 +753,26 @@
                         <Property name="text" type="java.lang.String" value="T&#xec;m"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel31">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="M&#xf9;a h&#x1ecd;c: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox14">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="2020"/>
+                            <StringItem index="1" value="2021"/>
+                            <StringItem index="2" value="2022"/>
+                            <StringItem index="3" value="2023"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel10">
@@ -761,7 +795,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel25" linkSize="8" min="-2" pref="78" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField15" min="-2" pref="171" max="-2" attributes="0"/>
+                                              <Component id="jTextField15" linkSize="17" min="-2" pref="171" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -773,7 +807,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel24" linkSize="8" min="-2" pref="78" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField14" max="32767" attributes="0"/>
+                                                  <Component id="jTextField14" linkSize="17" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -784,10 +818,10 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jTextField12" alignment="1" max="32767" attributes="0"/>
-                                                      <Component id="jTextField10" alignment="1" max="32767" attributes="0"/>
-                                                      <Component id="jTextField11" alignment="1" max="32767" attributes="0"/>
-                                                      <Component id="jTextField13" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                                      <Component id="jTextField12" linkSize="17" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="jTextField10" linkSize="17" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="jTextField11" linkSize="17" alignment="1" max="32767" attributes="0"/>
+                                                      <Component id="jTextField13" linkSize="17" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -917,24 +951,21 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane2" pref="646" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jScrollPane3" alignment="0" pref="644" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
@@ -943,8 +974,15 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tblSuaDiem">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="8" rowCount="5">
+                              <Table columnCount="9" rowCount="5">
+                                <Column editable="true" title="M&#xe3; sinh vi&#xea;n" type="java.lang.Object"/>
                                 <Column editable="true" title="Lab 1" type="java.lang.Object"/>
                                 <Column editable="true" title="Lab 2" type="java.lang.Object"/>
                                 <Column editable="true" title="Lab 3" type="java.lang.Object"/>
@@ -954,6 +992,15 @@
                                 <Column editable="true" title="&#x110;i&#x1ec3;m t&#x1ed5;ng k&#x1ebf;t" type="java.lang.Object"/>
                                 <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
                               </Table>
+                            </Property>
+                            <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                           </Properties>
                         </Component>

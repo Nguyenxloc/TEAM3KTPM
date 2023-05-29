@@ -13,7 +13,6 @@ import javax.swing.JLabel;
  */
 public class MessageFrame extends javax.swing.JFrame {
 
-    private MainOfGV mainOfGV;
     private String dir = null;
     /**
      * Creates new form MessageFrame
@@ -25,27 +24,10 @@ public class MessageFrame extends javax.swing.JFrame {
         dir = absolutePath;
         initComponents();
         setLocationRelativeTo(null);
-
-        this.mainOfGV = mainOfGV;
     }
 
     public void setMessage(String message) {
         lblThongBao.setText(message);
-//        btnOk.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                dispose();
-//                mainOfGV.dispose();
-//                new LoginFrame().setVisible(true);
-//            }
-//        });
-//
-//        btnCancel.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                dispose();
-//            }
-//        });
     }
 
     public void setButtonOK(ActionListener actionListener){

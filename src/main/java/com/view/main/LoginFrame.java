@@ -223,7 +223,7 @@ public class LoginFrame extends javax.swing.JFrame {
             new MainOfCB().setVisible(true);
             this.dispose();
         } else if (txtUser.getText().equals("giangvien") && txtPassword.getText().equals("8888")) {
-            new MainOfGV(this.messageFrame).setVisible(true);
+            new MainOfGV().setVisible(true);
             this.dispose();
         } else if (txtUser.getText().equals("sinhvien") && txtPassword.getText().equals("8888")) {
             new MainOfSV().setVisible(true);

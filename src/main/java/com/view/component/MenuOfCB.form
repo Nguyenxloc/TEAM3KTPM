@@ -60,7 +60,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="sansserif" size="18" style="1"/>
+              <Font name="sansserif" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -68,7 +68,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.ImageIcon(dir)" type="code"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Application"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Qu&#x1ea3;n l&#xfd;&#xa;&lt;br&gt;&#xa;_sinh vi&#xea;n"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -29,11 +29,9 @@ public class MainOfGV extends javax.swing.JFrame {
     private BaoCaoForm formBaoCao;
     private LichTrinhForm formLichTrinh;
     private QuanLyDiemForm formQuanLyDiem;
-    private MessageFrame messageFrame;
     
-    public MainOfGV(MessageFrame mess) {
+    public MainOfGV() {
         initComponents();
-        this.messageFrame = mess;
         setBackground(new Color(0, 0, 0, 0));
         formThongbao = new ThongBaoForm();
         formLichTrinh = new LichTrinhForm();
@@ -52,7 +50,7 @@ public class MainOfGV extends javax.swing.JFrame {
                 } else if (index == 3) {
                     setForm(formBaoCao);
                 } else if (index == 4){
-                    messageFrame = new MessageFrame();
+                    MessageFrame messageFrame = new MessageFrame();
                     messageFrame.show();
                     messageFrame.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
                     messageFrame.setButtonOK(new ActionListener(){
