@@ -57,7 +57,6 @@ public class MainOfCB extends javax.swing.JFrame {
         formQLTin = new Form_QlThongTinSV();
         fromDKDV = new Form_DKDichVu();
         formBaoCao = new Form_BaoCao();
-        formQLTbao = new Form_ThongBaoCB();
 
         menuOfCB1.initMoving(MainOfCB.this);
         menuOfCB1.addEventMenuSelected(new EventMenuSelected() {
@@ -68,7 +67,7 @@ public class MainOfCB extends javax.swing.JFrame {
                 } else if (index == 6) {
                     setForm(formBaoCao);
                 } else if (index == 0) {
-                    setForm(formQLTbao);
+                    setForm(formThongbao);
                 } else if (index == 1) {
                     setForm(formQLLHoc);
                 } else if (index == 2) {
