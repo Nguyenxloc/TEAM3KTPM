@@ -97,13 +97,13 @@ public class LichHocSVForm extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Ngày", "Phòng", "Mã môn", "Tên môn", "Tên lớp", "Tên giảng viên", "Thời gian"
+                "STT", "Ngày", "Phòng", "Tên môn", "Tên lớp", "Tên giảng viên", "Thời gian"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -187,13 +187,13 @@ public class LichHocSVForm extends javax.swing.JPanel {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Ngày", "Phòng", "Mã môn", "Tên môn", "Tên lớp", "Tên giảng viên", "Thời gian"
+                "STT", "Ngày", "Phòng", "Tên môn", "Tên lớp", "Tên giảng viên", "Thời gian"
             }
         ));
         jScrollPane4.setViewportView(jTable4);

@@ -28,8 +28,8 @@ public class ThongTinCaNhanForm extends javax.swing.JPanel {
         String absolutePath = file.getAbsolutePath();
         dir = absolutePath;
 
-        lblAnhDaiDien = new javax.swing.JLabel();
-        lblAnhDaiDien.setIcon(new javax.swing.ImageIcon(dir + "\\AnhDaiDien.jpg"));
+//        lblAnhDaiDien = new javax.swing.JLabel();
+//        lblAnhDaiDien.setIcon(new javax.swing.ImageIcon(dir + "\\AnhDaiDien.jpg"));
         
         initComponents();
 
@@ -122,7 +122,10 @@ public class ThongTinCaNhanForm extends javax.swing.JPanel {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("sangnvph30598@fpt.edu.vn");
 
-        lblAnhDaiDien.setIcon(new javax.swing.ImageIcon(dir+"\\AnhDaiDien.jpg"));
+        lblAnhDaiDien.setForeground(new java.awt.Color(255, 0, 255));
+        lblAnhDaiDien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnhDaiDien.setText("Ảnh");
+        lblAnhDaiDien.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 255)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

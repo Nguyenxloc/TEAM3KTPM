@@ -18,6 +18,8 @@ import com.view.form.sinhvien.LichHocSVForm;
 import com.view.form.sinhvien.ThongTinCaNhanForm;
 import com.view.form_giangvien.BaoCaoForm;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
@@ -37,6 +39,7 @@ public class MainOfSV extends javax.swing.JFrame {
     private DangKyDVSVForm formDKDVSV;
     private ThongTinCaNhanForm formThongTinSV;
     private BaoCaoSVForm formBaoCaoSV;
+    private MessageFrame messageFrame;
 
     public MainOfSV() {
         initComponents();
@@ -67,13 +70,24 @@ public class MainOfSV extends javax.swing.JFrame {
                 } else if (index ==6) {
                     setForm(formDKDVSV);
                 } else if (index == 7) {
-                    int hoi = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát không ?");
-                    if (hoi != JOptionPane.YES_NO_OPTION) {
-                        return;
-                    };
-                    dispose();
-                    LoginFrame login = new LoginFrame();
-                    login.setVisible(true);
+                    messageFrame = new MessageFrame();
+                    messageFrame.show();
+                    messageFrame.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
+                    messageFrame.setButtonOK(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            dispose();
+                            messageFrame.dispose();
+                            new LoginFrame().setVisible(true);
+                        }
+                    });
+                    
+                    messageFrame.setButtonCancel(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            messageFrame.dispose();
+                        }
+                    });
                 }
             }
         });
