@@ -19,6 +19,8 @@ import com.view.form_canbo.Form_QlThongTinSV;
 import com.view.form_canbo.Form_ThongBaoCB;
 import java.awt.Color;
 import static java.awt.SystemColor.menu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
@@ -31,7 +33,7 @@ public class MainOfCB extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-       private WalletForm home;
+    private WalletForm home;
     private ThongBaoForm formThongbao;
     private LichHocForm formLichHoc;
     private DiemForm formDiem;
@@ -43,11 +45,10 @@ public class MainOfCB extends javax.swing.JFrame {
     private Form_BaoCao formBaoCao;
     private Form_ThongBaoCB formQLTbao;
 
-
     public MainOfCB() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-                home = new WalletForm();
+        home = new WalletForm();
         formThongbao = new ThongBaoForm();
         formLichHoc = new LichHocForm();
         formDiem = new DiemForm();
@@ -62,31 +63,39 @@ public class MainOfCB extends javax.swing.JFrame {
         menuOfCB1.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                                if (index == 5) {
+                if (index == 5) {
                     setForm(fromDKDV);
-                }
-                else if (index ==6) {
+                } else if (index == 6) {
                     setForm(formBaoCao);
-                }
-                else if (index == 0) {
+                } else if (index == 0) {
                     setForm(formQLTbao);
-                }
-                else if (index == 1) {
+                } else if (index == 1) {
                     setForm(formQLLHoc);
                 } else if (index == 2) {
                     setForm(formQLDiem);
                 } else if (index == 3) {
                     setForm(formQLTin);
-                }else if (index == 4) {
+                } else if (index == 4) {
                     setForm(home);
-                }else if (index == 7){
-                    int hoi = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn đăng xuất không?");
-                    if (hoi != JOptionPane.YES_OPTION) {
-                        return;
-                    }
-                    dispose();
-                    LoginFrame login = new LoginFrame();
-                    login.setVisible(true);
+                } else if (index == 7) {
+                    MessageFrame messageFrame = new MessageFrame();
+                    messageFrame.show();
+                    messageFrame.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
+                    messageFrame.setButtonOK(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            dispose();
+                            messageFrame.dispose();
+                            new LoginFrame().setVisible(true);
+                        }
+                    });
+
+                    messageFrame.setButtonCancel(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            messageFrame.dispose();
+                        }
+                    });
                 }
             }
         });
@@ -115,6 +124,7 @@ public class MainOfCB extends javax.swing.JFrame {
         header2 = new com.view.component.Header();
         mainPanel = new javax.swing.JPanel();
         menuOfCB1 = new com.view.component.MenuOfCB();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -128,11 +138,35 @@ public class MainOfCB extends javax.swing.JFrame {
         mainPanel.setOpaque(false);
         mainPanel.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel1.setText("Người dùng:");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel1.setText("Người dùng: ");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("Cán Bộ");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Cán bộ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
+        );
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -147,27 +181,20 @@ public class MainOfCB extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(panelBorder1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel1)
+                        .addComponent(header2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))))
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(menuOfCB1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuOfCB1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,11 +216,11 @@ public class MainOfCB extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.view.component.Header header2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainPanel;
     private com.view.component.MenuOfCB menuOfCB1;
     private com.view.swing.PanelBorder panelBorder1;
