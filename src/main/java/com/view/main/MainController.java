@@ -17,7 +17,7 @@ public class MainController {
                 new LoginFrame().setVisible(true);
             }
         });
-        System.out.println("===================Test git=================");
+        System.out.println("===================Test jdbc=================");
         DBConnection dbconn  = new DBConnection();
         System.out.println(dbconn.openDbConnection());
         System.out.println("=============================================");
