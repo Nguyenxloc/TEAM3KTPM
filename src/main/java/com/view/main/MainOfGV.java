@@ -10,6 +10,7 @@ import com.view.form.ThongBaoForm;
 import com.view.form_giangvien.BaoCaoForm;
 import com.view.form_giangvien.LichTrinhForm;
 import com.view.form_giangvien.QuanLyDiemForm;
+import com.view.form_giangvien.ThongTinGiangVienForm;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ public class MainOfGV extends javax.swing.JFrame {
     private BaoCaoForm formBaoCao;
     private LichTrinhForm formLichTrinh;
     private QuanLyDiemForm formQuanLyDiem;
+    private ThongTinGiangVienForm formThongTinGiangVien;
     
     public MainOfGV() {
         initComponents();
@@ -37,6 +39,7 @@ public class MainOfGV extends javax.swing.JFrame {
         formLichTrinh = new LichTrinhForm();
         formQuanLyDiem = new QuanLyDiemForm();
         formBaoCao = new BaoCaoForm();
+        formThongTinGiangVien = new ThongTinGiangVienForm();
         menuOfGV1.initMoving(MainOfGV.this);
         menuOfGV1.addEventMenuSelected(new EventMenuSelected() {
             @Override
@@ -44,12 +47,14 @@ public class MainOfGV extends javax.swing.JFrame {
                 if (index == 0) {
                     setForm(formThongbao);
                 } else if (index == 1) {
-                    setForm(formLichTrinh);
+                    setForm(formThongTinGiangVien);
                 } else if (index == 2) {
-                    setForm(formQuanLyDiem);
+                    setForm(formLichTrinh);
                 } else if (index == 3) {
+                    setForm(formQuanLyDiem);
+                }  else if (index == 4) {
                     setForm(formBaoCao);
-                } else if (index == 4){
+                } else if (index == 5){
                     MessageFrame messageFrame = new MessageFrame();
                     messageFrame.show();
                     messageFrame.setMessage("Bạn có chắc chắn muốn đăng xuất không?");

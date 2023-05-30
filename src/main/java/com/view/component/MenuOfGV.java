@@ -38,9 +38,10 @@ public class MenuOfGV extends javax.swing.JPanel {
 
     private void init() {
         listMenu1.addItem(new Model_Menu("2", "Thông báo và tin tức", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("8", "Thông tin cơ bản", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("5", "Lịch trình", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("4", "Điểm", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("8", "Báo cáo", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("6", "Báo cáo", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("9", "Đăng xuất", Model_Menu.MenuType.MENU));
     }
 
