@@ -15,6 +15,8 @@ import com.view.form_canbo.FormLichHoc;
 import com.view.form_canbo.Form_BaoCao;
 import com.view.form_canbo.Form_DKDichVu;
 import com.view.form_canbo.Form_Diem;
+import com.view.form_canbo.Form_LopHoc;
+import com.view.form_canbo.Form_MonHoc;
 import com.view.form_canbo.Form_QlThongTinSV;
 import com.view.form_canbo.Form_ThongBaoCB;
 import java.awt.Color;
@@ -44,6 +46,9 @@ public class MainOfCB extends javax.swing.JFrame {
     private Form_DKDichVu fromDKDV;
     private Form_BaoCao formBaoCao;
     private Form_ThongBaoCB formQLTbao;
+    private Form_MonHoc formMonHoc;
+    private Form_LopHoc formLopHoc;
+
 
     public MainOfCB() {
         initComponents();
@@ -57,7 +62,10 @@ public class MainOfCB extends javax.swing.JFrame {
         formQLTin = new Form_QlThongTinSV();
         fromDKDV = new Form_DKDichVu();
         formBaoCao = new Form_BaoCao();
+        formMonHoc = new Form_MonHoc();
+        formLopHoc = new Form_LopHoc();
 
+        
         menuOfCB1.initMoving(MainOfCB.this);
         menuOfCB1.addEventMenuSelected(new EventMenuSelected() {
             @Override
@@ -70,13 +78,19 @@ public class MainOfCB extends javax.swing.JFrame {
                     setForm(formThongbao);
                 } else if (index == 1) {
                     setForm(formQLLHoc);
-                } else if (index == 2) {
+                }   else if (index == 7) {
+                    setForm(formMonHoc);
+                }
+                else if (index == 8) {
+                    setForm(formLopHoc);
+                }
+                else if (index == 2) {
                     setForm(formQLDiem);
                 } else if (index == 3) {
                     setForm(formQLTin);
                 } else if (index == 4) {
                     setForm(home);
-                } else if (index == 7) {
+                } else if (index == 9) {
                     MessageFrame messageFrame = new MessageFrame();
                     messageFrame.show();
                     messageFrame.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
