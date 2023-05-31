@@ -1,4 +1,4 @@
-package com.view.form.sinhvien;
+package com.view.form_sinhvien;
 
 import com.view.component.Card;
 import com.view.model.Model_Card;

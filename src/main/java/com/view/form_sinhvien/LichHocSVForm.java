@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.view.form.sinhvien;
+package com.view.form_sinhvien;
 
 /**
  *
