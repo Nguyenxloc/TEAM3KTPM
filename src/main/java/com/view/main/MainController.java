@@ -14,7 +14,7 @@ public class MainController {
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainOfGV().setVisible(true);
+                new MainOfSV().setVisible(true);
             }
         });
         System.out.println("===================Test jdbc=================");

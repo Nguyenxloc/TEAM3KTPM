@@ -6,8 +6,8 @@ package repository;
 
 /**
  *
- * @author 84374
+ * @author ADMIN
  */
-public class DAOlichHoc {
+public class DAO_DVSVDaDangKy {
     
 }

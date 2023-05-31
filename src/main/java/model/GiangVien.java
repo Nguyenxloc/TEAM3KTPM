@@ -8,7 +8,7 @@ package model;
  *
  * @author ADMIN
  */
-public class GiaoVien {
+public class GiangVien {
     
     public String maGV;
     
@@ -24,10 +24,10 @@ public class GiaoVien {
     
     public String diaChi;
 
-    public GiaoVien() {
+    public GiangVien() {
     }
 
-    public GiaoVien(String maGV, String hoTen, int gioiTinh, String ngaySinh, String email, String soDienThoai, String diaChi) {
+    public GiangVien(String maGV, String hoTen, int gioiTinh, String ngaySinh, String email, String soDienThoai, String diaChi) {
         this.maGV = maGV;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;

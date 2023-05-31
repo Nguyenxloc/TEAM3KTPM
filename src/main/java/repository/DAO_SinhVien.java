@@ -15,7 +15,7 @@ import ultilities.DBConnection;
  *
  * @author 84374
  */
-public class DAOsinhVien{
+public class DAO_SinhVien{
   
   final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?)";
   final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [Name] = ? WHERE [Id] = ?";
@@ -24,7 +24,7 @@ public class DAOsinhVien{
   final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[SINHVIEN]";
   private SinhVien sinhVien;
   private ArrayList<SinhVien> _lstSV;
-      public DAOsinhVien() {
+      public DAO_SinhVien() {
     _lstSV = new ArrayList<>();
 
   }
