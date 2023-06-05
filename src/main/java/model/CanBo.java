@@ -8,7 +8,7 @@ package model;
  *
  * @author ADMIN
  */
-public class CanBoQuanLy {
+public class CanBo {
     
     public String maCB;
     
@@ -24,10 +24,10 @@ public class CanBoQuanLy {
     
     public String diaChi;
 
-    public CanBoQuanLy() {
+    public CanBo() {
     }
 
-    public CanBoQuanLy(String maCB, String hoTen, int gioiTinh, String ngaySinh, String email, String soDienThoai, String diaChi) {
+    public CanBo(String maCB, String hoTen, int gioiTinh, String ngaySinh, String email, String soDienThoai, String diaChi) {
         this.maCB = maCB;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;

@@ -4,8 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.LichHoc;
-import model.LichThi;
+import model.Lich;
 
 /**
  *
@@ -14,8 +13,7 @@ import model.LichThi;
 public class LichTrinhForm extends javax.swing.JPanel {
     
     String dir = null;
-    List<LichHoc> lstLichHoc = new ArrayList<>();
-    List<LichThi> lstLichThi = new ArrayList<>();
+    List<Lich> lstLichHoc = new ArrayList<>();
     DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form LichHoc_LichThiForm
@@ -28,38 +26,20 @@ public class LichTrinhForm extends javax.swing.JPanel {
         dir = absolutePath;
         initComponents();
         
-        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-        lstLichHoc.add(new LichHoc("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
+        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
         
-        model = (DefaultTableModel) tblLichDay.getModel();
-        fillToTableLichHoc();
         
-        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
-        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
-        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
-        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
-        lstLichThi.add(new LichThi("PH30628", "Kĩ thuật phần mềm", "IT18202", "L303", "thuvtk5", "Phát triển phần mềm", 2023, "Summer", "30-05-2023", "16:20:00-18:20:00"));
-        
-        model = (DefaultTableModel) tblLichThi.getModel();
-        fillToTableLichThi();
     }
 
     public void fillToTableLichHoc(){
         int i=1;
         model.setRowCount(0);
-        for (LichHoc lichHoc : lstLichHoc) {
+        for (Lich lichHoc : lstLichHoc) {
             model.addRow(new Object[]{i++, lichHoc.getNgay(), lichHoc.getMaPhongHoc(), lichHoc.getMaMonHoc(), lichHoc.getMaLopHoc(), lichHoc.getMaGiangVien(), lichHoc.getThoiGian()});
-        }
-    }
-    
-    public void fillToTableLichThi(){
-        int i=1;
-        model.setRowCount(0);
-        for (LichThi lichThi : lstLichThi) {
-            model.addRow(new Object[]{i++, lichThi.getNgay(), lichThi.getMaPhongHoc(), lichThi.getMaMonHoc(), lichThi.getMaLopHoc(), lichThi.getMaGiangVien(), lichThi.getThoiGian()});
         }
     }
     

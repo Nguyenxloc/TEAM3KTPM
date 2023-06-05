@@ -8,7 +8,7 @@ package model;
  *
  * @author ADMIN
  */
-public class LichHoc {
+public class Lich {
     public String maSV;
     public String maMonHoc;
     public String maLopHoc;
@@ -20,10 +20,10 @@ public class LichHoc {
     public String ngay;
     public String thoiGian;
     
-    public LichHoc() {
+    public Lich() {
     }
 
-    public LichHoc(String maSV, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String maChuyenNganh, int nam, String mua, String ngay, String thoiGian) {
+    public Lich(String maSV, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String maChuyenNganh, int nam, String mua, String ngay, String thoiGian) {
         this.maSV = maSV;
         this.maMonHoc = maMonHoc;
         this.maLopHoc = maLopHoc;
