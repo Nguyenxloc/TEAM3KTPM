@@ -4,30 +4,31 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author ADMIN
  */
 public class CanBo {
-    
+    public Integer numOrder;
+    public String matKhau;
+    public String vaiTro;
     public String maCB;
-    
     public String hoTen;
-    
-    public int gioiTinh;
-    
-    public String ngaySinh;
-    
+    public Integer gioiTinh;
+    public Date ngaySinh;
     public String email;
-    
     public String soDienThoai;
-    
     public String diaChi;
 
     public CanBo() {
     }
 
-    public CanBo(String maCB, String hoTen, int gioiTinh, String ngaySinh, String email, String soDienThoai, String diaChi) {
+    public CanBo(Integer numOrder, String matKhau, String vaiTro, String maCB, String hoTen, Integer gioiTinh, Date ngaySinh, String email, String soDienThoai, String diaChi) {
+        this.numOrder = numOrder;
+        this.matKhau = matKhau;
+        this.vaiTro = vaiTro;
         this.maCB = maCB;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -35,6 +36,30 @@ public class CanBo {
         this.email = email;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
+    }
+
+    public Integer getNumOrder() {
+        return numOrder;
+    }
+
+    public void setNumOrder(Integer numOrder) {
+        this.numOrder = numOrder;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public String getVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
     }
 
     public String getMaCB() {
@@ -53,19 +78,19 @@ public class CanBo {
         this.hoTen = hoTen;
     }
 
-    public int getGioiTinh() {
+    public Integer getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(Integer gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -95,7 +120,6 @@ public class CanBo {
 
     @Override
     public String toString() {
-        return "CanBoQuanLy{" + "maCB=" + maCB + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + '}';
+        return "CanBo{" + "numOrder=" + numOrder + ", matKhau=" + matKhau + ", vaiTro=" + vaiTro + ", maCB=" + maCB + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + '}';
     }
-    
 }

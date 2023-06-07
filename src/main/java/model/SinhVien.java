@@ -4,43 +4,81 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author ADMIN
  */
 public class SinhVien {
     
+    public String matKhau;
+    public String vaiTro;
+    public byte anh;
+    public Integer numOrder;
     public String maSV;
-    
-    public int nienKhoa;
-    
-    public String hoten;
-    
-    public int gioitinh;
-    
-    public String ngaySinh;
-    
+    public String hoTen;
+    public Integer gioitinh;
+    public Date ngaySinh;
     public String email;
-    
     public String soDienThoai;
-    
     public String diaChi;
-    
     public String trangThai;
+    public Integer nienKhoa;
+    public String maChuyenNganh;
+    public Date ngayNhapHoc;
 
     public SinhVien() {
     }
 
-    public SinhVien(String maSV, int nienKhoa, String hoten, int gioitinh, String ngaySinh, String email, String soDienThoai, String diaChi, String trangThai) {
+    public SinhVien(String matKhau, String vaiTro, byte anh, Integer numOrder, String maSV, String hoTen, Integer gioitinh, Date ngaySinh, String email, String soDienThoai, String diaChi, String trangThai, Integer nienKhoa, String maChuyenNganh, Date ngayNhapHoc) {
+        this.matKhau = matKhau;
+        this.vaiTro = vaiTro;
+        this.anh = anh;
+        this.numOrder = numOrder;
         this.maSV = maSV;
-        this.nienKhoa = nienKhoa;
-        this.hoten = hoten;
+        this.hoTen = hoTen;
         this.gioitinh = gioitinh;
         this.ngaySinh = ngaySinh;
         this.email = email;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
         this.trangThai = trangThai;
+        this.nienKhoa = nienKhoa;
+        this.maChuyenNganh = maChuyenNganh;
+        this.ngayNhapHoc = ngayNhapHoc;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public String getVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
+    }
+
+    public byte getAnh() {
+        return anh;
+    }
+
+    public void setAnh(byte anh) {
+        this.anh = anh;
+    }
+
+    public Integer getNumOrder() {
+        return numOrder;
+    }
+
+    public void setNumOrder(Integer numOrder) {
+        this.numOrder = numOrder;
     }
 
     public String getMaSV() {
@@ -51,35 +89,27 @@ public class SinhVien {
         this.maSV = maSV;
     }
 
-    public int getNienKhoa() {
-        return nienKhoa;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setNienKhoa(int nienKhoa) {
-        this.nienKhoa = nienKhoa;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public String getHoten() {
-        return hoten;
-    }
-
-    public void setHoten(String hoten) {
-        this.hoten = hoten;
-    }
-
-    public int getGioitinh() {
+    public Integer getGioitinh() {
         return gioitinh;
     }
 
-    public void setGioitinh(int gioitinh) {
+    public void setGioitinh(Integer gioitinh) {
         this.gioitinh = gioitinh;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -115,10 +145,35 @@ public class SinhVien {
         this.trangThai = trangThai;
     }
 
+    public Integer getNienKhoa() {
+        return nienKhoa;
+    }
+
+    public void setNienKhoa(Integer nienKhoa) {
+        this.nienKhoa = nienKhoa;
+    }
+
+    public String getMaChuyenNganh() {
+        return maChuyenNganh;
+    }
+
+    public void setMaChuyenNganh(String maChuyenNganh) {
+        this.maChuyenNganh = maChuyenNganh;
+    }
+
+    public Date getNgayNhapHoc() {
+        return ngayNhapHoc;
+    }
+
+    public void setNgayNhapHoc(Date ngayNhapHoc) {
+        this.ngayNhapHoc = ngayNhapHoc;
+    }
+
     @Override
     public String toString() {
-        return "SinhVien{" + "maSV=" + maSV + ", nienKhoa=" + nienKhoa + ", hoten=" + hoten + ", gioitinh=" + gioitinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + ", trangThai=" + trangThai + '}';
+        return "SinhVien{" + "matKhau=" + matKhau + ", vaiTro=" + vaiTro + ", anh=" + anh + ", numOrder=" + numOrder + ", maSV=" + maSV + ", hoTen=" + hoTen + ", gioitinh=" + gioitinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + ", trangThai=" + trangThai + ", nienKhoa=" + nienKhoa + ", maChuyenNganh=" + maChuyenNganh + ", ngayNhapHoc=" + ngayNhapHoc + '}';
     }
+
     
     
 }

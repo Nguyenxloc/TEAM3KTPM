@@ -14,7 +14,7 @@ public class MainController {
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainOfSV().setVisible(true);
+                new LoginFrame().setVisible(true);
             }
         });
         System.out.println("===================Test jdbc=================");
@@ -24,7 +24,7 @@ public class MainController {
 //        int triggerNum = 1;/// example that parament must be change follow up actor
 //        //// tạo ra những biến để chuyển tab
 //        if(triggerNum==0){
-//             java.awt.EventQueue.invokeLater(new Runnable() {
+//             java.awt.EventQueue.invokeLater(new Runnable() {cbc
 //            public void run() {
 //                new MainOfSV().setVisible(true);
 //            }

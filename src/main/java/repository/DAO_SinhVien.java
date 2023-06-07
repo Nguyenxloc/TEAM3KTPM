@@ -4,10 +4,13 @@
  */
 package repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.GiangVien;
 import model.SinhVien;
 import ultilities.DBConnection;
 
@@ -40,7 +43,7 @@ public class DAO_SinhVien{
   }
 
   public SinhVien save(SinhVien sv) {   
-    DBConnection.ExcuteDungna(INSERT_SQL, sv.getHoten(),sv.getNienKhoa(),sv.getHoten()
+    DBConnection.ExcuteDungna(INSERT_SQL, sv.getHoTen(),sv.getNienKhoa(),sv.getHoTen()
             ,sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai());
     return sv;
   }
@@ -61,12 +64,50 @@ public class DAO_SinhVien{
       ResultSet rs = DBConnection.getDataFromQuery(sql, args);
       while (rs.next()) {      
         System.out.println(rs.getLong(4));
-        _lstSV.add(new SinhVien(rs.getString(1), rs.getInt(2), rs.getNString(3),rs.getInt(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
+        _lstSV.add(new SinhVien(rs.getString(1), rs.getString(2), rs.getByte(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getDate(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getString(14), rs.getDate(15))
+        );
       }
       return _lstSV;
     } catch (SQLException ex) {
       throw new RuntimeException();
     }
   }
+  
+  public List<SinhVien> getTaiKhoan() throws SQLException{  //Lấy danh sách tài khoản của sinh viên
+        List<SinhVien> lstTKSinhVien = new ArrayList<>();
+        Connection connection = DBConnection.openDbConnection();
+        String sql = "SELECT MASV, MATKHAU, VAITRO FROM SINHVIEN";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+           String ma = rs.getString("MASV");
+           String matKhau = rs.getString("MATKHAU");
+           String vaiTro = rs.getString("VAITRO");
+           
+           SinhVien sinhVien = new SinhVien();   
+           sinhVien.setMaSV(ma);
+           sinhVien.setMatKhau(matKhau);
+           sinhVien.setVaiTro(vaiTro);
+           
+           lstTKSinhVien.add(sinhVien);
+            System.out.println(lstTKSinhVien);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstTKSinhVien;
+    }
+    
+    public SinhVien xacThucTaiKhoanSinhVien(String username) throws Exception{ // Tìm theo tên tài khoản 
+        List<SinhVien> lstTKSinhVien = getTaiKhoan();
+        SinhVien maSVCanTim = null;
+        for (SinhVien sinhVien : lstTKSinhVien) {
+            if(sinhVien.getMaSV().equals(username)){
+                maSVCanTim = sinhVien;
+                break;
+            }
+        }
+        return maSVCanTim;
+    }
        
 }

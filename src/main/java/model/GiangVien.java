@@ -4,30 +4,34 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author ADMIN
  */
 public class GiangVien {
-    
+    public String matKhau;
+    public String vaiTro;
+    public byte anh;
+    public Integer numOrder;
     public String maGV;
-    
     public String hoTen;
-    
-    public int gioiTinh;
-    
-    public String ngaySinh;
-    
+    public Integer gioiTinh;
+    public Date ngaySinh;
     public String email;
-    
     public String soDienThoai;
-    
     public String diaChi;
+    public Date ngayVaoLam;
 
     public GiangVien() {
     }
 
-    public GiangVien(String maGV, String hoTen, int gioiTinh, String ngaySinh, String email, String soDienThoai, String diaChi) {
+    public GiangVien(String matKhau, String vaiTro, byte anh, Integer numOrder, String maGV, String hoTen, Integer gioiTinh, Date ngaySinh, String email, String soDienThoai, String diaChi, Date ngayVaoLam) {
+        this.matKhau = matKhau;
+        this.vaiTro = vaiTro;
+        this.anh = anh;
+        this.numOrder = numOrder;
         this.maGV = maGV;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -35,6 +39,39 @@ public class GiangVien {
         this.email = email;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
+        this.ngayVaoLam = ngayVaoLam;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public String getVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
+    }
+
+    public byte getAnh() {
+        return anh;
+    }
+
+    public void setAnh(byte anh) {
+        this.anh = anh;
+    }
+
+    public Integer getNumOrder() {
+        return numOrder;
+    }
+
+    public void setNumOrder(Integer numOrder) {
+        this.numOrder = numOrder;
     }
 
     public String getMaGV() {
@@ -53,19 +90,19 @@ public class GiangVien {
         this.hoTen = hoTen;
     }
 
-    public int getGioiTinh() {
+    public Integer getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(Integer gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -93,10 +130,16 @@ public class GiangVien {
         this.diaChi = diaChi;
     }
 
+    public Date getNgayVaoLam() {
+        return ngayVaoLam;
+    }
+
+    public void setNgayVaoLam(Date ngayVaoLam) {
+        this.ngayVaoLam = ngayVaoLam;
+    }
+
     @Override
     public String toString() {
-        return "GiaoVien{" + "maGV=" + maGV + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + '}';
+        return "GiangVien{" + "matKhau=" + matKhau + ", vaiTro=" + vaiTro + ", anh=" + anh + ", numOrder=" + numOrder + ", maGV=" + maGV + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + ", ngayVaoLam=" + ngayVaoLam + '}';
     }
-    
-    
 }

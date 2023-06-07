@@ -4,7 +4,19 @@
  */
 package com.view.main;
 
+import java.awt.Color;
 import java.io.File;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.CanBo;
+import model.GiangVien;
+import model.SinhVien;
+import service.CanBoService;
+import service.GiangVienService;
+import service.SinhVienService;
 
 /**
  *
@@ -12,12 +24,11 @@ import java.io.File;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
-    private String user = "locnpph29878";
-    private String passWord = "123456";
-    private int vaiTro = 2;
+    CanBoService canBoService = new CanBoService();
+    GiangVienService giangVienService = new GiangVienService();
+    SinhVienService sinhVienService = new SinhVienService();
     private String dir = null;
 
-    private MessageFrame messageFrame;
     ////// query sql -- get vaiTro
     //select *from taikhoan
     // if vaiTro=1--->sv--->form sv
@@ -74,12 +85,14 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
         btnLogin = new com.k33ptoo.components.KButton();
         txtUser = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
+        lblMessUser = new javax.swing.JLabel();
+        lblMessPass = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -93,20 +106,15 @@ public class LoginFrame extends javax.swing.JFrame {
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("LOGIN FORM");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("password");
+        lblPassword.setText("password");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("username");
+        lblUsername.setText("username");
 
-        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
         btnLogin.setBorder(null);
         btnLogin.setText("Login");
         btnLogin.setAlignmentX(1.0F);
@@ -130,13 +138,15 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
-        txtUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
-        txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(dir+"\\baomat2.png"));
+
+        lblMessUser.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblMessPass.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,21 +155,23 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                            .addComponent(txtPassword)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                            .addComponent(txtPassword)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMessUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMessPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -174,17 +186,21 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(lblUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMessUser, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPassword)
                 .addGap(4, 4, 4)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(lblMessPass, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(32, 32, 32))
         );
 
         kGradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 410, 520));
@@ -216,19 +232,63 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-//        verify(user, passWord);
 
-        if (txtUser.getText().equals("locdeptraino1") && txtPassword.getText().equals("8888")) {
-            new MainOfCB().setVisible(true);
-            this.dispose();
-        } else if (txtUser.getText().equals("giangvien") && txtPassword.getText().equals("8888")) {
-            new MainOfGV().setVisible(true);
-            this.dispose();
-        } else if (txtUser.getText().equals("sinhvien") && txtPassword.getText().equals("8888")) {
-            new MainOfSV().setVisible(true);
-            this.dispose();
+        try {
+            CanBo canBo = new CanBo(null, txtPassword.getText(), null, txtUser.getText(), null, null, null, null, null, null); //Lấy dữ liệu người dùng nhập
+            int ketQuaCB = canBoService.xacThucTaiKhoanCanBo(canBo); // so sánh dữ liệu người dùng nhập với db
+            if(ketQuaCB == 0){
+                lblMessUser.setText(" ( * ) Tên tài khoản không tồn tại !");
+                txtUser.requestFocus();
+            }else if(ketQuaCB == -1){
+                lblMessUser.setText("");
+                lblMessPass.setText(" ( * ) Sai mật khẩu !");
+                txtPassword.requestFocus();
+            }else if(ketQuaCB == 1){
+                lblMessPass.setText("");
+                lblMessUser.setText("");
+                this.dispose();
+                new MainOfCB().setVisible(true);
+            }
+            
+            GiangVien giangVien = new GiangVien();
+            giangVien.setMaGV(txtUser.getText());
+            giangVien.setMatKhau(txtPassword.getText());
+            int ketQuaGV = giangVienService.xacThucTaiKhoanGiangVien(giangVien);
+            if(ketQuaGV == 0 && ketQuaCB == 1){
+                lblMessUser.setText(" ( * ) Tên tài khoản không tồn tại !");
+                txtUser.requestFocus();
+            }else if(ketQuaGV == -1){
+                lblMessUser.setText("");
+                lblMessPass.setText(" ( * ) Sai mật khẩu !");
+                txtPassword.requestFocus();
+            }else if(ketQuaGV == 1){
+                lblMessPass.setText("");
+                lblMessUser.setText("");
+                this.dispose();
+                new MainOfGV().setVisible(true);
+            }
+            
+            SinhVien sinhVien = new SinhVien();
+            sinhVien.setMaSV(txtUser.getText());
+            sinhVien.setMatKhau(txtPassword.getText());
+            int ketQuaSV = sinhVienService.xacThucTaiKhoanSinhVien(sinhVien);
+            if(ketQuaSV == 0 && ketQuaCB == 0 && ketQuaGV == 0){
+                lblMessUser.setText(" ( * ) Tên tài khoản không tồn tại !");
+                txtUser.requestFocus();
+            }else if(ketQuaSV == -1){
+                lblMessUser.setText("");
+                lblMessPass.setText(" ( * ) Sai mật khẩu !");
+                txtPassword.requestFocus();
+            }else if(ketQuaSV == 1){
+                lblMessPass.setText("");
+                lblMessUser.setText("");
+                this.dispose();
+                new MainOfSV().setVisible(true);
+            }
+        } catch (Exception e) {
         }
+
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
@@ -266,12 +326,14 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel1;
+    private javax.swing.JLabel lblMessPass;
+    private javax.swing.JLabel lblMessUser;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
