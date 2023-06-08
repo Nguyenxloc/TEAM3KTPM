@@ -27,4 +27,21 @@ public class SinhVienService {
        }
        return 0; // Không tìm thấy tên tài khoản (mã GV)
    }
+    
+    public SinhVien addSv(SinhVien sv){
+        return sinhVienRepo.save(sv);
+    }
+    
+    public SinhVien findBId(String id){
+        return sinhVienRepo.findById(id);
+    }
+    
+    public String delete(String id){
+        return sinhVienRepo.delete(id);
+    }
+    
+    public SinhVien update(SinhVien sv){
+       return sinhVienRepo.update(sv); 
+    }
+    
 }

@@ -40,10 +40,14 @@ public class Form_ThongBaoCB extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setText("QUẢN LÝ THÔNG BÁO");
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Chủ đề");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -59,6 +63,7 @@ public class Form_ThongBaoCB extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nội dung");
 
         jButton1.setBackground(new java.awt.Color(0, 102, 255));

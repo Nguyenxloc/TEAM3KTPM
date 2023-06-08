@@ -48,14 +48,23 @@ public class Form_DKDichVu extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setText("QUẢN LÝ DỊCH VỤ");
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tên dịch vụ");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Mô tả");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Phí dịch vụ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,10 +157,13 @@ public class Form_DKDichVu extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Dịch vụ", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 255));
         jLabel5.setText("DANH SÁCH SINH VIÊN ĐĂNG KÝ DỊCH VỤ");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Trạng thái");
 
         jButton4.setBackground(new java.awt.Color(0, 102, 255));

@@ -72,16 +72,26 @@ public class FormLichHoc extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setText("QUẢN LÝ LỊCH HỌC");
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Mã môn");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tên môn");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Lóp");
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Phòng");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -97,10 +107,13 @@ public class FormLichHoc extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Ngày");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Giảng viên");
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Thời gian");
 
         jButton1.setBackground(new java.awt.Color(0, 102, 255));
@@ -171,6 +184,9 @@ public class FormLichHoc extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -209,16 +225,23 @@ public class FormLichHoc extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lịch học", jPanel1);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 102, 255));
         jLabel9.setText("QUẢN LÝ LỊCH THI");
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Mã môn");
 
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Tên môn");
 
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Lớp");
 
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Phòng");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -234,10 +257,13 @@ public class FormLichHoc extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Ngày");
 
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Giảng viên");
 
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Thời gian");
 
         jButton5.setBackground(new java.awt.Color(0, 102, 255));
@@ -274,7 +300,7 @@ public class FormLichHoc extends javax.swing.JPanel {
                         .addComponent(jLabel9))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(121, 121, 121)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,14 +330,17 @@ public class FormLichHoc extends javax.swing.JPanel {
                                                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(48, 48, 48)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton6, jButton7, jButton8});
+
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()

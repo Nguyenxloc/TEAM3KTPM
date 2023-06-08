@@ -16,9 +16,9 @@ import java.sql.SQLException;
  */
 public class DBConnection {//Lớp này giải quyết kết nối xử lý truy vấn
 
-    private static String hostName = "LAPTOP-BTH4R6HK\\SQLEXPRESS";
+    private static String hostName = "localhost";
     private static String acc = "sa";
-    private static String pass = "240300";
+    private static String pass = "123456";
     private static String dbName = "TEAM3KTPM";
     private static String connectionSql
             = "jdbc:sqlserver://" + hostName + ":1433;databaseName=" + dbName+";user="+acc+ ";password="+pass+";encrypt=false";

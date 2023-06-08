@@ -16,12 +16,12 @@ public class ChuyenNganh {
     
     public String coSo;
     
-    public String thoiGianDaoTao;
+    public int thoiGianDaoTao;
 
     public ChuyenNganh() {
     }
 
-    public ChuyenNganh(String maChuyenNganh, String tenChuyenNganh, String coSo, String thoiGianDaoTao) {
+    public ChuyenNganh(String maChuyenNganh, String tenChuyenNganh, String coSo, int thoiGianDaoTao) {
         this.maChuyenNganh = maChuyenNganh;
         this.tenChuyenNganh = tenChuyenNganh;
         this.coSo = coSo;
@@ -52,11 +52,11 @@ public class ChuyenNganh {
         this.coSo = coSo;
     }
 
-    public String getThoiGianDaoTao() {
+    public int getThoiGianDaoTao() {
         return thoiGianDaoTao;
     }
 
-    public void setThoiGianDaoTao(String thoiGianDaoTao) {
+    public void setThoiGianDaoTao(int thoiGianDaoTao) {
         this.thoiGianDaoTao = thoiGianDaoTao;
     }
 
@@ -64,6 +64,8 @@ public class ChuyenNganh {
     public String toString() {
         return "ChuyenNganh{" + "maChuyenNganh=" + maChuyenNganh + ", tenChuyenNganh=" + tenChuyenNganh + ", coSo=" + coSo + ", thoiGianDaoTao=" + thoiGianDaoTao + '}';
     }
+
     
+  
     
 }

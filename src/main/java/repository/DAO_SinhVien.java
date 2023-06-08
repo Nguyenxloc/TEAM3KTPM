@@ -20,8 +20,8 @@ import ultilities.DBConnection;
  */
 public class DAO_SinhVien{
   
-  final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?)";
-  final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [Name] = ? WHERE [Id] = ?";
+  final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [MATKHAU]=?, [VAITRO]=?, [ANH]=?, [HOTEN]=?, [GIOITINH]=?, [NGAYSINH]=?, [EMAIL]=?, [SDT]=?, [DIACHI]=?, [TRANGTHAI]=?, [NIENKHOA]=?, [MACHUYENNGANH]=?, [NGAYNHAPHOC]=? WHERE [Id] = ?";
   final String DELETE_SQL = "DELETE FROM [dbo].[SINHVIEN] WHERE [Id] = ?";
   final String SELECT_BY_SQL = "SELECT * FROM [dbo].[SINHVIEN] WHERE [MaSV] = ?";
   final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[SINHVIEN]";
@@ -43,8 +43,8 @@ public class DAO_SinhVien{
   }
 
   public SinhVien save(SinhVien sv) {   
-    DBConnection.ExcuteDungna(INSERT_SQL, sv.getHoTen(),sv.getNienKhoa(),sv.getHoTen()
-            ,sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai());
+    DBConnection.ExcuteDungna(INSERT_SQL,sv.getMaSV(), sv.getMatKhau(),sv.getVaiTro(),sv.getAnh()
+           ,sv.getHoTen(),sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai(),sv.getNienKhoa(),sv.getMaChuyenNganh(),sv.getNgayNhapHoc());
     return sv;
   }
 
@@ -71,6 +71,11 @@ public class DAO_SinhVien{
     } catch (SQLException ex) {
       throw new RuntimeException();
     }
+  }
+  public SinhVien update(SinhVien sv){
+         DBConnection.ExcuteDungna(INSERT_SQL, sv.getMatKhau(),sv.getVaiTro(),sv.getAnh()
+           ,sv.getHoTen(),sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai(),sv.getNienKhoa(),sv.getMaChuyenNganh(),sv.getNgayNhapHoc(),sv.getMaSV());
+    return sv;
   }
   
   public List<SinhVien> getTaiKhoan() throws SQLException{  //Lấy danh sách tài khoản của sinh viên
