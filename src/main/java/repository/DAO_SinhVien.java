@@ -20,9 +20,9 @@ import ultilities.DBConnection;
  */
 public class DAO_SinhVien{
   
-  final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-  final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [MATKHAU]=?, [VAITRO]=?, [ANH]=?, [HOTEN]=?, [GIOITINH]=?, [NGAYSINH]=?, [EMAIL]=?, [SDT]=?, [DIACHI]=?, [TRANGTHAI]=?, [NIENKHOA]=?, [MACHUYENNGANH]=?, [NGAYNHAPHOC]=? WHERE [Id] = ?";
-  final String DELETE_SQL = "DELETE FROM [dbo].[SINHVIEN] WHERE [Id] = ?";
+  final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [TAIKHOAN]=?, [MATKHAU]=?, [VAITRO]=?, [ANH]=?, [HOTEN]=?, [GIOITINH]=?, [NGAYSINH]=?, [EMAIL]=?, [SDT]=?, [DIACHI]=?, [TRANGTHAI]=?, [NIENKHOA]=?, [MACHUYENNGANH]=?, [NGAYNHAPHOC]=? WHERE [MaSV] = ?";
+  final String DELETE_SQL = "DELETE FROM [dbo].[SINHVIEN] WHERE [MaSV] = ?";
   final String SELECT_BY_SQL = "SELECT * FROM [dbo].[SINHVIEN] WHERE [MaSV] = ?";
   final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[SINHVIEN]";
   private SinhVien sinhVien;
@@ -52,6 +52,12 @@ public class DAO_SinhVien{
      DBConnection.ExcuteDungna(DELETE_SQL, id);
         return id;
   }
+  
+  public SinhVien update(SinhVien sv){
+         DBConnection.ExcuteDungna(UPDATE_SQL, sv.getMatKhau(),sv.getVaiTro(),sv.getAnh()
+           ,sv.getHoTen(),sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai(),sv.getNienKhoa(),sv.getMaChuyenNganh(),sv.getNgayNhapHoc(),sv.getMaSV());
+    return sv;
+  }
 
   public long totalCount() {
     long total = 0;
@@ -64,7 +70,7 @@ public class DAO_SinhVien{
       ResultSet rs = DBConnection.getDataFromQuery(sql, args);
       while (rs.next()) {      
         System.out.println(rs.getLong(4));
-        _lstSV.add(new SinhVien(rs.getString(1), rs.getString(2), rs.getByte(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getDate(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getString(14), rs.getDate(15))
+        _lstSV.add(new SinhVien(rs.getString(1),rs.getString(2), rs.getString(3), rs.getByte(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getDate(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getInt(14), rs.getString(15), rs.getDate(16))
         );
       }
       return _lstSV;
@@ -72,11 +78,7 @@ public class DAO_SinhVien{
       throw new RuntimeException();
     }
   }
-  public SinhVien update(SinhVien sv){
-         DBConnection.ExcuteDungna(INSERT_SQL, sv.getMatKhau(),sv.getVaiTro(),sv.getAnh()
-           ,sv.getHoTen(),sv.getGioitinh(),sv.getNgaySinh(),sv.getEmail(),sv.getSoDienThoai(),sv.getDiaChi(),sv.getTrangThai(),sv.getNienKhoa(),sv.getMaChuyenNganh(),sv.getNgayNhapHoc(),sv.getMaSV());
-    return sv;
-  }
+  
   
   public List<SinhVien> getTaiKhoan() throws SQLException{  //Lấy danh sách tài khoản của sinh viên
         List<SinhVien> lstTKSinhVien = new ArrayList<>();

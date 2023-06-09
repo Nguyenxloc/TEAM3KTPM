@@ -19,7 +19,7 @@ public class DAO_ChuyenNganh {
     final String INSERT_SQL = "INSERT INTO [dbo].[CHUYENNGANH] VALUES(?,?,?,?)";
     final String UPDATE_SQL = "UPDATE [dbo].[CHUYENNGANH] SET[TENCHUYENNGANH]=?,[COSO]=?,[THOIGIANDAOTAO]=? WHERE [MACHUYENNGANH] = ?";
     final String DELETE_SQL = "DELETE FROM [dbo].[CHUYENNGANH] WHERE [MACHUYENNGANH] = ?";
-    final String SELECT_BY_SQL = "SELECT * FROM [dbo].[CHUYENNGANH] WHERE [MaSV] = ?";
+    final String SELECT_BY_SQL = "SELECT * FROM [dbo].[CHUYENNGANH] WHERE [MACHUYENNGANH] = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[CHUYENNGANH]";
     private ChuyenNganh chuyenNganh;
     private ArrayList<ChuyenNganh> _lstCN;
@@ -70,7 +70,7 @@ public class DAO_ChuyenNganh {
     }
 
     public ChuyenNganh update(ChuyenNganh cn) {
-        DBConnection.ExcuteDungna(INSERT_SQL, cn.getTenChuyenNganh(), cn.getCoSo(), cn.getThoiGianDaoTao(), cn.getMaChuyenNganh());
+        DBConnection.ExcuteDungna(UPDATE_SQL, cn.getTenChuyenNganh(), cn.getCoSo(), cn.getThoiGianDaoTao(), cn.getMaChuyenNganh());
         return cn;
     }
 

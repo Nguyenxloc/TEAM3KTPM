@@ -15,11 +15,11 @@ import ultilities.DBConnection;
  */
 public class DAO_MonHoc {
 
-    final String INSERT_SQL = "INSERT INTO [dbo].[CHUYENNGANH] VALUES(?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE [dbo].[CHUYENNGANH] SET[TENCHUYENNGANH]=?,[COSO]=?,[THOIGIANDAOTAO]=? WHERE [MACHUYENNGANH] = ?";
-    final String DELETE_SQL = "DELETE FROM [dbo].[CHUYENNGANH] WHERE [MACHUYENNGANH] = ?";
-    final String SELECT_BY_SQL = "SELECT * FROM [dbo].[CHUYENNGANH] WHERE [MaSV] = ?";
-    final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[CHUYENNGANH]";
+    final String INSERT_SQL = "INSERT INTO [dbo].[MONHOC] VALUES(?,?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE [dbo].[MONHOC] SET[MACHUYENNGANH]=?,[MALOPHOC]=?,[TENMONHOC]=?,[SOTINCHI]=?,[NAM]=?,[MUA]=? WHERE [MAMONHOC] = ?";
+    final String DELETE_SQL = "DELETE FROM [dbo].[MONHOC] WHERE [MAMONHOC] = ?";
+    final String SELECT_BY_SQL = "SELECT * FROM [dbo].[MONHOC] WHERE [MAMONHOC] = ?";
+    final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[MONHOC]";
     private MonHoc monHoc;
     private ArrayList<MonHoc> lstMH;
 
@@ -32,12 +32,12 @@ public class DAO_MonHoc {
     }
 
     public MonHoc update(MonHoc mh) {
-        DBConnection.ExcuteDungna(UPDATE_SQL, null, null, null);
+        DBConnection.ExcuteDungna(UPDATE_SQL, monHoc.getMaMonHoc(), monHoc.getMaChuyenNganh(), monHoc.getMaLopHoc(), monHoc.getTenMonHoc(), monHoc.getSoTinChi(), monHoc.getNam(), monHoc.getMua());
         return mh;
     }
 
     public MonHoc save(MonHoc mh) {
-        DBConnection.ExcuteDungna(INSERT_SQL, null, null);
+        DBConnection.ExcuteDungna(INSERT_SQL, monHoc.getMaMonHoc(), monHoc.getMaChuyenNganh(), monHoc.getMaLopHoc(), monHoc.getTenMonHoc(), monHoc.getSoTinChi(), monHoc.getNam(), monHoc.getMua());
         return mh;
     }
 
@@ -51,6 +51,7 @@ public class DAO_MonHoc {
         DBConnection.ExcuteDungna(DELETE_SQL, id);
         return id;
     }
+    
 
     private ArrayList<MonHoc> getSelectSql(String sql, Object... args) {
         try {

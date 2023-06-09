@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author ADMIN
@@ -17,13 +19,14 @@ public class Lich {
     public String maChuyenNganh;
     public int nam;
     public String mua;
-    public String ngay;
+    public Date ngayHoc;
     public String thoiGian;
-    
+    public String loaiLich;
+
     public Lich() {
     }
 
-    public Lich(String maSV, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String maChuyenNganh, int nam, String mua, String ngay, String thoiGian) {
+    public Lich(String maSV, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String maChuyenNganh, int nam, String mua, Date ngayHoc, String thoiGian, String loaiLich) {
         this.maSV = maSV;
         this.maMonHoc = maMonHoc;
         this.maLopHoc = maLopHoc;
@@ -32,8 +35,9 @@ public class Lich {
         this.maChuyenNganh = maChuyenNganh;
         this.nam = nam;
         this.mua = mua;
-        this.ngay = ngay;
+        this.ngayHoc = ngayHoc;
         this.thoiGian = thoiGian;
+        this.loaiLich = loaiLich;
     }
 
     public String getMaSV() {
@@ -100,12 +104,12 @@ public class Lich {
         this.mua = mua;
     }
 
-    public String getNgay() {
-        return ngay;
+    public Date getNgayHoc() {
+        return ngayHoc;
     }
 
-    public void setNgay(String ngay) {
-        this.ngay = ngay;
+    public void setNgayHoc(Date ngayHoc) {
+        this.ngayHoc = ngayHoc;
     }
 
     public String getThoiGian() {
@@ -116,11 +120,18 @@ public class Lich {
         this.thoiGian = thoiGian;
     }
 
-    @Override
-    public String toString() {
-        return "LichHoc{" + "maSV=" + maSV + ", maMonHoc=" + maMonHoc + ", maLopHoc=" + maLopHoc + ", maPhongHoc=" + maPhongHoc + ", maGiangVien=" + maGiangVien + ", maChuyenNganh=" + maChuyenNganh + ", nam=" + nam + ", mua=" + mua + ", ngay=" + ngay + ", thoiGian=" + thoiGian + '}';
+    public String getLoaiLich() {
+        return loaiLich;
     }
 
-    
+    public void setLoaiLich(String loaiLich) {
+        this.loaiLich = loaiLich;
+    }
+
+    @Override
+    public String toString() {
+        return "Lich{" + "maSV=" + maSV + ", maMonHoc=" + maMonHoc + ", maLopHoc=" + maLopHoc + ", maPhongHoc=" + maPhongHoc + ", maGiangVien=" + maGiangVien + ", maChuyenNganh=" + maChuyenNganh + ", nam=" + nam + ", mua=" + mua + ", ngayHoc=" + ngayHoc + ", thoiGian=" + thoiGian + ", loaiLich=" + loaiLich + '}';
+    }
+
     
 }

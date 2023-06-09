@@ -14,24 +14,15 @@ public class ViHocPhi {
     
     public String maSV;
     
-    public double viHocPhi;
-    
-    public double viHocPhiThiLai;
-    
-    public double viKhac;
-    
-    public double viUuDai;
+    public double soDuHocPhi;
 
     public ViHocPhi() {
     }
 
-    public ViHocPhi(String maVi, String maSV, double viHocPhi, double viHocPhiThiLai, double viKhac, double viUuDai) {
+    public ViHocPhi(String maVi, String maSV, double soDuHocPhi) {
         this.maVi = maVi;
         this.maSV = maSV;
-        this.viHocPhi = viHocPhi;
-        this.viHocPhiThiLai = viHocPhiThiLai;
-        this.viKhac = viKhac;
-        this.viUuDai = viUuDai;
+        this.soDuHocPhi = soDuHocPhi;
     }
 
     public String getMaVi() {
@@ -50,42 +41,16 @@ public class ViHocPhi {
         this.maSV = maSV;
     }
 
-    public double getViHocPhi() {
-        return viHocPhi;
+    public double getSoDuHocPhi() {
+        return soDuHocPhi;
     }
 
-    public void setViHocPhi(double viHocPhi) {
-        this.viHocPhi = viHocPhi;
-    }
-
-    public double getViHocPhiThiLai() {
-        return viHocPhiThiLai;
-    }
-
-    public void setViHocPhiThiLai(double viHocPhiThiLai) {
-        this.viHocPhiThiLai = viHocPhiThiLai;
-    }
-
-    public double getViKhac() {
-        return viKhac;
-    }
-
-    public void setViKhac(double viKhac) {
-        this.viKhac = viKhac;
-    }
-
-    public double getViUuDai() {
-        return viUuDai;
-    }
-
-    public void setViUuDai(double viUuDai) {
-        this.viUuDai = viUuDai;
+    public void setSoDuHocPhi(double soDuHocPhi) {
+        this.soDuHocPhi = soDuHocPhi;
     }
 
     @Override
     public String toString() {
-        return "ViHocPhi{" + "maVi=" + maVi + ", maSV=" + maSV + ", viHocPhi=" + viHocPhi + ", viHocPhiThiLai=" + viHocPhiThiLai + ", viKhac=" + viKhac + ", viUuDai=" + viUuDai + '}';
+        return "ViHocPhi{" + "maVi=" + maVi + ", maSV=" + maSV + ", soDuHocPhi=" + soDuHocPhi + '}';
     }
-    
-    
 }
