@@ -208,7 +208,9 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
-            CanBo canBo = new CanBo(null, txtPassword.getText(), null, txtUser.getText(), null, null, null, null, null, null); //Lấy dữ liệu người dùng nhập
+            CanBo canBo = new CanBo(); //Lấy dữ liệu người dùng nhập
+            canBo.setMaCB(txtUser.getText());
+            canBo.setMatKhau(txtPassword.getText());
             int ketQuaCB = canBoService.xacThucTaiKhoanCanBo(canBo); // so sánh dữ liệu người dùng nhập với db
             if(ketQuaCB == 0){
                 lblMessUser.setText(" ( * ) Tên tài khoản không tồn tại !");
@@ -220,7 +222,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }else if(ketQuaCB == 1){
                 lblMessPass.setText("");
                 lblMessUser.setText("");
-                UserInfo.maCB = txtUser.getText();
                 this.dispose();
                 new MainOfCB().setVisible(true);
             }
@@ -263,7 +264,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 new MainOfSV().setVisible(true);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

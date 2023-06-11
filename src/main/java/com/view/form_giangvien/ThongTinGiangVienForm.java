@@ -1,10 +1,7 @@
 package com.view.form_giangvien;
 
-import com.view.main.LoginFrame;
 import java.awt.Image;
-import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import model.GiangVien;
 import service.GiangVienService;
 import ultilities.UserInfo;
@@ -16,7 +13,6 @@ import ultilities.UserInfo;
 public class ThongTinGiangVienForm extends javax.swing.JPanel {
 
     GiangVienService giangVienService = new GiangVienService();
-    int index;
 
     /**
      * Creates new form ThongTinGiangVienForm

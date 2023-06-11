@@ -26,22 +26,15 @@ public class LichTrinhForm extends javax.swing.JPanel {
         dir = absolutePath;
         initComponents();
         
-//        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-//        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-//        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-//        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-//        lstLichHoc.add(new Lich("PH33333", "Nhập môn lập trình", "IT18204", "P403", "linhdb9", "Ứng dụng phần mềm", 2023, "Summer", "30/05/2023", "12:00:00-14:00:00"));
-        
-        
+        fillToTableLichHoc();
     }
 
-//    public void fillToTableLichHoc(){
-//        int i=1;
-//        model.setRowCount(0);
-//        for (Lich lichHoc : lstLichHoc) {
-//            model.addRow(new Object[]{i++, lichHoc.getNgay(), lichHoc.getMaPhongHoc(), lichHoc.getMaMonHoc(), lichHoc.getMaLopHoc(), lichHoc.getMaGiangVien(), lichHoc.getThoiGian()});
-//        }
-//    }
+    public void fillToTableLichHoc(){
+        model.setRowCount(0);
+        for (Lich lichHoc : lstLichHoc) {
+            
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,7 +68,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Thời gian");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7 ngày tới", "14 ngày tới", "30 ngày tới", "60 ngày tới" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7 ngày tới", "14 ngày tới", "30 ngày tới" }));
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);

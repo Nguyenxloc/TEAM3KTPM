@@ -10,10 +10,10 @@ import java.sql.DriverManager;
 public class DBConnectorGV {
 
     private static final String USERNAME = "sa";
-    private static final String PASSWORD = "240300";
-    private static final String SERVER = "LAPTOP-BTH4R6HK\\SQLEXPRESS";
+    private static final String PASSWORD = "123456";
+    private static final String SERVER = "localhost";
     private static final String PORT = "1433";
-    private static final String DATABASE_NAME = "FINALASS_FPOLYSHOP_FA22_SOF205__SOF2041";
+    private static final String DATABASE_NAME = "TEAM3KTPM";
     private static final boolean USING_SSL = true;
 
     private static String CONNECT_STRING;

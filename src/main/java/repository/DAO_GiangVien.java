@@ -15,6 +15,7 @@ import java.util.List;
 import model.GiangVien;
 import model.Lich;
 import ultilities.DBConnection;
+import ultilities.DBConnectorGV;
 
 /**
  *
@@ -83,9 +84,9 @@ public class DAO_GiangVien {
         final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [MATKHAU]=?, [VAITRO]=?, [ANH]=?, [HOTEN]=?, [GIOITINH]=?, [NGAYSINH]=?, [EMAIL]=?, [SDT]=?, [DIACHI]=?, [NGAYVAOLAM]=?, WHERE [MAGV] = ?";
 
 
-    public List<GiangVien> getTaiKhoan() throws SQLException {  //Lấy danh sách tài khoản của giảng viên
+    public List<GiangVien> getTaiKhoan() throws Exception {  //Lấy danh sách tài khoản của giảng viên
         List<GiangVien> lstTKGiangVien = new ArrayList<>();
-        Connection connection = DBConnection.openDbConnection();
+        Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT MAGV, MATKHAU, VAITRO FROM GIANGVIEN";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
@@ -121,10 +122,9 @@ public class DAO_GiangVien {
 
     public List<GiangVien> getAllGV() throws Exception {
         List<GiangVien> lstGiangVien = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT ANH, MAGV, HOTEN, GIOITINH, NGAYSINH, EMAIL, SDT, DIACHI, NGAYVAOLAM FROM GiangVien";
         PreparedStatement ps = connection.prepareStatement(sql);
-//        ps.setString(1, ma);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Blob blob = rs.getBlob("ANH");
@@ -160,7 +160,7 @@ public class DAO_GiangVien {
 
     public List<GiangVien> getByMaGV(String ma) throws Exception {
         List<GiangVien> lstGiangVien = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
+        Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT ANH, MAGV, HOTEN, GIOITINH, NGAYSINH, EMAIL, SDT, DIACHI, NGAYVAOLAM FROM GiangVien WHERE MaGV  = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, ma);
@@ -197,14 +197,28 @@ public class DAO_GiangVien {
         return lstGiangVien;
     }
 
-    public List<Lich> getAllLichHoc() throws Exception {
+    public List<Lich> getLichHoc7() throws Exception {
         List<Lich> lstLichHoc = new ArrayList<>();
-        Connection connection = DBConnection.getConnection();
-        String sql = "";
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT TOP 7 L.NGAYHOC AS 'NGAYHOC', PH.TENPHONGHOC AS 'TENPHONGHOC', MH.TENMONHOC AS 'TENMONHOC', LH.TENLOPHOC AS 'TENLOPHOC', L.MAGIANGVIEN 'MAGV', L.THOIGIAN AS 'THOIGIAN' FROM dbo.LICH L JOIN dbo.MONHOC MH\n" +
+                "ON MH.MAMONHOC = L.MAMONHOC JOIN dbo.LOPHOC LH\n" +
+                "ON LH.MALOPHOC = L.MALOPHOC JOIN dbo.PHONGHOC PH\n" +
+                "ON PH.MAPHONGHOC = L.MAPHONGHOC\n" +
+                "WHERE L.LOAILICH = N'Lịch học' AND L.MAGIANGVIEN = 'gv1'\n" +
+                "GROUP BY L.NGAYHOC, PH.TENPHONGHOC, MH.TENMONHOC, LH.TENLOPHOC, L.MAGIANGVIEN, L.THOIGIAN";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-
+            Date ngayHoc = rs.getDate("NGAYHOC");
+            String tenPhongHoc = rs.getString("TENPHONGHOC");
+            String tenMonHoc = rs.getString("TENMONHOC");
+            String tenLopHoc = rs.getString("TENLOPHOC");
+            String maGV = rs.getString("MAGV");
+            String thoiGian = rs.getString("THOIGIAN");
+            
+            Lich lich = new Lich();
+            lich.setNgayHoc(ngayHoc);
+            lich.setMaPhongHoc(tenPhongHoc);
         }
         return lstLichHoc;
     }

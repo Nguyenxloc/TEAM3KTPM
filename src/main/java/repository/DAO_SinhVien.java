@@ -13,6 +13,7 @@ import java.util.List;
 import model.GiangVien;
 import model.SinhVien;
 import ultilities.DBConnection;
+import ultilities.DBConnectorGV;
 
 /**
  *
@@ -80,9 +81,9 @@ public class DAO_SinhVien{
   }
   
   
-  public List<SinhVien> getTaiKhoan() throws SQLException{  //Lấy danh sách tài khoản của sinh viên
+  public List<SinhVien> getTaiKhoan() throws Exception{  //Lấy danh sách tài khoản của sinh viên
         List<SinhVien> lstTKSinhVien = new ArrayList<>();
-        Connection connection = DBConnection.openDbConnection();
+        Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT MASV, MATKHAU, VAITRO FROM SINHVIEN";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();

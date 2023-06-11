@@ -10,8 +10,7 @@ import model.CanBo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import ultilities.DBConnection;
+import ultilities.DBConnectorGV;
 
 /**
  *
@@ -19,9 +18,9 @@ import ultilities.DBConnection;
  */
 public class DAO_CanBoQuanLy {
     
-    public List<CanBo> getTaiKhoan() throws SQLException{  //Lấy danh sách tài khoản của cán bộ
+    public List<CanBo> getTaiKhoan() throws Exception{  //Lấy danh sách tài khoản của cán bộ
         List<CanBo> lstTKCanBo = new ArrayList<>();
-        Connection connection = DBConnection.openDbConnection();
+        Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT MACB, MATKHAU, VAITRO FROM dbo.CANBO ";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
