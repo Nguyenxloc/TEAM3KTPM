@@ -13,7 +13,7 @@ import ultilities.DBConnection;
 public class MainController {
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() {     
                 new LoginFrame().setVisible(true);
             }
         });

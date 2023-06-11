@@ -55,7 +55,7 @@ public class MenuOfGV extends javax.swing.JPanel {
 
         panelMoving.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 19)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(dir));
         jLabel1.setText("<html>\nQuản lý\n<br>\n_    sinh viên");
@@ -88,7 +88,7 @@ public class MenuOfGV extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelMoving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

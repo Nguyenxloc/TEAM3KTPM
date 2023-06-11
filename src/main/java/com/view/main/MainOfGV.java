@@ -16,13 +16,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import model.GiangVien;
+import ultilities.UserInfo;
 
 /**
  *
  * @author RAVEN
  */
 public class MainOfGV extends javax.swing.JFrame {
-
     /**
      * Creates new form Main
      */
@@ -61,6 +62,7 @@ public class MainOfGV extends javax.swing.JFrame {
                     messageFrame.setButtonOK(new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            UserInfo.maGV = null;
                             dispose();
                             messageFrame.dispose();
                             new LoginFrame().setVisible(true);
@@ -102,7 +104,7 @@ public class MainOfGV extends javax.swing.JFrame {
         menuOfGV1 = new com.view.component.MenuOfGV();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNguoiDung = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -119,10 +121,10 @@ public class MainOfGV extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel1.setText("Người dùng: ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Giảng viên");
+        lblNguoiDung.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblNguoiDung.setForeground(new java.awt.Color(255, 51, 51));
+        lblNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNguoiDung.setText("Giảng viên");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,7 +134,7 @@ public class MainOfGV extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,10 +143,10 @@ public class MainOfGV extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)))
+                    .addComponent(lblNguoiDung)))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, lblNguoiDung});
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -197,8 +199,8 @@ public class MainOfGV extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.view.component.Header header2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblNguoiDung;
     private javax.swing.JPanel mainPanel;
     private com.view.component.MenuOfGV menuOfGV1;
     private com.view.swing.PanelBorder panelBorder1;

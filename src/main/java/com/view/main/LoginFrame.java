@@ -4,7 +4,6 @@
  */
 package com.view.main;
 
-import java.awt.Color;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,6 +16,7 @@ import model.SinhVien;
 import service.CanBoService;
 import service.GiangVienService;
 import service.SinhVienService;
+import ultilities.UserInfo;
 
 /**
  *
@@ -47,31 +47,6 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         btnLogin.setkBorderRadius(30);
     }
-
-//    public void verify(String userPara, String passWordPara) {
-//        if (userPara.equalsIgnoreCase(user) && passWordPara.equalsIgnoreCase(passWord)) {
-//            vaiTro = 2;/// ////// query sql --   //select vaiTro from taikhoan where user=userPara this.passWord= passWordPara
-//            if (vaiTro == 1) {
-//                java.awt.EventQueue.invokeLater(new Runnable() {
-//                    public void run() {
-//                        new MainOfSV().setVisible(true);
-//                    }
-//                });
-//            } else if (vaiTro == 2) {
-//                java.awt.EventQueue.invokeLater(new Runnable() {
-//                    public void run() {
-//                        new MainOfGV().setVisible(true);
-//                    }
-//                });
-//            } else {
-//                java.awt.EventQueue.invokeLater(new Runnable() {
-//                    public void run() {
-//                        new MainOfCB().setVisible(true);
-//                    }
-//                });
-//            }
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,7 +207,6 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-
         try {
             CanBo canBo = new CanBo(null, txtPassword.getText(), null, txtUser.getText(), null, null, null, null, null, null); //Lấy dữ liệu người dùng nhập
             int ketQuaCB = canBoService.xacThucTaiKhoanCanBo(canBo); // so sánh dữ liệu người dùng nhập với db
@@ -246,6 +220,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }else if(ketQuaCB == 1){
                 lblMessPass.setText("");
                 lblMessUser.setText("");
+                UserInfo.maCB = txtUser.getText();
                 this.dispose();
                 new MainOfCB().setVisible(true);
             }
@@ -264,6 +239,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }else if(ketQuaGV == 1){
                 lblMessPass.setText("");
                 lblMessUser.setText("");
+                UserInfo.maGV = txtUser.getText();
                 this.dispose();
                 new MainOfGV().setVisible(true);
             }
@@ -282,13 +258,13 @@ public class LoginFrame extends javax.swing.JFrame {
             }else if(ketQuaSV == 1){
                 lblMessPass.setText("");
                 lblMessUser.setText("");
+                UserInfo.maSV = txtUser.getText();
                 this.dispose();
                 new MainOfSV().setVisible(true);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

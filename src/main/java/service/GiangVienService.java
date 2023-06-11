@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 import model.CanBo;
 import model.GiangVien;
 import repository.DAO_GiangVien;
@@ -23,4 +24,20 @@ public class GiangVienService {
        }
        return 0; // Không tìm thấy tên tài khoản (mã GV)
    }
+    
+    public List<GiangVien> getAll(){
+        try {
+            return giangVienRepo.getAllGV();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public GiangVien getByMaGV(String maGV){
+        try {
+            return giangVienRepo.getByMaGV(maGV).get(0);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

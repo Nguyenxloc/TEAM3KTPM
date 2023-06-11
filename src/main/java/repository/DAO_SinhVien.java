@@ -97,7 +97,6 @@ public class DAO_SinhVien{
            sinhVien.setVaiTro(vaiTro);
            
            lstTKSinhVien.add(sinhVien);
-            System.out.println(lstTKSinhVien);
         }
         rs.close();
         ps.close();

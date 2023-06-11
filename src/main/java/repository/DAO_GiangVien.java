@@ -4,13 +4,16 @@
  */
 package repository;
 
+import java.sql.Blob;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.GiangVien;
+import model.Lich;
 import ultilities.DBConnection;
 
 /**
@@ -114,5 +117,95 @@ public class DAO_GiangVien {
             }
         }
         return maGVCanTim;
+    }
+
+    public List<GiangVien> getAllGV() throws Exception {
+        List<GiangVien> lstGiangVien = new ArrayList<>();
+        Connection connection = DBConnection.getConnection();
+        String sql = "SELECT ANH, MAGV, HOTEN, GIOITINH, NGAYSINH, EMAIL, SDT, DIACHI, NGAYVAOLAM FROM GiangVien";
+        PreparedStatement ps = connection.prepareStatement(sql);
+//        ps.setString(1, ma);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Blob blob = rs.getBlob("ANH");
+            byte[] anh = blob.getBytes(1, (int) blob.length());
+
+            String maGV = rs.getString("MAGV");
+            String hoTen = rs.getString("HOTEN");
+            Integer gioiTinh = rs.getInt("GIOITINH");
+            Date ngaySinh = rs.getDate("NGAYSINH");
+            String email = rs.getString("EMAIL");
+            String sdt = rs.getString("SDT");
+            String diaChi = rs.getString("DIACHI");
+            Date ngayVaoLam = rs.getDate("NGAYVAOLAM");
+
+            GiangVien giangVien = new GiangVien();
+            giangVien.setAnh(anh);
+            giangVien.setMaGV(maGV);
+            giangVien.setHoTen(hoTen);
+            giangVien.setGioiTinh(gioiTinh);
+            giangVien.setNgaySinh(ngaySinh);
+            giangVien.setEmail(email);
+            giangVien.setSoDienThoai(sdt);
+            giangVien.setDiaChi(diaChi);
+            giangVien.setNgayVaoLam(ngayVaoLam);
+
+            lstGiangVien.add(giangVien);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstGiangVien;
+    }
+
+    public List<GiangVien> getByMaGV(String ma) throws Exception {
+        List<GiangVien> lstGiangVien = new ArrayList<>();
+        Connection connection = DBConnection.getConnection();
+        String sql = "SELECT ANH, MAGV, HOTEN, GIOITINH, NGAYSINH, EMAIL, SDT, DIACHI, NGAYVAOLAM FROM GiangVien WHERE MaGV  = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, ma);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Blob blob = rs.getBlob("ANH");
+            byte[] anh = blob.getBytes(1, (int) blob.length());
+
+            String maGV = rs.getString("MAGV");
+            String hoTen = rs.getString("HOTEN");
+            Integer gioiTinh = rs.getInt("GIOITINH");
+            Date ngaySinh = rs.getDate("NGAYSINH");
+            String email = rs.getString("EMAIL");
+            String sdt = rs.getString("SDT");
+            String diaChi = rs.getString("DIACHI");
+            Date ngayVaoLam = rs.getDate("NGAYVAOLAM");
+
+            GiangVien giangVien = new GiangVien();
+            giangVien.setAnh(anh);
+            giangVien.setMaGV(maGV);
+            giangVien.setHoTen(hoTen);
+            giangVien.setGioiTinh(gioiTinh);
+            giangVien.setNgaySinh(ngaySinh);
+            giangVien.setEmail(email);
+            giangVien.setSoDienThoai(sdt);
+            giangVien.setDiaChi(diaChi);
+            giangVien.setNgayVaoLam(ngayVaoLam);
+
+            lstGiangVien.add(giangVien);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstGiangVien;
+    }
+
+    public List<Lich> getAllLichHoc() throws Exception {
+        List<Lich> lstLichHoc = new ArrayList<>();
+        Connection connection = DBConnection.getConnection();
+        String sql = "";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+
+        }
+        return lstLichHoc;
     }
 }

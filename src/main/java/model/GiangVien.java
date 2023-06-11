@@ -13,7 +13,7 @@ import java.sql.Date;
 public class GiangVien {
     public String matKhau;
     public String vaiTro;
-    public byte anh;
+    public byte[] anh;
     public Integer numOrder;
     public String maGV;
     public String hoTen;
@@ -27,7 +27,7 @@ public class GiangVien {
     public GiangVien() {
     }
 
-    public GiangVien(String matKhau, String vaiTro, byte anh, Integer numOrder, String maGV, String hoTen, Integer gioiTinh, Date ngaySinh, String email, String soDienThoai, String diaChi, Date ngayVaoLam) {
+    public GiangVien(String matKhau, String vaiTro, byte[] anh, Integer numOrder, String maGV, String hoTen, Integer gioiTinh, Date ngaySinh, String email, String soDienThoai, String diaChi, Date ngayVaoLam) {
         this.matKhau = matKhau;
         this.vaiTro = vaiTro;
         this.anh = anh;
@@ -58,11 +58,11 @@ public class GiangVien {
         this.vaiTro = vaiTro;
     }
 
-    public byte getAnh() {
+    public byte[] getAnh() {
         return anh;
     }
 
-    public void setAnh(byte anh) {
+    public void setAnh(byte[] anh) {
         this.anh = anh;
     }
 
@@ -142,4 +142,6 @@ public class GiangVien {
     public String toString() {
         return "GiangVien{" + "matKhau=" + matKhau + ", vaiTro=" + vaiTro + ", anh=" + anh + ", numOrder=" + numOrder + ", maGV=" + maGV + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + ", ngayVaoLam=" + ngayVaoLam + '}';
     }
+
+    
 }
