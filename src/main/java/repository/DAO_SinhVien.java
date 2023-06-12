@@ -4,6 +4,8 @@
  */
 package repository;
 
+import com.view.model.SinhVien.ThongTinSinhVien;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,7 @@ import model.GiangVien;
 import model.SinhVien;
 import ultilities.DBConnection;
 import ultilities.DBConnectorGV;
+import ultilities.DbConnection1;
 
 /**
  *
@@ -115,6 +118,69 @@ public class DAO_SinhVien{
             }
         }
         return maSVCanTim;
+    }
+    
+    public ArrayList<ThongTinSinhVien> getAll(){
+        ArrayList<ThongTinSinhVien> lstThongTinSinhVien = new ArrayList<>();
+        String sql = "select * from SinhVien";
+        try (Connection con = DbConnection1.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)){
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) { 
+                Blob blob = rs.getBlob("ANH");
+                byte[] anh = blob.getBytes(1, (int) blob.length());
+                
+                ThongTinSinhVien thongTinSinhVien = new ThongTinSinhVien();
+                thongTinSinhVien.setMaSV(rs.getString("MaSV"));
+                thongTinSinhVien.setHoTen(rs.getString("HoTen"));
+                thongTinSinhVien.setGioitinh(rs.getInt("GioiTinh"));
+                thongTinSinhVien.setNgaySinh(rs.getDate("NgaySinh"));
+                thongTinSinhVien.setEmail(rs.getString("Email"));
+                thongTinSinhVien.setSoDienThoai(rs.getString("SDT"));
+                thongTinSinhVien.setDiaChi(rs.getString("DiaChi"));
+                thongTinSinhVien.setTrangThai(rs.getString("TrangThai"));
+                thongTinSinhVien.setNienKhoa(rs.getInt("NienKhoa"));
+                thongTinSinhVien.setMaChuyenNganh(rs.getString("MaChuyenNganh"));
+                thongTinSinhVien.setNgayNhapHoc(rs.getDate("NGAYNHAPHOC"));
+                thongTinSinhVien.setAnh(anh);
+                lstThongTinSinhVien.add(thongTinSinhVien);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lstThongTinSinhVien;
+    }
+    
+    public ArrayList<ThongTinSinhVien> getByMaSV(String maSV){
+        ArrayList<ThongTinSinhVien> lstThongTinSinhVien = new ArrayList<>();
+        String sql = "select MaSV, Anh, HoTen, GioiTinh, NgaySinh, Email, SDT, DiaChi, TrangThai, NienKhoa, MaChuyenNganh, NGAYNHAPHOC from SinhVien where MaSV = ?";
+        try (Connection con = DbConnection1.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setObject(1, maSV);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {   
+                Blob blob = rs.getBlob("ANH");
+                byte[] anh = blob.getBytes(1, (int) blob.length());
+                
+                ThongTinSinhVien thongTinSinhVien = new ThongTinSinhVien();
+                thongTinSinhVien.setMaSV(rs.getString("MaSV"));
+                thongTinSinhVien.setHoTen(rs.getString("HoTen"));
+                thongTinSinhVien.setGioitinh(rs.getInt("GioiTinh"));
+                thongTinSinhVien.setNgaySinh(rs.getDate("NgaySinh"));
+                thongTinSinhVien.setEmail(rs.getString("Email"));
+                thongTinSinhVien.setSoDienThoai(rs.getString("SDT"));
+                thongTinSinhVien.setDiaChi(rs.getString("DiaChi"));
+                thongTinSinhVien.setTrangThai(rs.getString("TrangThai"));
+                thongTinSinhVien.setNienKhoa(rs.getInt("NienKhoa"));
+                thongTinSinhVien.setMaChuyenNganh(rs.getString("MaChuyenNganh"));
+                thongTinSinhVien.setNgayNhapHoc(rs.getDate("NGAYNHAPHOC"));
+                thongTinSinhVien.setAnh(anh);
+                lstThongTinSinhVien.add(thongTinSinhVien);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lstThongTinSinhVien;
     }
        
 }

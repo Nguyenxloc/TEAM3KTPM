@@ -4,7 +4,8 @@
  */
 package service;
 
-import model.GiangVien;
+import com.view.model.SinhVien.ThongTinSinhVien;
+import java.util.ArrayList;
 import model.SinhVien;
 import repository.DAO_SinhVien;
 
@@ -42,6 +43,22 @@ public class SinhVienService {
     
     public SinhVien update(SinhVien sv){
        return sinhVienRepo.update(sv); 
+    }
+    
+    public ArrayList<ThongTinSinhVien> getAll(){
+        try {
+            return sinhVienRepo.getAll();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public ThongTinSinhVien getByMaSV(String maSV){
+        try {
+            return sinhVienRepo.getByMaSV(maSV).get(0);
+        } catch (Exception e) {
+            return null;
+        }
     }
     
 }

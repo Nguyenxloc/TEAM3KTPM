@@ -5,11 +5,11 @@
  */
 package com.view.form_sinhvien;
 
-import java.io.File;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
-import model.SinhVien;
-import repository.DAO_SinhVien;
+import com.view.model.SinhVien.ThongTinSinhVien;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import service.SinhVienService;
+import ultilities.UserInfo;
 
 /**
  *
@@ -17,31 +17,39 @@ import repository.DAO_SinhVien;
  */
 public class ThongTinCaNhanForm extends javax.swing.JPanel {
 
-    private String dir;
-    private DAO_SinhVien dAO_SinhVien = new DAO_SinhVien();
-    private DefaultTableModel model = new DefaultTableModel();
+    private SinhVienService sinhVienService  = new SinhVienService();
 
     public ThongTinCaNhanForm() {
-        
-
-        String path = "src\\main\\java\\com\\view\\icon\\";
-        File file = new File(path);
-        String absolutePath = file.getAbsolutePath();
-        dir = absolutePath;
-
-//        lblAnhDaiDien = new javax.swing.JLabel();
-//        lblAnhDaiDien.setIcon(new javax.swing.ImageIcon(dir + "\\AnhDaiDien.jpg"));
-        
         initComponents();
         
-//        loadData(dAO_SinhVien.);
+        loadData();
     }
     
-    public void loadData(ArrayList<SinhVien> list){
-        for (SinhVien sinhVien : list) {
-            model.addRow(new Object[]{
-                sinhVien
-            });
+    public void loadData(){
+        ThongTinSinhVien thongTinSinhVien = sinhVienService.getByMaSV(UserInfo.maSV);
+        txtMaSV.setText(thongTinSinhVien.getMaSV());
+        txtHoTen.setText(thongTinSinhVien.getHoTen());
+        txtGioiTinh.setText(thongTinSinhVien.getGioitinh()== 1 ? "Nam" : "Nữ");
+        txtNgaySinh.setText(thongTinSinhVien.getNgaySinh().toString());
+        txtEmail.setText(thongTinSinhVien.getEmail());
+        txtSDT.setText(thongTinSinhVien.getSoDienThoai());
+        txtDiaChi.setText(thongTinSinhVien.getDiaChi());
+        txttrangThai.setText(thongTinSinhVien.getTrangThai());
+        txtNienKhoa.setText(thongTinSinhVien.getNienKhoa().toString());
+        txtChuyenNganh.setText(thongTinSinhVien.loadTenChuyenNganh());
+        txtNgayNhapHoc.setText(thongTinSinhVien.getNgayNhapHoc().toString());
+                
+        //Hiển thị ảnh
+        byte[] anh = thongTinSinhVien.getAnh();
+        if (anh != null) {
+            ImageIcon imageIcon = new ImageIcon(anh);
+            Image image = imageIcon.getImage();
+            Image scaledImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH); //Thay đổi kích thước ảnh
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+            lblAnhDaiDien.setIcon(scaledImageIcon);
+        } else {
+            //Nếu ko có ảnh, hiển thị ảnh mặc định hoặc ẩn label
+            lblAnhDaiDien.setIcon(null); //hoặc lblAnh.setVisible(false);
         }
     }
 
