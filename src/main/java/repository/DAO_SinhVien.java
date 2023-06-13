@@ -155,9 +155,10 @@ public class DAO_SinhVien{
         ArrayList<ThongTinSinhVien> lstThongTinSinhVien = new ArrayList<>();
         String sql = "select MaSV, Anh, HoTen, GioiTinh, NgaySinh, Email, SDT, DiaChi, TrangThai, NienKhoa, MaChuyenNganh, NGAYNHAPHOC from SinhVien where MaSV = ?";
         try (Connection con = DbConnection1.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)){
+                PreparedStatement ps = con.prepareStatement(sql)){    
             ps.setObject(1, maSV);
             ResultSet rs = ps.executeQuery();
+            
             while (rs.next()) {   
                 Blob blob = rs.getBlob("ANH");
                 byte[] anh = blob.getBytes(1, (int) blob.length());

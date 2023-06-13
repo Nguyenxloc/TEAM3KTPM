@@ -13,6 +13,8 @@ import java.sql.Time;
  */
 public class LichHocSinhVien {
     
+    public String maSV;
+    
     public Date ngayHoc;
     
     public String tenPhongHoc;
@@ -23,18 +25,27 @@ public class LichHocSinhVien {
     
     public String tengiangVien;
     
-    public Time thoiGian;
+    public String thoiGian;
 
     public LichHocSinhVien() {
     }
 
-    public LichHocSinhVien(Date ngayHoc, String tenPhongHoc, String tenLopHoc, String tenMonHoc, String tengiangVien, Time thoiGian) {
+    public LichHocSinhVien(String maSV, Date ngayHoc, String tenPhongHoc, String tenLopHoc, String tenMonHoc, String tengiangVien, String thoiGian) {
+        this.maSV = maSV;
         this.ngayHoc = ngayHoc;
         this.tenPhongHoc = tenPhongHoc;
         this.tenLopHoc = tenLopHoc;
         this.tenMonHoc = tenMonHoc;
         this.tengiangVien = tengiangVien;
         this.thoiGian = thoiGian;
+    }
+
+    public String getMaSV() {
+        return maSV;
+    }
+
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
     }
 
     public Date getNgayHoc() {
@@ -77,17 +88,17 @@ public class LichHocSinhVien {
         this.tengiangVien = tengiangVien;
     }
 
-    public Time getThoiGian() {
+    public String getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(Time thoiGian) {
+    public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
     }
 
     @Override
     public String toString() {
-        return "LichHocSinhVien{" + "ngayHoc=" + ngayHoc + ", tenPhongHoc=" + tenPhongHoc + ", tenLopHoc=" + tenLopHoc + ", tenMonHoc=" + tenMonHoc + ", tengiangVien=" + tengiangVien + ", thoiGian=" + thoiGian + '}';
+        return "LichHocSinhVien{" + "maSV=" + maSV + ", ngayHoc=" + ngayHoc + ", tenPhongHoc=" + tenPhongHoc + ", tenLopHoc=" + tenLopHoc + ", tenMonHoc=" + tenMonHoc + ", tengiangVien=" + tengiangVien + ", thoiGian=" + thoiGian + '}';
     }
     
 }

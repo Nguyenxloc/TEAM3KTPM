@@ -6,7 +6,7 @@ package service;
 
 import com.view.model.SinhVien.LichHocSinhVien;
 import java.util.ArrayList;
-import repository.SinhVien.DAO_LichHocSinhVien;
+import repository.DAO_Lich;
 
 /**
  *
@@ -14,12 +14,17 @@ import repository.SinhVien.DAO_LichHocSinhVien;
  */
 public class QLLichHocSinhVienServiceIMPL implements QLLichHocSinhVienService{
     
-    private DAO_LichHocSinhVien dAO_LichHocSinhVien = new DAO_LichHocSinhVien();
+    private DAO_Lich dAO_Lich = new DAO_Lich();
 
     @Override
     public ArrayList<LichHocSinhVien> getAll() {
-        return dAO_LichHocSinhVien.getAll();
+        return dAO_Lich.getAll();
     }
-    
-    
+
+    @Override
+    public ArrayList<LichHocSinhVien> getLichHocByMaSV(String maSV) {
+        return dAO_Lich.getLichHocByMaSV(maSV);
+    }
+
+   
 }

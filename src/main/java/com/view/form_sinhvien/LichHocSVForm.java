@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import service.QLLichHocSinhVienService;
 import service.QLLichHocSinhVienServiceIMPL;
+import ultilities.UserInfo;
 
 /**
  *
@@ -23,7 +24,8 @@ public class LichHocSVForm extends javax.swing.JPanel {
     public LichHocSVForm() {
         initComponents();
         
-        loadData(qLLichHocSinhVienService.getAll());
+        loadData(qLLichHocSinhVienService.getLichHocByMaSV(UserInfo.maSV));
+        
     }
 
     public void loadData(ArrayList<LichHocSinhVien> list){

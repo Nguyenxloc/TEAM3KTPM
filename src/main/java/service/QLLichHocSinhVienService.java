@@ -15,4 +15,7 @@ public interface QLLichHocSinhVienService {
     
     ArrayList<LichHocSinhVien> getAll();
     
+    ArrayList<LichHocSinhVien> getLichHocByMaSV(String maSV);
+    
+    
 }

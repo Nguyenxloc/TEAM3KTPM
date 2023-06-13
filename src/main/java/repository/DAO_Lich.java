@@ -4,10 +4,14 @@
  */
 package repository;
 
+import com.view.model.SinhVien.LichHocSinhVien;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Lich;
 import ultilities.DBConnection;
+import ultilities.DbConnection1;
 
 /**
  *
@@ -65,6 +69,62 @@ public class DAO_Lich {
             e.printStackTrace();
             throw new RuntimeException();
         }
+    }
+    
+    
+    public ArrayList<LichHocSinhVien> getAll() {
+        ArrayList<LichHocSinhVien> lstLichHocSinhVien = new ArrayList<>();
+        String sql = "select LICH.NGAYHOC, PHONGHOC.TENPHONGHOC, MONHOC.TENMONHOC, LOPHOC.TENLOPHOC, GIANGVIEN.HOTEN, LICH.THOIGIAN from LICH\n"
+                + "JOIN PHONGHOC ON PHONGHOC.MAPHONGHOC = LICH.MAPHONGHOC\n"
+                + "JOIN MONHOC ON MONHOC.MAMONHOC = LICH.MAMONHOC\n"
+                + "JOIN LOPHOC ON LOPHOC.MALOPHOC = LICH.MALOPHOC\n"
+                + "JOIN GIANGVIEN ON GIANGVIEN.MAGV = LICH.MAGIANGVIEN";
+        try (Connection con = DbConnection1.getConnection(); 
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                LichHocSinhVien lh = new LichHocSinhVien();
+                lh.setNgayHoc(rs.getDate("NGAYHOC"));
+                lh.setTenPhongHoc(rs.getString("TENPHONGHOC"));
+                lh.setTenMonHoc(rs.getString("TENMONHOC"));
+                lh.setTenLopHoc(rs.getString("TENLOPHOC"));
+                lh.setTengiangVien(rs.getString("HOTEN"));
+                lh.setThoiGian(rs.getString("THOIGIAN"));
+                lstLichHocSinhVien.add(lh);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lstLichHocSinhVien;
+    }
+
+    public ArrayList<LichHocSinhVien> getLichHocByMaSV(String maSV) {
+        ArrayList<LichHocSinhVien> lstLichHocSinhVien = new ArrayList<>();
+        String sql = "select LICH.MASV, LICH.NGAYHOC, PHONGHOC.TENPHONGHOC, MONHOC.TENMONHOC, LOPHOC.TENLOPHOC, GIANGVIEN.HOTEN, LICH.THOIGIAN from LICH \n"
+                + "JOIN PHONGHOC ON PHONGHOC.MAPHONGHOC = LICH.MAPHONGHOC\n"
+                + "JOIN MONHOC ON MONHOC.MAMONHOC = LICH.MAMONHOC\n"
+                + "JOIN LOPHOC ON LOPHOC.MALOPHOC = LICH.MALOPHOC\n"
+                + "JOIN GIANGVIEN ON GIANGVIEN.MAGV = LICH.MAGIANGVIEN\n"
+                + "where MASV = ?";
+        try (Connection con = DbConnection1.getConnection(); 
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(1, maSV);
+            ResultSet rs = ps.executeQuery();     
+            while (rs.next()) {
+                LichHocSinhVien lh = new LichHocSinhVien();
+                lh.setMaSV(rs.getString("MaSV"));
+                lh.setNgayHoc(rs.getDate("NGAYHOC"));
+                lh.setTenPhongHoc(rs.getString("TENPHONGHOC"));
+                lh.setTenMonHoc(rs.getString("TENMONHOC"));
+                lh.setTenLopHoc(rs.getString("TENLOPHOC"));
+                lh.setTengiangVien(rs.getString("HOTEN"));
+                lh.setThoiGian(rs.getString("THOIGIAN"));
+                lstLichHocSinhVien.add(lh);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lstLichHocSinhVien;
     }
     
 }
