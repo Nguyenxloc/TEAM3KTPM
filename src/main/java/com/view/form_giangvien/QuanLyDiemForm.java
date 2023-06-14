@@ -767,19 +767,19 @@ public class QuanLyDiemForm extends javax.swing.JPanel {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // Tìm sinh viên theo mã
-        String maSV = txtMaSV.getText();
-        List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV);
-        if (lstDiem == null) {
-            JOptionPane.showMessageDialog(this, "Lỗi!");
-        } else if (lstDiem.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Không có dữ liệu");
-        } else {
-            model = (DefaultTableModel) tblNhapDiem.getModel();
-            model.setRowCount(0);
-            for (DiemThanhPhan diem : lstDiem) {
-                model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
-            }
-        }
+//        String maSV = txtMaSV.getText();
+//        List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV);
+//        if (lstDiem == null) {
+//            JOptionPane.showMessageDialog(this, "Lỗi!");
+//        } else if (lstDiem.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Không có dữ liệu");
+//        } else {
+//            model = (DefaultTableModel) tblNhapDiem.getModel();
+//            model.setRowCount(0);
+//            for (DiemThanhPhan diem : lstDiem) {
+//                model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+//            }
+//        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void tblNhapDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhapDiemMouseClicked
