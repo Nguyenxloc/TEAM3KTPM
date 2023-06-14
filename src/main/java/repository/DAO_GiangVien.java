@@ -12,8 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.ChuyenNganh;
+import model.DiemThanhPhan;
 import model.GiangVien;
 import model.Lich;
+import model.LopHoc;
+import model.MonHoc;
+import model.PhongHoc;
 import ultilities.DBConnection;
 import ultilities.DBConnectorGV;
 
@@ -24,7 +29,7 @@ import ultilities.DBConnectorGV;
 public class DAO_GiangVien {
 
     final String INSERT_SQL = "INSERT INTO [dbo].[SINHVIEN] VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-    
+
     final String DELETE_SQL = "DELETE FROM [dbo].[SINHVIEN] WHERE [MAGV] = ?";
     final String SELECT_BY_SQL = "SELECT * FROM [dbo].[SINHVIEN] WHERE [MAGV] = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[SINHVIEN]";
@@ -34,7 +39,7 @@ public class DAO_GiangVien {
     public DAO_GiangVien() {
         _lstGiangVien = new ArrayList<>();
     }
-    
+
     public ArrayList<GiangVien> findAll() {
         _lstGiangVien = new ArrayList<>();
         return getSelectSql(SELECT_ALL_SQL);
@@ -47,7 +52,7 @@ public class DAO_GiangVien {
     }
 
     public GiangVien save(GiangVien giangVien) {
-        DBConnection.ExcuteDungna(INSERT_SQL, giangVien.matKhau, giangVien.getVaiTro(), giangVien.getAnh(), giangVien.getMaGV(), giangVien.getHoTen(), 
+        DBConnection.ExcuteDungna(INSERT_SQL, giangVien.matKhau, giangVien.getVaiTro(), giangVien.getAnh(), giangVien.getMaGV(), giangVien.getHoTen(),
                 giangVien.getGioiTinh(), giangVien.getNgaySinh(), giangVien.getEmail(), giangVien.getSoDienThoai(), giangVien.getDiaChi(), giangVien.getNgayVaoLam());
         return giangVien;
     }
@@ -58,7 +63,7 @@ public class DAO_GiangVien {
     }
 
     public GiangVien update(GiangVien giangVien) {
-        DBConnection.ExcuteDungna(UPDATE_SQL, giangVien.matKhau, giangVien.getVaiTro(), giangVien.getAnh(), giangVien.getMaGV(), giangVien.getHoTen(), 
+        DBConnection.ExcuteDungna(UPDATE_SQL, giangVien.matKhau, giangVien.getVaiTro(), giangVien.getAnh(), giangVien.getMaGV(), giangVien.getHoTen(),
                 giangVien.getGioiTinh(), giangVien.getNgaySinh(), giangVien.getEmail(), giangVien.getSoDienThoai(), giangVien.getDiaChi(), giangVien.getNgayVaoLam());
         return giangVien;
     }
@@ -81,9 +86,9 @@ public class DAO_GiangVien {
             throw new RuntimeException();
         }
     }
-        final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [MATKHAU]=?, [VAITRO]=?, [ANH]=?, [HOTEN]=?, [GIOITINH]=?, [NGAYSINH]=?, [EMAIL]=?, [SDT]=?, [DIACHI]=?, [NGAYVAOLAM]=?, WHERE [MAGV] = ?";
+    final String UPDATE_SQL = "UPDATE [dbo].[SINHVIEN] SET [MATKHAU]=?, [VAITRO]=?, [ANH]=?, [HOTEN]=?, [GIOITINH]=?, [NGAYSINH]=?, [EMAIL]=?, [SDT]=?, [DIACHI]=?, [NGAYVAOLAM]=?, WHERE [MAGV] = ?";
 
-
+    // Lấy danh sách tài khoản giảng viên
     public List<GiangVien> getTaiKhoan() throws Exception {  //Lấy danh sách tài khoản của giảng viên
         List<GiangVien> lstTKGiangVien = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
@@ -120,6 +125,7 @@ public class DAO_GiangVien {
         return maGVCanTim;
     }
 
+    // Lấy tất cả thông tin giảng viên
     public List<GiangVien> getAllGV() throws Exception {
         List<GiangVien> lstGiangVien = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
@@ -158,6 +164,7 @@ public class DAO_GiangVien {
         return lstGiangVien;
     }
 
+    //Lấy danh sách giảng viên theo mã
     public List<GiangVien> getByMaGV(String ma) throws Exception {
         List<GiangVien> lstGiangVien = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
@@ -197,29 +204,511 @@ public class DAO_GiangVien {
         return lstGiangVien;
     }
 
-    public List<Lich> getLichHoc7() throws Exception {
+    //Lấy danh sách lịch học 7 ngày tới
+    public List<Lich> getLichHoc7(String ma) throws Exception {
         List<Lich> lstLichHoc = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
-        String sql = "SELECT TOP 7 L.NGAYHOC AS 'NGAYHOC', PH.TENPHONGHOC AS 'TENPHONGHOC', MH.TENMONHOC AS 'TENMONHOC', LH.TENLOPHOC AS 'TENLOPHOC', L.MAGIANGVIEN 'MAGV', L.THOIGIAN AS 'THOIGIAN' FROM dbo.LICH L JOIN dbo.MONHOC MH\n" +
-                "ON MH.MAMONHOC = L.MAMONHOC JOIN dbo.LOPHOC LH\n" +
-                "ON LH.MALOPHOC = L.MALOPHOC JOIN dbo.PHONGHOC PH\n" +
-                "ON PH.MAPHONGHOC = L.MAPHONGHOC\n" +
-                "WHERE L.LOAILICH = N'Lịch học' AND L.MAGIANGVIEN = 'gv1'\n" +
-                "GROUP BY L.NGAYHOC, PH.TENPHONGHOC, MH.TENMONHOC, LH.TENLOPHOC, L.MAGIANGVIEN, L.THOIGIAN";
+        String sql = "SELECT TOP 7 L.NGAYHOC AS 'NGAYHOC', PH.MAPHONGHOC AS 'MAPHONGHOC',  PH.TENPHONGHOC AS 'TENPHONGHOC', MH.MAMONHOC AS 'MAMONHOC', MH.TENMONHOC AS 'TENMONHOC', LH.MALOPHOC AS 'MALOPHOC', LH.TENLOPHOC AS 'TENLOPHOC', GV.MAGV AS 'MAGV', GV.HOTEN AS 'TENGV', L.THOIGIAN AS 'THOIGIAN'\n"
+                + "FROM dbo.LICH L JOIN dbo.MONHOC MH\n"
+                + "ON MH.MAMONHOC = L.MAMONHOC JOIN dbo.LOPHOC LH\n"
+                + "ON LH.MALOPHOC = L.MALOPHOC JOIN dbo.PHONGHOC PH\n"
+                + "ON PH.MAPHONGHOC = L.MAPHONGHOC JOIN dbo.GIANGVIEN GV\n"
+                + "ON GV.MAGV = L.MAGIANGVIEN\n"
+                + "WHERE L.LOAILICH = N'Lịch học' AND L.MAGIANGVIEN = ?\n"
+                + "GROUP BY L.NGAYHOC, PH.MAPHONGHOC,  PH.TENPHONGHOC, MH.MAMONHOC, MH.TENMONHOC, LH.MALOPHOC, LH.TENLOPHOC, GV.MAGV, GV.HOTEN, L.THOIGIAN";
         PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, ma);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Date ngayHoc = rs.getDate("NGAYHOC");
+            String maPhongHoc = rs.getString("MAPHONGHOC");
             String tenPhongHoc = rs.getString("TENPHONGHOC");
+            String maMonHoc = rs.getString("MAMONHOC");
             String tenMonHoc = rs.getString("TENMONHOC");
+            String maLopHoc = rs.getString("MALOPHOC");
             String tenLopHoc = rs.getString("TENLOPHOC");
             String maGV = rs.getString("MAGV");
+            String tenGV = rs.getString("TENGV");
             String thoiGian = rs.getString("THOIGIAN");
-            
+
+            PhongHoc phongHoc = new PhongHoc();
+            phongHoc.setMaPhongHoc(maPhongHoc);
+            phongHoc.setTenPhongHoc(tenPhongHoc);
+
+            MonHoc monHoc = new MonHoc();
+            monHoc.setMaMonHoc(maMonHoc);
+            monHoc.setTenMonHoc(tenMonHoc);
+
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setMaLopHoc(maLopHoc);
+            lopHoc.setTenLopHoc(tenLopHoc);
+
+            GiangVien giangVien = new GiangVien();
+            giangVien.setMaGV(maGV);
+            giangVien.setHoTen(tenGV);
+
             Lich lich = new Lich();
             lich.setNgayHoc(ngayHoc);
-            lich.setMaPhongHoc(tenPhongHoc);
+            lich.setMaPhongHoc(phongHoc + "");
+            lich.setMaMonHoc(monHoc + "");
+            lich.setMaLopHoc(lopHoc + "");
+            lich.setMaGiangVien(giangVien + "");
+            lich.setThoiGian(thoiGian);
+
+            lstLichHoc.add(lich);
         }
+        rs.close();
+        ps.close();
+        connection.close();
         return lstLichHoc;
+    }
+
+    // Lấy danh sách lịch học 14 ngày tới
+    public List<Lich> getLichHoc14(String ma) throws Exception {
+        List<Lich> lstLichHoc = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT TOP 14 L.NGAYHOC AS 'NGAYHOC', PH.MAPHONGHOC AS 'MAPHONGHOC',  PH.TENPHONGHOC AS 'TENPHONGHOC', MH.MAMONHOC AS 'MAMONHOC', MH.TENMONHOC AS 'TENMONHOC', LH.MALOPHOC AS 'MALOPHOC', LH.TENLOPHOC AS 'TENLOPHOC', GV.MAGV AS 'MAGV', GV.HOTEN AS 'TENGV', L.THOIGIAN AS 'THOIGIAN'\n"
+                + "FROM dbo.LICH L JOIN dbo.MONHOC MH\n"
+                + "ON MH.MAMONHOC = L.MAMONHOC JOIN dbo.LOPHOC LH\n"
+                + "ON LH.MALOPHOC = L.MALOPHOC JOIN dbo.PHONGHOC PH\n"
+                + "ON PH.MAPHONGHOC = L.MAPHONGHOC JOIN dbo.GIANGVIEN GV\n"
+                + "ON GV.MAGV = L.MAGIANGVIEN\n"
+                + "WHERE L.LOAILICH = N'Lịch học' AND L.MAGIANGVIEN = ?\n"
+                + "GROUP BY L.NGAYHOC, PH.MAPHONGHOC,  PH.TENPHONGHOC, MH.MAMONHOC, MH.TENMONHOC, LH.MALOPHOC, LH.TENLOPHOC, GV.MAGV, GV.HOTEN, L.THOIGIAN";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, ma);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Date ngayHoc = rs.getDate("NGAYHOC");
+            String maPhongHoc = rs.getString("MAPHONGHOC");
+            String tenPhongHoc = rs.getString("TENPHONGHOC");
+            String maMonHoc = rs.getString("MAMONHOC");
+            String tenMonHoc = rs.getString("TENMONHOC");
+            String maLopHoc = rs.getString("MALOPHOC");
+            String tenLopHoc = rs.getString("TENLOPHOC");
+            String maGV = rs.getString("MAGV");
+            String tenGV = rs.getString("TENGV");
+            String thoiGian = rs.getString("THOIGIAN");
+
+            PhongHoc phongHoc = new PhongHoc();
+            phongHoc.setMaPhongHoc(maPhongHoc);
+            phongHoc.setTenPhongHoc(tenPhongHoc);
+
+            MonHoc monHoc = new MonHoc();
+            monHoc.setMaMonHoc(maMonHoc);
+            monHoc.setTenMonHoc(tenMonHoc);
+
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setMaLopHoc(maLopHoc);
+            lopHoc.setTenLopHoc(tenLopHoc);
+
+            GiangVien giangVien = new GiangVien();
+            giangVien.setMaGV(maGV);
+            giangVien.setHoTen(tenGV);
+
+            Lich lich = new Lich();
+            lich.setNgayHoc(ngayHoc);
+            lich.setMaPhongHoc(phongHoc + "");
+            lich.setMaMonHoc(monHoc + "");
+            lich.setMaLopHoc(lopHoc + "");
+            lich.setMaGiangVien(giangVien + "");
+            lich.setThoiGian(thoiGian);
+
+            lstLichHoc.add(lich);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstLichHoc;
+    }
+
+    // Lấy danh sách lịch học 30 ngày tới
+    public List<Lich> getLichHoc30(String ma) throws Exception {
+        List<Lich> lstLichHoc = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT TOP 30 L.NGAYHOC AS 'NGAYHOC', PH.MAPHONGHOC AS 'MAPHONGHOC',  PH.TENPHONGHOC AS 'TENPHONGHOC', MH.MAMONHOC AS 'MAMONHOC', MH.TENMONHOC AS 'TENMONHOC', LH.MALOPHOC AS 'MALOPHOC', LH.TENLOPHOC AS 'TENLOPHOC', GV.MAGV AS 'MAGV', GV.HOTEN AS 'TENGV', L.THOIGIAN AS 'THOIGIAN'\n"
+                + "FROM dbo.LICH L JOIN dbo.MONHOC MH\n"
+                + "ON MH.MAMONHOC = L.MAMONHOC JOIN dbo.LOPHOC LH\n"
+                + "ON LH.MALOPHOC = L.MALOPHOC JOIN dbo.PHONGHOC PH\n"
+                + "ON PH.MAPHONGHOC = L.MAPHONGHOC JOIN dbo.GIANGVIEN GV\n"
+                + "ON GV.MAGV = L.MAGIANGVIEN\n"
+                + "WHERE L.LOAILICH = N'Lịch học' AND L.MAGIANGVIEN = ?\n"
+                + "GROUP BY L.NGAYHOC, PH.MAPHONGHOC,  PH.TENPHONGHOC, MH.MAMONHOC, MH.TENMONHOC, LH.MALOPHOC, LH.TENLOPHOC, GV.MAGV, GV.HOTEN, L.THOIGIAN";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, ma);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Date ngayHoc = rs.getDate("NGAYHOC");
+            String maPhongHoc = rs.getString("MAPHONGHOC");
+            String tenPhongHoc = rs.getString("TENPHONGHOC");
+            String maMonHoc = rs.getString("MAMONHOC");
+            String tenMonHoc = rs.getString("TENMONHOC");
+            String maLopHoc = rs.getString("MALOPHOC");
+            String tenLopHoc = rs.getString("TENLOPHOC");
+            String maGV = rs.getString("MAGV");
+            String tenGV = rs.getString("TENGV");
+            String thoiGian = rs.getString("THOIGIAN");
+
+            PhongHoc phongHoc = new PhongHoc();
+            phongHoc.setMaPhongHoc(maPhongHoc);
+            phongHoc.setTenPhongHoc(tenPhongHoc);
+
+            MonHoc monHoc = new MonHoc();
+            monHoc.setMaMonHoc(maMonHoc);
+            monHoc.setTenMonHoc(tenMonHoc);
+
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setMaLopHoc(maLopHoc);
+            lopHoc.setTenLopHoc(tenLopHoc);
+
+            GiangVien giangVien = new GiangVien();
+            giangVien.setMaGV(maGV);
+            giangVien.setHoTen(tenGV);
+
+            Lich lich = new Lich();
+            lich.setNgayHoc(ngayHoc);
+            lich.setMaPhongHoc(phongHoc + "");
+            lich.setMaMonHoc(monHoc + "");
+            lich.setMaLopHoc(lopHoc + "");
+            lich.setMaGiangVien(giangVien + "");
+            lich.setThoiGian(thoiGian);
+
+            lstLichHoc.add(lich);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstLichHoc;
+    }
+
+    // Lấy danh sách chuyên ngành
+    public List<ChuyenNganh> getAllChuyenNganh() throws Exception {
+        List<ChuyenNganh> lstChuyenNganh = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MACHUYENNGANH, TENCHUYENNGANH, COSO, THOIGIANDAOTAO FROM dbo.CHUYENNGANH";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maChuyenNganh = rs.getString("MACHUYENNGANH");
+            String tenChuyenNganh = rs.getString("TENCHUYENNGANH");
+            String coSo = rs.getString("COSO");
+            Integer thoiGianDaoTao = rs.getInt("THOIGIANDAOTAO");
+
+            ChuyenNganh chuyenNganh = new ChuyenNganh();
+            chuyenNganh.setMaChuyenNganh(maChuyenNganh);
+            chuyenNganh.setTenChuyenNganh(tenChuyenNganh);
+            chuyenNganh.setCoSo(coSo);
+            chuyenNganh.setThoiGianDaoTao(thoiGianDaoTao);
+
+            lstChuyenNganh.add(chuyenNganh);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstChuyenNganh;
+    }
+
+    //Lấy danh sách môn học
+    public List<MonHoc> getAllMonHoc() throws Exception {
+        List<MonHoc> lstMonHoc = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MAMONHOC, TENMONHOC, SOTINCHI, NAM, MUA FROM dbo.MONHOC";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maMonHoc = rs.getString("MAMONHOC");
+            String tenMonHoc = rs.getString("TENMONHOC");
+            Integer soTinChi = rs.getInt("SOTINCHI");
+            Integer nam = rs.getInt("NAM");
+            String mua = rs.getString("MUA");
+
+            MonHoc monHoc = new MonHoc();
+            monHoc.setMaMonHoc(maMonHoc);
+            monHoc.setTenMonHoc(tenMonHoc);
+            monHoc.setSoTinChi(soTinChi);
+            monHoc.setNam(nam);
+            monHoc.setMua(mua);
+
+            lstMonHoc.add(monHoc);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstMonHoc;
+    }
+
+    // Lấy danh sách lớp học
+    public List<LopHoc> getAllLopHoc() throws Exception {
+        List<LopHoc> lstLopHoc = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MALOPHOC, TENLOPHOC, NAM, MUA FROM dbo.LOPHOC";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maLopHoc = rs.getString("MALOPHOC");
+            String tenLopHoc = rs.getString("TENLOPHOC");
+            Integer nam = rs.getInt("NAM");
+            String mua = rs.getString("MUA");
+
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setMaLopHoc(maLopHoc);
+            lopHoc.setTenLopHoc(tenLopHoc);
+            lopHoc.setNam(nam);
+            lopHoc.setMua(mua);
+
+            lstLopHoc.add(lopHoc);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstLopHoc;
+    }
+
+    // Lấy danh sách điểm thành phần
+    public List<DiemThanhPhan> getDiemThanhPhan() throws Exception {
+        List<DiemThanhPhan> lstDiem = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MASV, LAB1, LAB2, LAB3, LAB4, ASSIGNMENT, DIEMTHI FROM dbo.DIEMTHANHPHAN";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maSV = rs.getString("MASV");
+            Double lab1 = rs.getDouble("LAB1");
+            Double lab2 = rs.getDouble("LAB2");
+            Double lab3 = rs.getDouble("LAB3");
+            Double lab4 = rs.getDouble("LAB4");
+            Double assignment = rs.getDouble("ASSIGNMENT");
+            Double diemThi = rs.getDouble("DIEMTHI");
+
+            DiemThanhPhan diem = new DiemThanhPhan();
+            diem.setMaSV(maSV);
+            diem.setLab1(lab1);
+            diem.setLab2(lab2);
+            diem.setLab3(lab3);
+            diem.setLab4(lab4);
+            diem.setAssignment(assignment);
+            diem.setDiemThi(diemThi);
+
+            lstDiem.add(diem);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstDiem;
+    }
+
+    //Lấy danh sách chuyên ngành theo năm
+    public List<ChuyenNganh> getChuyenNganhTheoNam(int namCN) throws Exception {
+        List<ChuyenNganh> lstChuyenNganh = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT CN.MACHUYENNGANH AS 'MACHUYENNGANH', CN.TENCHUYENNGANH AS 'TENCHUYENNGANH' FROM dbo.CHUYENNGANH CN JOIN dbo.MONHOC MH\n"
+                + "ON  MH.MACHUYENNGANH = CN.MACHUYENNGANH\n"
+                + "WHERE MH.NAM = ?\n"
+                + "GROUP BY CN.MACHUYENNGANH, CN.TENCHUYENNGANH";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, namCN);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maChuyenNganh = rs.getString("MACHUYENNGANH");
+            String tenChuyenNganh = rs.getString("TENCHUYENNGANH");
+
+            ChuyenNganh chuyenNganh = new ChuyenNganh();
+            chuyenNganh.setMaChuyenNganh(maChuyenNganh);
+            chuyenNganh.setTenChuyenNganh(tenChuyenNganh);
+
+            lstChuyenNganh.add(chuyenNganh);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstChuyenNganh;
+    }
+
+    //Lấy danh sách chuyên ngành theo mùa
+    public List<ChuyenNganh> getChuyenNganhTheoMua(String mua) throws Exception {
+        List<ChuyenNganh> lstChuyenNganh = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT CN.MACHUYENNGANH AS 'MACHUYENNGANH', CN.TENCHUYENNGANH AS 'TENCHUYENNGANH' FROM dbo.CHUYENNGANH CN JOIN dbo.MONHOC MH\n"
+                + "ON MH.MACHUYENNGANH = CN.MACHUYENNGANH\n"
+                + "WHERE MH.MUA = ?\n"
+                + "GROUP BY CN.MACHUYENNGANH, CN.TENCHUYENNGANH";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, mua);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maChuyenNganh = rs.getString("MACHUYENNGANH");
+            String tenChuyenNganh = rs.getString("TENCHUYENNGANH");
+
+            ChuyenNganh chuyenNganh = new ChuyenNganh();
+            chuyenNganh.setMaChuyenNganh(maChuyenNganh);
+            chuyenNganh.setTenChuyenNganh(tenChuyenNganh);
+
+            lstChuyenNganh.add(chuyenNganh);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstChuyenNganh;
+    }
+
+    //Lấy danh sách môn học theo chuyên ngành
+    public List<MonHoc> getMonHocTheoChuyenNganh(String maCN) throws Exception {
+        List<MonHoc> lstMonHoc = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MH.MAMONHOC AS 'MAMONHOC', MH.TENMONHOC AS 'TENMONHOC' FROM dbo.MONHOC MH JOIN dbo.CHUYENNGANH CN\n"
+                + "ON CN.MACHUYENNGANH = MH.MACHUYENNGANH\n"
+                + "WHERE CN.MACHUYENNGANH = ?\n"
+                + "GROUP BY MH.MAMONHOC, MH.TENMONHOC";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, maCN);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maMonHoc = rs.getString("MAMONHOC");
+            String tenMonHoc = rs.getString("TENMONHOC");
+
+            MonHoc monHoc = new MonHoc();
+            monHoc.setMaMonHoc(maMonHoc);
+            monHoc.setTenMonHoc(tenMonHoc);
+
+            lstMonHoc.add(monHoc);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstMonHoc;
+    }
+
+    //Lấy danh sách lớp học theo môn học
+    public List<LopHoc> getLopHocTheoMonHoc(String maMH) throws Exception {
+        List<LopHoc> lstLopHoc = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT LH.MALOPHOC AS 'MALOPHOC', LH.TENLOPHOC AS 'TENLOPHOC' FROM dbo.LOPHOC LH JOIN dbo.MONHOC MH\n"
+                + "ON MH.MALOPHOC = LH.MALOPHOC\n"
+                + "WHERE MH.MAMONHOC = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, maMH);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maLopHoc = rs.getString("MALOPHOC");
+            String tenLopHoc = rs.getString("TENLOPHOC");
+
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setMaLopHoc(maLopHoc);
+            lopHoc.setTenLopHoc(tenLopHoc);
+
+            lstLopHoc.add(lopHoc);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstLopHoc;
+    }
+
+    //Tìm sinh viên để nhập điểm
+    public List<DiemThanhPhan> getSinhVienDeNhapDiem(String maSv, String maCn, String maMh, String maLh) throws Exception {
+        List<DiemThanhPhan> lstDiem = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MASV, MACHUYENNGANH, MAMONHOC, MALOPHOC, NAM, MUA, LAB1, LAB2, LAB3, LAB4, ASSIGNMENT, DIEMTHI FROM dbo.DIEMTHANHPHAN \n" +
+                    "WHERE MASV = 'sv1' AND MACHUYENNGANH = 'PTPM' AND MAMONHOC = 'MH01' AND MALOPHOC = 'LH02'";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, maSv);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maSV = rs.getString("MASV");
+            String maCN = rs.getString("MACHUYENNGANH");
+            String maMH = rs.getString("MAMONHOC");
+            String maLH = rs.getString("MALOPHOC");
+            Integer nam = rs.getInt("NAM");
+            String mua = rs.getString("MUA");
+            Double lab1 = rs.getDouble("LAB1");
+            Double lab2 = rs.getDouble("LAB2");
+            Double lab3 = rs.getDouble("LAB3");
+            Double lab4 = rs.getDouble("LAB4");
+            Double assignment = rs.getDouble("ASSIGNMENT");
+            Double diemThi = rs.getDouble("DIEMTHI");
+
+            DiemThanhPhan diem = new DiemThanhPhan();
+            diem.setMaSV(maSV);
+            diem.setLab1(lab1);
+            diem.setLab2(lab2);
+            diem.setLab3(lab3);
+            diem.setLab4(lab4);
+            diem.setAssignment(assignment);
+            diem.setDiemThi(diemThi);
+
+            lstDiem.add(diem);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstDiem;
+    }
+
+    public List<DiemThanhPhan> getDiemTheoMaLH_MaGV(String maLh, String maGV) throws Exception {
+        List<DiemThanhPhan> lstDiem = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT D.MASV AS 'MASV', D.MACHUYENNGANH AS 'MACHUYENNGANH', D.MAMONHOC AS 'MAMONHOC', D.MALOPHOC AS 'MALOPHOC', D.NAM AS 'NAM', D.MUA AS 'MUA' , D.LAB1 AS 'LAB1', D.LAB2 AS 'LAB2', D.LAB3 AS 'LAB3', D.LAB4 AS 'LAB4', D.ASSIGNMENT AS 'ASSIGNMENT', D.DIEMTHI AS 'DIEMTHI' FROM dbo.DIEMTHANHPHAN D JOIN dbo.LOPHOC LH\n" +
+                    "ON LH.MALOPHOC = D.MALOPHOC JOIN dbo.LICH L\n" +
+                    "ON L.MALOPHOC = LH.MALOPHOC\n" +
+                    "WHERE LH.MALOPHOC = ? AND L.MAGIANGVIEN = ?\n" +
+                    "GROUP BY D.MASV, D.MACHUYENNGANH, D.MAMONHOC, D.MALOPHOC, D.NAM, D.MUA, D.LAB1, D.LAB2, D.LAB3, D.LAB4, D.ASSIGNMENT, D.DIEMTHI";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, maLh);
+        ps.setString(2, maGV);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String maSV = rs.getString("MASV");
+            String maCN = rs.getString("MACHUYENNGANH");
+            String maMH = rs.getString("MAMONHOC");
+            String maLH = rs.getString("MALOPHOC");
+            Integer nam = rs.getInt("NAM");
+            String mua = rs.getString("MUA");
+            Double lab1 = rs.getDouble("LAB1");
+            Double lab2 = rs.getDouble("LAB2");
+            Double lab3 = rs.getDouble("LAB3");
+            Double lab4 = rs.getDouble("LAB4");
+            Double assignment = rs.getDouble("ASSIGNMENT");
+            Double diemThi = rs.getDouble("DIEMTHI");
+
+            DiemThanhPhan diem = new DiemThanhPhan();
+            diem.setMaSV(maSV);
+            diem.setMaNganhHoc(maCN);
+            diem.setMaMonHoc(maMH);
+            diem.setMaLopHoc(maLH);
+            diem.setNam(nam);
+            diem.setMua(mua);
+            diem.setLab1(lab1);
+            diem.setLab2(lab2);
+            diem.setLab3(lab3);
+            diem.setLab4(lab4);
+            diem.setAssignment(assignment);
+            diem.setDiemThi(diemThi);
+
+            lstDiem.add(diem);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstDiem;
+    }
+    
+    public Integer nhapDiem(DiemThanhPhan diem) throws Exception{
+        Integer ketQua = -1;
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "UPDATE DIEMTHANHPHAN SET LAB1 = ?, LAB2 = ?, LAB3 = ?, LAB4 = ?, ASSIGNMENT = ?, DIEMTHI = ? WHERE MASV = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setDouble(1, diem.getLab1());
+        ps.setDouble(2, diem.getLab2());
+        ps.setDouble(3, diem.getLab3());
+        ps.setDouble(4, diem.getLab4());
+        ps.setDouble(5, diem.getAssignment());
+        ps.setDouble(6, diem.getDiemThi());
+        ps.setString(7, diem.getMaSV());
+        
+        ketQua = ps.executeUpdate();
+        
+        ps.close();
+        connection.close();
+        return ketQua;
     }
 }

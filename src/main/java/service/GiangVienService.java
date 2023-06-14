@@ -2,7 +2,12 @@ package service;
 
 import java.util.List;
 import model.CanBo;
+import model.ChuyenNganh;
+import model.DiemThanhPhan;
 import model.GiangVien;
+import model.Lich;
+import model.LopHoc;
+import model.MonHoc;
 import repository.DAO_GiangVien;
 
 /**
@@ -33,11 +38,141 @@ public class GiangVienService {
         }
     }
     
+    //Lấy danh sách giảng viên theo mã (Đăng nhập)
     public GiangVien getByMaGV(String maGV){
         try {
             return giangVienRepo.getByMaGV(maGV).get(0);
         } catch (Exception e) {
             return null;
+        }
+    }
+    
+    //Lấy danh sách lịch học 7 ngày
+    public List<Lich> getLichHoc7(String ma){
+        try {
+            return giangVienRepo.getLichHoc7(ma);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //Lấy danh sách lịch học 14 ngày
+    public List<Lich> getLichHoc14(String ma){
+        try {
+            return giangVienRepo.getLichHoc14(ma);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //Lấy danh sách lịch học 30 ngày
+    public List<Lich> getLichHoc30(String ma){
+        try {
+            return giangVienRepo.getLichHoc30(ma);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //Lấy danh sách chuyên ngành
+    public List<ChuyenNganh> getAllChuyenNganh(){
+        try {
+            return giangVienRepo.getAllChuyenNganh();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Lấy danh sách môn học
+    public List<MonHoc> getAllMonHoc(){
+        try {
+            return giangVienRepo.getAllMonHoc();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public List<LopHoc> getAllLopHoc(){
+        try {
+            return giangVienRepo.getAllLopHoc();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    // Lấy danh sách điểm
+    public List<DiemThanhPhan> getDiemThanhPhan(){
+        try {
+            return giangVienRepo.getDiemThanhPhan();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Lấy danh sách chuyên ngành theo năm
+    public List<ChuyenNganh> getChuyenNganhTheoNam(int nam){
+        try {
+            return giangVienRepo.getChuyenNganhTheoNam(nam);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Lấy danh sách chuyên ngành theo mùa
+    public List<ChuyenNganh> getChuyenNganhTheoMua(String mua){
+        try {
+            return giangVienRepo.getChuyenNganhTheoMua(mua);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //Lấy danh sách môn học theo chuyên ngành
+    public List<MonHoc> getMonHocTheoChuyenNganh(String maCN){
+        try {
+            return giangVienRepo.getMonHocTheoChuyenNganh(maCN);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Lấy danh sách lớp học theo môn học
+    public List<LopHoc> getLopHocTheoMonHoc(String maMH){
+        try {
+            return giangVienRepo.getLopHocTheoMonHoc(maMH);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Lấy danh sách sinh viên theo mã để nhập điểm
+    public List<DiemThanhPhan> getSinhVienDeNhapDiem(String ma){
+        try {
+            return giangVienRepo.getSinhVienDeNhapDiem(ma);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Lấy danh sách điểm theo mã lớp học và mã giảng viên
+    public List<DiemThanhPhan> getDiemTheoMaLH_MaGV(String maLH, String maGV){
+        try {
+            return giangVienRepo.getDiemTheoMaLH_MaGV(maLH, maGV);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Nhập điểm theo mã
+    public Integer nhapDiem(DiemThanhPhan diem){
+        try {
+            return giangVienRepo.nhapDiem(diem);
+        } catch (Exception e) {
+            return 0;
         }
     }
 }

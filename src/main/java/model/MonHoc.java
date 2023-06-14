@@ -95,7 +95,7 @@ public class MonHoc {
 
     @Override
     public String toString() {
-        return "MonHoc{" + "maMonHoc=" + maMonHoc + ", maChuyenNganh=" + maChuyenNganh + ", maLopHoc=" + maLopHoc + ", tenMonHoc=" + tenMonHoc + ", soTinChi=" + soTinChi + ", nam=" + nam + ", mua=" + mua + '}';
+        return tenMonHoc;
     }
     
 }

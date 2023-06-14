@@ -62,10 +62,7 @@ public class ChuyenNganh {
 
     @Override
     public String toString() {
-        return "ChuyenNganh{" + "maChuyenNganh=" + maChuyenNganh + ", tenChuyenNganh=" + tenChuyenNganh + ", coSo=" + coSo + ", thoiGianDaoTao=" + thoiGianDaoTao + '}';
+        return tenChuyenNganh;
     }
 
-    
-  
-    
 }

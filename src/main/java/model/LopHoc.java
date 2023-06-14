@@ -73,8 +73,7 @@ public class LopHoc {
 
     @Override
     public String toString() {
-        return "LopHoc{" + "maLopHoc=" + maLopHoc + ", maChuyenNganh=" + maChuyenNganh + ", tenLopHoc=" + tenLopHoc + ", nam=" + nam + ", mua=" + mua + '}';
+        return tenLopHoc;
     }
-    
     
 }

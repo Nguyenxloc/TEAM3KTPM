@@ -1,20 +1,26 @@
 package com.view.form_giangvien;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Lich;
+import service.GiangVienService;
+import ultilities.UserInfo;
 
 /**
  *
  * @author Hello
  */
 public class LichTrinhForm extends javax.swing.JPanel {
-    
+
     String dir = null;
-    List<Lich> lstLichHoc = new ArrayList<>();
     DefaultTableModel model = new DefaultTableModel();
+    GiangVienService giangVienSerVice = new GiangVienService();
+
     /**
      * Creates new form LichHoc_LichThiForm
      */
@@ -22,20 +28,48 @@ public class LichTrinhForm extends javax.swing.JPanel {
         String path = "src\\main\\java\\com\\view\\icon\\";
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();
-        
+
         dir = absolutePath;
         initComponents();
-        
-        fillToTableLichHoc();
+
+        loadLichHoc();
+        cbbThoiGian.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadLichHoc();
+            }
+        });
     }
 
-    public void fillToTableLichHoc(){
-        model.setRowCount(0);
-        for (Lich lichHoc : lstLichHoc) {
-            
+    public void loadLichHoc() {
+        List<Lich> lstLichHoc7 = giangVienSerVice.getLichHoc7(UserInfo.maGV);
+        List<Lich> lstLichHoc14 = giangVienSerVice.getLichHoc14(UserInfo.maGV);
+        List<Lich> lstLichHoc30 = giangVienSerVice.getLichHoc30(UserInfo.maGV);
+
+        if (cbbThoiGian.getSelectedIndex() == 0) {
+            model = (DefaultTableModel) tblLichDay.getModel();
+            int count = 1;
+            model.setRowCount(0);
+            for (Lich lich : lstLichHoc7) {
+                model.addRow(new Object[]{count++, lich.getNgayHoc(), lich.getMaPhongHoc(), lich.getMaMonHoc(), lich.getMaLopHoc(), lich.getMaGiangVien(), lich.getThoiGian()});
+            }
+        } else if (cbbThoiGian.getSelectedIndex() == 1) {
+            model = (DefaultTableModel) tblLichDay.getModel();
+            int count = 1;
+            model.setRowCount(0);
+            for (Lich lich : lstLichHoc14) {
+                model.addRow(new Object[]{count++, lich.getNgayHoc(), lich.getMaPhongHoc(), lich.getMaMonHoc(), lich.getMaLopHoc(), lich.getMaGiangVien(), lich.getThoiGian()});
+            }
+        } else if (cbbThoiGian.getSelectedIndex() == 2) {
+            model = (DefaultTableModel) tblLichDay.getModel();
+            int count = 1;
+            model.setRowCount(0);
+            for (Lich lich : lstLichHoc30) {
+                model.addRow(new Object[]{count++, lich.getNgayHoc(), lich.getMaPhongHoc(), lich.getMaMonHoc(), lich.getMaLopHoc(), lich.getMaGiangVien(), lich.getThoiGian()});
+            }
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +83,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
         jPanel20 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cbbThoiGian = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -68,7 +102,12 @@ public class LichTrinhForm extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Thời gian");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7 ngày tới", "14 ngày tới", "30 ngày tới" }));
+        cbbThoiGian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7 ngày tới", "14 ngày tới", "30 ngày tới" }));
+        cbbThoiGian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbbThoiGianMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -77,7 +116,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -87,7 +126,7 @@ public class LichTrinhForm extends javax.swing.JPanel {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbbThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -248,9 +287,14 @@ public class LichTrinhForm extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbbThoiGianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbThoiGianMouseClicked
+        // show
+//        loadLichHoc();
+    }//GEN-LAST:event_cbbThoiGianMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> cbbThoiGian;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

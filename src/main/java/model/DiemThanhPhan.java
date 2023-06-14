@@ -153,5 +153,17 @@ public class DiemThanhPhan {
         return "DiemThanhPhan{" + "maSV=" + maSV + ", maMonHoc=" + maMonHoc + ", maNganhHoc=" + maNganhHoc + ", maLopHoc=" + maLopHoc + ", mua=" + mua + ", nam=" + nam + ", lab1=" + lab1 + ", lab2=" + lab2 + ", lab3=" + lab3 + ", lab4=" + lab4 + ", assignment=" + assignment + ", diemThi=" + diemThi + '}';
     }
     
+    public Double getDiemTongKet(){
+        Double diemTK = (diemThi*50/100) + (lab1*10/100) + (lab2*10/100) + (lab3*10/100) + (lab4*10/100) + (assignment*10/100);
+        return diemTK;
+    }
+    
+    public String getTrangThai(){
+        if(getDiemTongKet()>=5){
+            return "Pass";
+        }else{
+            return "Fail";
+        }
+    }
     
 }

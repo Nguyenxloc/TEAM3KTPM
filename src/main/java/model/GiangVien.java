@@ -140,8 +140,7 @@ public class GiangVien {
 
     @Override
     public String toString() {
-        return "GiangVien{" + "matKhau=" + matKhau + ", vaiTro=" + vaiTro + ", anh=" + anh + ", numOrder=" + numOrder + ", maGV=" + maGV + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", soDienThoai=" + soDienThoai + ", diaChi=" + diaChi + ", ngayVaoLam=" + ngayVaoLam + '}';
+        return hoTen;
     }
-
     
 }
