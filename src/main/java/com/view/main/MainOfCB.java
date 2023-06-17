@@ -65,7 +65,6 @@ public class MainOfCB extends javax.swing.JFrame {
         formMonHoc = new Form_MonHoc();
         formLopHoc = new Form_LopHoc();
 
-        
         menuOfCB1.initMoving(MainOfCB.this);
         menuOfCB1.addEventMenuSelected(new EventMenuSelected() {
             @Override

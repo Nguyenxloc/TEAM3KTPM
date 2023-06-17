@@ -74,8 +74,8 @@ public class DAO_SinhVien{
       ResultSet rs = DBConnection.getDataFromQuery(sql, args);
       while (rs.next()) {      
         System.out.println(rs.getLong(4));
-        _lstSV.add(new SinhVien(rs.getString(1),rs.getString(2), rs.getString(3), rs.getByte(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getDate(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getInt(14), rs.getString(15), rs.getDate(16))
-        );
+//        _lstSV.add(new SinhVien(rs.getString(1),rs.getString(2), rs.getString(3), rs.getByte(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getDate(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getInt(14), rs.getString(15), rs.getDate(16))
+//        );
       }
       return _lstSV;
     } catch (SQLException ex) {

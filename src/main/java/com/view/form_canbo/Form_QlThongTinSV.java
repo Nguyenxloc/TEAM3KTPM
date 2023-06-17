@@ -35,7 +35,6 @@ public class Form_QlThongTinSV extends javax.swing.JPanel {
         for (ChuyenNganh cnOB : lstTenCN) {
            cnCBOModel.addElement(cnOB.getTenChuyenNganh());
         }
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.

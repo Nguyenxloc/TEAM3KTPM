@@ -20,10 +20,10 @@ public class DAO_MonHoc {
     final String DELETE_SQL = "DELETE FROM [dbo].[MONHOC] WHERE [MAMONHOC] = ?";
     final String SELECT_BY_SQL = "SELECT * FROM [dbo].[MONHOC] WHERE [MAMONHOC] = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[MONHOC]";
-    private MonHoc monHoc;
-    private ArrayList<MonHoc> lstMH;
 
     public DAO_MonHoc() {
+        MonHoc monHoc = new MonHoc();
+        ArrayList<MonHoc> lstMH = new ArrayList<>();
         lstMH = new ArrayList<>();
     }
 
@@ -32,11 +32,15 @@ public class DAO_MonHoc {
     }
 
     public MonHoc update(MonHoc mh) {
+        MonHoc monHoc = new MonHoc();
+        ArrayList<MonHoc> lstMH = new ArrayList<>();
         DBConnection.ExcuteDungna(UPDATE_SQL, monHoc.getMaMonHoc(), monHoc.getMaChuyenNganh(), monHoc.getMaLopHoc(), monHoc.getTenMonHoc(), monHoc.getSoTinChi(), monHoc.getNam(), monHoc.getMua());
         return mh;
     }
 
     public MonHoc save(MonHoc mh) {
+        MonHoc monHoc = new MonHoc();
+        ArrayList<MonHoc> lstMH = new ArrayList<>();
         DBConnection.ExcuteDungna(INSERT_SQL, monHoc.getMaMonHoc(), monHoc.getMaChuyenNganh(), monHoc.getMaLopHoc(), monHoc.getTenMonHoc(), monHoc.getSoTinChi(), monHoc.getNam(), monHoc.getMua());
         return mh;
     }
@@ -51,13 +55,13 @@ public class DAO_MonHoc {
         DBConnection.ExcuteDungna(DELETE_SQL, id);
         return id;
     }
-    
 
     private ArrayList<MonHoc> getSelectSql(String sql, Object... args) {
+        MonHoc monHoc = new MonHoc();
+        ArrayList<MonHoc> lstMH = new ArrayList<>();
         try {
             ResultSet rs = DBConnection.getDataFromQuery(sql, args);
             while (rs.next()) {
-                System.out.println(rs.getLong(4));
                 lstMH.add(new MonHoc(rs.getString("MAMONHOC"), rs.getString("MACHUYENNGANH"), rs.getString("MALOPHOC"), rs.getString("TENMONHOC"), rs.getInt("SOTINCHI"), rs.getInt("NAM"), rs.getString("MUA")));
             }
             return lstMH;

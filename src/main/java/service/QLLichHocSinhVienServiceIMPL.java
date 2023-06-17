@@ -18,7 +18,8 @@ public class QLLichHocSinhVienServiceIMPL implements QLLichHocSinhVienService{
 
     @Override
     public ArrayList<LichHocSinhVien> getAll() {
-        return dAO_Lich.getAll();
+//        return dAO_Lich.getAll();
+    return null;
     }
 
     @Override
