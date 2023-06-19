@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.MonHoc;
 import ultilities.DBConnection;
-
+import java.sql.*;
 /**
  *
  * @author ADMIN
@@ -21,6 +21,8 @@ public class DAO_MonHoc {
     final String SELECT_BY_SQL = "SELECT * FROM [dbo].[MONHOC] WHERE [MAMONHOC] = ?";
     final String SELECT_ALL_SQL = "SELECT * FROM [dbo].[MONHOC]";
 
+    private DBConnection dBConnection = new DBConnection();
+    
     public DAO_MonHoc() {
         MonHoc monHoc = new MonHoc();
         ArrayList<MonHoc> lstMH = new ArrayList<>();
@@ -70,4 +72,66 @@ public class DAO_MonHoc {
             throw new RuntimeException();
         }
     }
+    
+    
+    public Boolean update2(String id,MonHoc monHoc){
+        String sql = "update MONHOC set MAMONHOC=?,MACHUYENNGANH=?,MALOPHOC=?,TENMONHOC=?,SOTINCHI=?,MUA=? where NUMORDER=?";
+        try(Connection con = dBConnection.getConnection();
+                PreparedStatement st = con.prepareStatement(sql)) {
+                st.setObject(1, monHoc.getMaMonHoc());
+                st.setObject(2, monHoc.getMaChuyenNganh());
+                st.setObject(3, monHoc.getMaLopHoc());
+                st.setObject(4, monHoc.getTenMonHoc());
+                st.setObject(5, monHoc.getSoTinChi());
+                st.setObject(6, monHoc.getMua());
+                st.setObject(7, id);
+                int result = st.executeUpdate();
+                return result>0;
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public Boolean save2(MonHoc monHoc){
+        String sql = "insert into MONHOC(MAMONHOC,MACHUYENNGANH,MALOPHOC,TENMONHOC,SOTINCHI,MUA) values(?,?,?,?,?,?)";
+        try(Connection con = dBConnection.getConnection();
+                PreparedStatement st = con.prepareStatement(sql)) {              
+                st.setObject(1, monHoc.getMaMonHoc());
+                st.setObject(2, monHoc.getMaChuyenNganh());
+                st.setObject(3, monHoc.getMaLopHoc());
+                st.setObject(4, monHoc.getTenMonHoc());
+                st.setObject(5, monHoc.getSoTinChi());
+                st.setObject(6, monHoc.getMua());
+                int result = st.executeUpdate();
+                return result>0;
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
+    public MonHoc findById2(String id){
+        String sql = "select MAMONHOC,MACHUYENNGANH,MALOPHOC,TENMONHOC,SOTINCHI,MUA from MONHOC where NUMORDER=?";
+        try(Connection con = dBConnection.getConnection();
+                PreparedStatement st = con.prepareStatement(sql)) {
+                st.setObject(1, id);
+                ResultSet rs = st.executeQuery();
+                while (rs.next()) {                
+                   MonHoc monHoc = new MonHoc();
+                   monHoc.setMaMonHoc(rs.getString(1));
+                   monHoc.setMaChuyenNganh(rs.getString(2));
+                   monHoc.setMaLopHoc(rs.getString(3));
+                   monHoc.setTenMonHoc(rs.getString(4));
+                   monHoc.setSoTinChi(rs.getInt(5));
+                   monHoc.setMua(rs.getString(6));
+                   return monHoc;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }

@@ -17,10 +17,10 @@ public class DiemThanhPhan {
     public String maNganhHoc;
     
     public String maLopHoc;
-    
-    public String mua;
-    
+  
     public int nam;
+    
+     public String mua;
     
     public double lab1;
     
@@ -37,13 +37,13 @@ public class DiemThanhPhan {
     public DiemThanhPhan() {
     }
 
-    public DiemThanhPhan(String maSV, String maMonHoc, String maNganhHoc, String maLopHoc, String mua, int nam, double lab1, double lab2, double lab3, double lab4, double assignment, double diemThi) {
+    public DiemThanhPhan(String maSV, String maMonHoc, String maNganhHoc, String maLopHoc, int nam, String mua, double lab1, double lab2, double lab3, double lab4, double assignment, double diemThi) {
         this.maSV = maSV;
         this.maMonHoc = maMonHoc;
         this.maNganhHoc = maNganhHoc;
         this.maLopHoc = maLopHoc;
-        this.mua = mua;
         this.nam = nam;
+        this.mua = mua;
         this.lab1 = lab1;
         this.lab2 = lab2;
         this.lab3 = lab3;
@@ -84,20 +84,20 @@ public class DiemThanhPhan {
         this.maLopHoc = maLopHoc;
     }
 
-    public String getMua() {
-        return mua;
-    }
-
-    public void setMua(String mua) {
-        this.mua = mua;
-    }
-
     public int getNam() {
         return nam;
     }
 
     public void setNam(int nam) {
         this.nam = nam;
+    }
+
+    public String getMua() {
+        return mua;
+    }
+
+    public void setMua(String mua) {
+        this.mua = mua;
     }
 
     public double getLab1() {
@@ -146,7 +146,7 @@ public class DiemThanhPhan {
 
     public void setDiemThi(double diemThi) {
         this.diemThi = diemThi;
-    }
+    }  
 
     @Override
     public String toString() {

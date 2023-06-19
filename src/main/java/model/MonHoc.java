@@ -27,6 +27,16 @@ public class MonHoc {
     public MonHoc() {
     }
 
+    
+    public MonHoc(String maMonHoc, String maChuyenNganh, String maLopHoc, String tenMonHoc, int soTinChi,  String mua) {
+        this.maMonHoc = maMonHoc;
+        this.maChuyenNganh = maChuyenNganh;
+        this.maLopHoc = maLopHoc;
+        this.tenMonHoc = tenMonHoc;
+        this.soTinChi = soTinChi;
+        this.mua = mua;
+    }
+    
     public MonHoc(String maMonHoc, String maChuyenNganh, String maLopHoc, String tenMonHoc, int soTinChi, int nam, String mua) {
         this.maMonHoc = maMonHoc;
         this.maChuyenNganh = maChuyenNganh;

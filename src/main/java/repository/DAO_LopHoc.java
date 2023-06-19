@@ -4,6 +4,8 @@
  */
 package repository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.LopHoc;
@@ -22,7 +24,7 @@ public class DAO_LopHoc {
     
     private LopHoc lopHoc;
     private ArrayList<LopHoc> _lstLopHoc;
-
+    private DBConnection dBConnection = new DBConnection();
     public DAO_LopHoc() {
         _lstLopHoc = new ArrayList<>();
     }
@@ -66,4 +68,25 @@ public class DAO_LopHoc {
             throw new RuntimeException();
         }
     }
+    
+    
+    public Boolean updateLH(String id,LopHoc lopHoc){
+        String sql = "update LOPHOC set TENLOPHOC=?,NAM=?,MUA=? where MALOPHOC=?";
+        try(Connection con = dBConnection.getConnection();
+                PreparedStatement st = con.prepareStatement(sql)) {
+                st.setObject(1, lopHoc.getTenLopHoc());
+                st.setObject(2, lopHoc.getNam());
+                st.setObject(3, lopHoc.getMua());
+                st.setObject(4, id);
+                int result = st.executeUpdate();
+                return result>0;
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        return false;
+    }
+    
 }
+
+
+
