@@ -7,6 +7,7 @@ package com.view.form_canbo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.DVDangKy;
 import model.DichVu;
 import service.CanBoService;
 
@@ -23,8 +24,22 @@ public class Form_DKDichVu extends javax.swing.JPanel {
         initComponents();
         
         loadData();
+        loadData2();
     }
 
+    
+    private void loadData2() {
+         ArrayList<DVDangKy> list = service.getAll3();
+         defaultTableModel = (DefaultTableModel) tblForm2.getModel();
+         defaultTableModel.setRowCount(0);
+         for (DVDangKy o : list) {
+             defaultTableModel.addRow(new Object[]{
+                 o.getMasv(),o.getHoten(),o.getTenDV(),o.getMoTa(),o.getTrangThai()
+             });
+        }
+    }
+    
+    
     private void loadData() {
          ArrayList<DichVu> list = service.getAllDV2023();
          defaultTableModel = (DefaultTableModel) tblForm.getModel();
@@ -58,10 +73,11 @@ public class Form_DKDichVu extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtTrangThai = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblForm2 = new javax.swing.JTable();
+        txtMaSV2 = new javax.swing.JTextField();
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -199,19 +215,31 @@ public class Form_DKDichVu extends javax.swing.JPanel {
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Xác nhận");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblForm2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã sinh viên", "Tên sinh viên", "Tên dịch vụ", "Mô tả", "Phí dịch vụ", "Trạng thái"
+                "Mã sinh viên", "Tên sinh viên", "Tên dịch vụ", "Mô tả", "Trạng thái"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tblForm2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblForm2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblForm2);
+
+        txtMaSV2.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -224,15 +252,18 @@ public class Form_DKDichVu extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(jLabel6)
                         .addGap(54, 54, 54)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMaSV2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(169, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -243,9 +274,11 @@ public class Form_DKDichVu extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtMaSV2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
@@ -309,6 +342,24 @@ public class Form_DKDichVu extends javax.swing.JPanel {
         loadData();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String ma2 = txtMaSV2.getText();
+        String trangThai = txtTrangThai.getText();
+        DVDangKy dVDangKy = new DVDangKy(ma2, trangThai);
+        JOptionPane.showMessageDialog(this, service.suaTT3(ma2, dVDangKy));
+        loadData2();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void tblForm2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblForm2MouseClicked
+        // TODO add your handling code here:
+        int row= tblForm2.getSelectedRow();
+        String ma2 = tblForm2.getValueAt(row, 0).toString();
+        String tthai = tblForm2.getValueAt(row, 4).toString();
+        txtMaSV2.setText(ma2);
+        txtTrangThai.setText(tthai);
+    }//GEN-LAST:event_tblForm2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -326,12 +377,13 @@ public class Form_DKDichVu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tblForm;
+    private javax.swing.JTable tblForm2;
     private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtMaSV2;
     private javax.swing.JTextField txtPhongBan;
     private javax.swing.JTextField txtTen;
+    private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 
     

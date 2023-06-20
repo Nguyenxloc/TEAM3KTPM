@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.CanBo;
 import model.ChuyenNganh;
+import model.DVDangKy;
 import model.DichVu;
 import model.DiemThanhPhan;
 import model.Lich;
@@ -16,6 +17,7 @@ import model.SinhVien;
 import model.ThongTinSV;
 import repository.DAO_CanBoQuanLy;
 import repository.DAO_ChuyenNganh;
+import repository.DAO_DVDK20;
 import repository.DAO_DichVu;
 import repository.DAO_DiemThanhPhan;
 import repository.DAO_Lich;
@@ -41,6 +43,7 @@ public class CanBoService {
     private DAO_DiemThanhPhan diemRepo = new DAO_DiemThanhPhan();
     private DAO_ThongTinSinhVien ttsinhvienRepo = new DAO_ThongTinSinhVien();
     private DAO_DichVu dichVuRepo = new DAO_DichVu();
+    private DAO_DVDK20 dvRepo3 = new DAO_DVDK20();
     
     public Integer xacThucTaiKhoanCanBo(CanBo canBo) throws Exception {
         CanBo maCBCanTim = canBorepo.xacThucTaiKhoanCanBo(canBo.getMaCB());
@@ -353,6 +356,21 @@ public class CanBoService {
              return "Thất bại";
          }
      }
+     
+     /////////DV đã đăng kí////////////
+     public ArrayList<DVDangKy> getAll3(){
+         return dvRepo3.getList3();
+     }
+     
+     
+     public String suaTT3(String masv,DVDangKy dVDangKy){
+         if(dvRepo3.update3(masv, dVDangKy)){
+             return "Thành công";
+         }else{
+             return "Thất bại";
+         }
+     }
+     
      
      
 }
