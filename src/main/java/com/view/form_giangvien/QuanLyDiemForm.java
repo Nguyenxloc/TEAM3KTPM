@@ -216,61 +216,73 @@ public class QuanLyDiemForm extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (cbbChuyenNganh.getSelectedIndex() == 0 && cbbMonHoc.getSelectedIndex() == 0) {
-                    loadTableDiemTheoMaLH_MaGV("LH09");
+                    loadTableDiemTheoMaLH_MaGV("MH07", "LH09");
+                    UserInfo.maMH = "MH07";
                     UserInfo.maLH = "LH09";
                 } else if (cbbChuyenNganh.getSelectedIndex() == 0 && cbbMonHoc.getSelectedIndex() == 1) {
-                    loadTableDiemTheoMaLH_MaGV("LH08");
+                    loadTableDiemTheoMaLH_MaGV("MH08", "LH08");
+                    UserInfo.maMH = "MH08";
                     UserInfo.maLH = "LH08";
                 } else if (cbbChuyenNganh.getSelectedIndex() == 0 && cbbMonHoc.getSelectedIndex() == 2) {
-                    loadTableDiemTheoMaLH_MaGV("LH07");
+                    loadTableDiemTheoMaLH_MaGV("MH09", "LH07");
+                    UserInfo.maMH = "MH09";
                     UserInfo.maLH = "LH07";
                 } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 0) {
                     if (cbbLopHoc.getSelectedIndex() == 0) {
-                        loadTableDiemTheoMaLH_MaGV("LH02");
+                        loadTableDiemTheoMaLH_MaGV("MH01","LH02");
+                        UserInfo.maMH = "MH01";
                         UserInfo.maLH = "LH02";
                     } else if (cbbLopHoc.getSelectedIndex() == 1) {
-                        loadTableDiemTheoMaLH_MaGV("LH03");
+                        loadTableDiemTheoMaLH_MaGV("MH01", "LH03");
+                        UserInfo.maMH = "MH01";
                         UserInfo.maLH = "LH03";
                     }
                 } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 1) {
                     if (cbbLopHoc.getSelectedIndex() == 0) {
-                        loadTableDiemTheoMaLH_MaGV("LH01");
+                        loadTableDiemTheoMaLH_MaGV("MH02", "LH01");
+                        UserInfo.maMH = "MH02";
                         UserInfo.maLH = "LH01";
                     } else if (cbbLopHoc.getSelectedIndex() == 1) {
-                        loadTableDiemTheoMaLH_MaGV("LH02");
+                        loadTableDiemTheoMaLH_MaGV("MH02", "LH02");
+                        UserInfo.maMH = "MH02";
                         UserInfo.maLH = "LH02";
                     }
                 } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 2) {
                     if (cbbLopHoc.getSelectedIndex() == 0) {
-                        loadTableDiemTheoMaLH_MaGV("LH01");
+                        loadTableDiemTheoMaLH_MaGV("MH03", "LH01");
+                        UserInfo.maMH = "MH03";
                         UserInfo.maLH = "LH01";
                     } else if (cbbLopHoc.getSelectedIndex() == 1) {
-                        loadTableDiemTheoMaLH_MaGV("LH02");
+                        loadTableDiemTheoMaLH_MaGV("MH03", "LH02");
+                        UserInfo.maMH = "MH03";
                         UserInfo.maLH = "LH02";
                     }
                 } else if (cbbChuyenNganh.getSelectedIndex() == 2 && cbbMonHoc.getSelectedIndex() == 0) {
-                    loadTableDiemTheoMaLH_MaGV("LH06");
+                    loadTableDiemTheoMaLH_MaGV("MH04", "LH06");
+                    UserInfo.maMH = "MH04";
                     UserInfo.maLH = "LH06";
                 } else if (cbbChuyenNganh.getSelectedIndex() == 2 && cbbMonHoc.getSelectedIndex() == 1) {
-                    loadTableDiemTheoMaLH_MaGV("LH05");
+                    loadTableDiemTheoMaLH_MaGV("MH05", "LH05");
+                    UserInfo.maMH = "MH05";
                     UserInfo.maLH = "LH05";
                 } else if (cbbChuyenNganh.getSelectedIndex() == 2 && cbbMonHoc.getSelectedIndex() == 2) {
-                    loadTableDiemTheoMaLH_MaGV("LH04");
+                    loadTableDiemTheoMaLH_MaGV("MH06", "LH04");
+                    UserInfo.maMH = "MH06";
                     UserInfo.maLH = "LH04";
                 }
             }
         });
     }
 
-    private void loadTableDiemTheoMaLH_MaGV(String maLH){
-        List<DiemThanhPhan> lstDiem = giangVienService.getDiemTheoMaLH_MaGV(maLH, UserInfo.maGV);
+    private void loadTableDiemTheoMaLH_MaGV(String maMH, String maLH) {
+        List<DiemThanhPhan> lstDiem = giangVienService.getDiemTheoMaLH_MaGV(maMH, maLH, UserInfo.maGV);
         model = (DefaultTableModel) tblNhapDiem.getModel();
         model.setRowCount(0);
         for (DiemThanhPhan diem : lstDiem) {
             model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
         }
     }
-    
+
     //Load chuyên ngành lên combobox
     private void loadComboboxChuyenNganh() {
         List<ChuyenNganh> lstChuyenNganh = giangVienService.getAllChuyenNganh();
@@ -748,7 +760,7 @@ public class QuanLyDiemForm extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Nhập điểm thất bại!");
                 }
-                loadTableDiemTheoMaLH_MaGV(UserInfo.maLH);
+                loadTableDiemTheoMaLH_MaGV(UserInfo.maMH, UserInfo.maLH);
             }
         });
         UserInfo.maLH = null;
@@ -767,19 +779,152 @@ public class QuanLyDiemForm extends javax.swing.JPanel {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // Tìm sinh viên theo mã
-//        String maSV = txtMaSV.getText();
-//        List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV);
-//        if (lstDiem == null) {
-//            JOptionPane.showMessageDialog(this, "Lỗi!");
-//        } else if (lstDiem.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Không có dữ liệu");
-//        } else {
-//            model = (DefaultTableModel) tblNhapDiem.getModel();
-//            model.setRowCount(0);
-//            for (DiemThanhPhan diem : lstDiem) {
-//                model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
-//            }
-//        }
+        String maSV = txtMaSV.getText();
+        if (cbbChuyenNganh.getSelectedIndex() == 0 && cbbMonHoc.getSelectedIndex() == 0 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "LTW", "MH07", "LH09");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 0 && cbbMonHoc.getSelectedIndex() == 1 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "LTW", "MH08", "LH08");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 0 && cbbMonHoc.getSelectedIndex() == 2 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "LTW", "MH09", "LH07");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 0 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "PTPM", "MH01", "LH02");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 0 && cbbLopHoc.getSelectedIndex() == 1) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "PTPM", "MH01", "LH03");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 1 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "PTPM", "MH02", "LH01");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 1 && cbbLopHoc.getSelectedIndex() == 1) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "PTPM", "MH02", "LH02");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 2 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "PTPM", "MH03", "LH01");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 1 && cbbMonHoc.getSelectedIndex() == 2 && cbbLopHoc.getSelectedIndex() == 1) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "PTPM", "MH03", "LH02");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 2 && cbbMonHoc.getSelectedIndex() == 0 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "TDH", "MH04", "LH06");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 2 && cbbMonHoc.getSelectedIndex() == 1 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "TDH", "MH05", "LH05");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        } else if (cbbChuyenNganh.getSelectedIndex() == 2 && cbbMonHoc.getSelectedIndex() == 2 && cbbLopHoc.getSelectedIndex() == 0) {
+            List<DiemThanhPhan> lstDiem = giangVienService.getSinhVienDeNhapDiem(maSV, "TDH", "MH06", "LH04");
+            if (lstDiem.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên!");
+                return;
+            } else {
+                model = (DefaultTableModel) tblNhapDiem.getModel();
+                model.setRowCount(0);
+                for (DiemThanhPhan diem : lstDiem) {
+                    model.addRow(new Object[]{diem.getMaSV(), diem.getLab1(), diem.getLab2(), diem.getLab3(), diem.getLab4(), diem.getAssignment(), diem.getDiemThi(), diem.getDiemTongKet(), diem.getTrangThai()});
+                }
+            }
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void tblNhapDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhapDiemMouseClicked
@@ -790,7 +935,7 @@ public class QuanLyDiemForm extends javax.swing.JPanel {
     private void btnSuaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaDiemActionPerformed
         // Sửa điểm
         index = tblNhapDiem.getSelectedRow();
-        if(index==-1){
+        if (index == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sinh viên cần sửa điểm!");
             return;
         }
@@ -808,7 +953,7 @@ public class QuanLyDiemForm extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Sửa điểm thất bại!");
                 }
-                loadTableDiemTheoMaLH_MaGV(UserInfo.maLH);
+                loadTableDiemTheoMaLH_MaGV(UserInfo.maMH, UserInfo.maLH);
             }
         });
         UserInfo.maLH = null;

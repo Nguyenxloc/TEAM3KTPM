@@ -259,7 +259,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 new MainOfSV().setVisible(true);
             }
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class HocPhiSVForm extends javax.swing.JPanel {
-
     private String dir = null;
 
     public HocPhiSVForm() {

@@ -609,9 +609,12 @@ public class DAO_GiangVien {
         List<DiemThanhPhan> lstDiem = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT MASV, MACHUYENNGANH, MAMONHOC, MALOPHOC, NAM, MUA, LAB1, LAB2, LAB3, LAB4, ASSIGNMENT, DIEMTHI FROM dbo.DIEMTHANHPHAN \n" +
-                    "WHERE MASV = 'sv1' AND MACHUYENNGANH = 'PTPM' AND MAMONHOC = 'MH01' AND MALOPHOC = 'LH02'";
+                    "WHERE MASV = ? AND MACHUYENNGANH = ? AND MAMONHOC = ? AND MALOPHOC = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, maSv);
+        ps.setString(2, maCn);
+        ps.setString(3, maMh);
+        ps.setString(4, maLh);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             String maSV = rs.getString("MASV");
@@ -629,6 +632,11 @@ public class DAO_GiangVien {
 
             DiemThanhPhan diem = new DiemThanhPhan();
             diem.setMaSV(maSV);
+            diem.setMaNganhHoc(maCN);
+            diem.setMaMonHoc(maMH);
+            diem.setMaLopHoc(maLH);
+            diem.setNam(nam);
+            diem.setMua(mua);
             diem.setLab1(lab1);
             diem.setLab2(lab2);
             diem.setLab3(lab3);
@@ -644,17 +652,18 @@ public class DAO_GiangVien {
         return lstDiem;
     }
 
-    public List<DiemThanhPhan> getDiemTheoMaLH_MaGV(String maLh, String maGV) throws Exception {
+    public List<DiemThanhPhan> getDiemTheoMaLH_MaGV(String maMh, String maLh, String maGV) throws Exception {
         List<DiemThanhPhan> lstDiem = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
         String sql = "SELECT D.MASV AS 'MASV', D.MACHUYENNGANH AS 'MACHUYENNGANH', D.MAMONHOC AS 'MAMONHOC', D.MALOPHOC AS 'MALOPHOC', D.NAM AS 'NAM', D.MUA AS 'MUA' , D.LAB1 AS 'LAB1', D.LAB2 AS 'LAB2', D.LAB3 AS 'LAB3', D.LAB4 AS 'LAB4', D.ASSIGNMENT AS 'ASSIGNMENT', D.DIEMTHI AS 'DIEMTHI' FROM dbo.DIEMTHANHPHAN D JOIN dbo.LOPHOC LH\n" +
                     "ON LH.MALOPHOC = D.MALOPHOC JOIN dbo.LICH L\n" +
                     "ON L.MALOPHOC = LH.MALOPHOC\n" +
-                    "WHERE LH.MALOPHOC = ? AND L.MAGIANGVIEN = ?\n" +
+                    "WHERE D.MAMONHOC = ? AND LH.MALOPHOC = ? AND L.MAGIANGVIEN = ?\n" +
                     "GROUP BY D.MASV, D.MACHUYENNGANH, D.MAMONHOC, D.MALOPHOC, D.NAM, D.MUA, D.LAB1, D.LAB2, D.LAB3, D.LAB4, D.ASSIGNMENT, D.DIEMTHI";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, maLh);
-        ps.setString(2, maGV);
+        ps.setString(1, maMh);
+        ps.setString(2, maLh);
+        ps.setString(3, maGV);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             String maSV = rs.getString("MASV");

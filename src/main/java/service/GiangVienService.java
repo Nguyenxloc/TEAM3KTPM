@@ -150,18 +150,18 @@ public class GiangVienService {
     }
     
     //Lấy danh sách sinh viên theo mã để nhập điểm
-//    public List<DiemThanhPhan> getSinhVienDeNhapDiem(String ma){
-//        try {
-//            return giangVienRepo.getSinhVienDeNhapDiem(ma);
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
+    public List<DiemThanhPhan> getSinhVienDeNhapDiem(String maSV, String maCN, String maMH, String maLH){
+        try {
+            return giangVienRepo.getSinhVienDeNhapDiem(maSV, maCN, maMH, maLH);
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
     //Lấy danh sách điểm theo mã lớp học và mã giảng viên
-    public List<DiemThanhPhan> getDiemTheoMaLH_MaGV(String maLH, String maGV){
+    public List<DiemThanhPhan> getDiemTheoMaLH_MaGV(String maMH, String maLH, String maGV){
         try {
-            return giangVienRepo.getDiemTheoMaLH_MaGV(maLH, maGV);
+            return giangVienRepo.getDiemTheoMaLH_MaGV(maMH, maLH, maGV);
         } catch (Exception e) {
             return null;
         }
