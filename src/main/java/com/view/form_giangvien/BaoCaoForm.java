@@ -1,6 +1,19 @@
 package com.view.form_giangvien;
 
+import com.view.main.MessageFrame;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.BaoCao;
+import model.LopHoc;
+import model.MonHoc;
+import service.GiangVienService;
+import ultilities.UserInfo;
 
 /**
  *
@@ -8,16 +21,172 @@ import java.awt.Color;
  */
 public class BaoCaoForm extends javax.swing.JPanel {
 
+    DefaultTableModel model = new DefaultTableModel();
+    DefaultComboBoxModel<MonHoc> modelMonHoc = new DefaultComboBoxModel<MonHoc>();
+    DefaultComboBoxModel<LopHoc> modelLopHoc = new DefaultComboBoxModel<LopHoc>();
+    GiangVienService giangVienService = new GiangVienService();
+
     /**
      * Creates new form BaoCaoForm
      */
     public BaoCaoForm() {
         initComponents();
-        
+
         Color ivory = new Color(255, 255, 255);
         tblLichSuBaoCao.setOpaque(true);
         tblLichSuBaoCao.setFillsViewportHeight(true);
         tblLichSuBaoCao.setBackground(ivory);
+
+        loadComboboxMonHoc();
+
+        cbbMonHoc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (cbbMonHoc.getSelectedIndex() == 0) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH01");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 1) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH02");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 2) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH03");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 3) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH04");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 4) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH05");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 5) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH06");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 6) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH07");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 7) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH08");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                } else if (cbbMonHoc.getSelectedIndex() == 8) {
+                    List<LopHoc> lstLopHoc = giangVienService.getLopHocTheoMonHoc("MH09");
+                    cbbLopHoc.setModel((ComboBoxModel) modelLopHoc);
+                    modelLopHoc.removeAllElements();
+                    for (LopHoc lopHoc : lstLopHoc) {
+                        modelLopHoc.addElement(lopHoc);
+                    }
+                }
+            }
+        });
+
+        LoadTableLichSuBaoCao();
+    }
+
+    private void LoadTableLichSuBaoCao() {
+        List<BaoCao> lstBaoCao = giangVienService.getLichSuBaoCaoTheoMaGV(UserInfo.maGV);
+        model = (DefaultTableModel) tblLichSuBaoCao.getModel();
+        model.setRowCount(0);
+        int count = 1;
+        for (BaoCao baoCao : lstBaoCao) {
+            model.addRow(new Object[]{count++, baoCao.getMaGV(), baoCao.getMaMonHoc(), baoCao.getMaLopHoc(), baoCao.getTieuDe(), baoCao.getNoiDung()});
+        }
+    }
+
+    private void loadComboboxMonHoc() {
+        List<MonHoc> lstMonHoc = giangVienService.getAllMonHoc();
+        cbbMonHoc.setModel((ComboBoxModel) modelMonHoc);
+        modelMonHoc.removeAllElements();
+        for (MonHoc monHoc : lstMonHoc) {
+            modelMonHoc.addElement(monHoc);
+        }
+    }
+
+    private void ClearForm() {
+        txtMaGV.setText("");
+        txtTieuDe.setText("");
+        txtNoiDung.setText("");
+        cbbMonHoc.setSelectedIndex(0);
+        cbbLopHoc.setSelectedIndex(0);
+    }
+
+    private BaoCao addBaoCao() {
+        String maGV = txtMaGV.getText();
+        String tieuDe = txtTieuDe.getText();
+        String noiDung = txtNoiDung.getText();
+
+        BaoCao baoCao = new BaoCao();
+        baoCao.setMaGV(maGV);
+        baoCao.setTieuDe(tieuDe);
+        baoCao.setNoiDung(noiDung);
+        if (cbbMonHoc.getSelectedIndex() == 0 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH01");
+            baoCao.setMaLopHoc("LH02");
+        } else if (cbbMonHoc.getSelectedIndex() == 0 && cbbLopHoc.getSelectedIndex() == 1) {
+            baoCao.setMaMonHoc("MH01");
+            baoCao.setMaLopHoc("LH03");
+        } else if (cbbMonHoc.getSelectedIndex() == 1 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH02");
+            baoCao.setMaLopHoc("LH01");
+        } else if (cbbMonHoc.getSelectedIndex() == 1 && cbbLopHoc.getSelectedIndex() == 1) {
+            baoCao.setMaMonHoc("MH02");
+            baoCao.setMaLopHoc("LH02");
+        } else if (cbbMonHoc.getSelectedIndex() == 2 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH03");
+            baoCao.setMaLopHoc("LH01");
+        } else if (cbbMonHoc.getSelectedIndex() == 2 && cbbLopHoc.getSelectedIndex() == 1) {
+            baoCao.setMaMonHoc("MH03");
+            baoCao.setMaLopHoc("LH02");
+        } else if (cbbMonHoc.getSelectedIndex() == 3 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH04");
+            baoCao.setMaLopHoc("LH06");
+        } else if (cbbMonHoc.getSelectedIndex() == 4 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH05");
+            baoCao.setMaLopHoc("LH05");
+        } else if (cbbMonHoc.getSelectedIndex() == 5 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH06");
+            baoCao.setMaLopHoc("LH04");
+        } else if (cbbMonHoc.getSelectedIndex() == 6 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH07");
+            baoCao.setMaLopHoc("LH09");
+        } else if (cbbMonHoc.getSelectedIndex() == 7 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH08");
+            baoCao.setMaLopHoc("LH08");
+        } else if (cbbMonHoc.getSelectedIndex() == 8 && cbbLopHoc.getSelectedIndex() == 0) {
+            baoCao.setMaMonHoc("MH09");
+            baoCao.setMaLopHoc("LH07");
+        }
+
+        return baoCao;
     }
 
     /**
@@ -59,10 +228,6 @@ public class BaoCaoForm extends javax.swing.JPanel {
         lblMonHoc.setText("Môn dạy: ");
 
         lblLopHoc.setText("Lớp dạy: ");
-
-        cbbMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COM108", "MOB1014", "SOF102" }));
-
-        cbbLopHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT18201", "IT18202", "IT18203", "IT18204" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -113,8 +278,18 @@ public class BaoCaoForm extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         btnGui.setText("Gửi");
+        btnGui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuiActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         txtNoiDung.setColumns(20);
         txtNoiDung.setRows(5);
@@ -201,9 +376,17 @@ public class BaoCaoForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "STT", "Môn ", "Lớp", "Ghi chú"
+                "STT", "Mã giảng viên", "Môn", "Lớp", "Tiêu đề ", "Nội dung"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblLichSuBaoCao);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -253,6 +436,66 @@ public class BaoCaoForm extends javax.swing.JPanel {
             .addComponent(jTabbedPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // clearForm
+        ClearForm();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
+        // gửi báo cáo
+        if (txtMaGV.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập vào mã giảng viên!");
+            txtMaGV.requestFocus();
+            return;
+        }
+        if (txtTieuDe.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập vào mã giảng viên!");
+            txtTieuDe.requestFocus();
+            return;
+        }
+        if (txtNoiDung.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập vào mã giảng viên!");
+            txtNoiDung.requestFocus();
+            return;
+        }
+        BaoCao baoCao = addBaoCao();
+        int ketQua = giangVienService.GuiBaoCao(baoCao);
+        if (ketQua > -1) {
+            MessageFrame mess = new MessageFrame();
+            mess.show();
+            mess.setMessage("Gửi báo cáo thành công");
+            mess.setButtonCancel(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mess.dispose();
+                }
+            });
+            mess.setButtonOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mess.dispose();
+                }
+            });
+        } else {
+            MessageFrame mess = new MessageFrame();
+            mess.show();
+            mess.setMessage("Gửi báo cáo thất bại!");
+            mess.setButtonCancel(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mess.dispose();
+                }
+            });
+            mess.setButtonOK(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    mess.dispose();
+                }
+            });
+        }
+        LoadTableLichSuBaoCao();
+    }//GEN-LAST:event_btnGuiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

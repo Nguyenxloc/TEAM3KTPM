@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import model.BaoCao;
 import model.CanBo;
 import model.ChuyenNganh;
 import model.DiemThanhPhan;
@@ -173,6 +174,33 @@ public class GiangVienService {
             return giangVienRepo.nhapDiem(diem);
         } catch (Exception e) {
             return 0;
+        }
+    }
+    
+    //Lấy ra mã lớp học theo tên lớp học
+    public MonHoc getMaMHByTenMH(String ten){
+        try {
+            return giangVienRepo.getMaMHByTenMH(ten);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //Gửi báo cáo
+    public Integer GuiBaoCao(BaoCao baoCao){
+        try {
+            return giangVienRepo.GuiBaoCao(baoCao);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    //Lấy danh sách lịch sử báo cáo
+    public List<BaoCao> getLichSuBaoCaoTheoMaGV(String maGV){
+        try {
+            return giangVienRepo.getLichSuBaoCaoTheoMaGV(maGV);
+        } catch (Exception e) {
+            return null;
         }
     }
 }

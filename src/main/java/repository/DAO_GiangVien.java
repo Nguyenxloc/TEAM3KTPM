@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.BaoCao;
 import model.ChuyenNganh;
 import model.DiemThanhPhan;
 import model.GiangVien;
@@ -412,7 +413,8 @@ public class DAO_GiangVien {
     public List<MonHoc> getAllMonHoc() throws Exception {
         List<MonHoc> lstMonHoc = new ArrayList<>();
         Connection connection = DBConnectorGV.getConnection();
-        String sql = "SELECT MAMONHOC, TENMONHOC, SOTINCHI, NAM, MUA FROM dbo.MONHOC";
+        String sql = "SELECT MAMONHOC, TENMONHOC, SOTINCHI, NAM, MUA FROM dbo.MONHOC\n" +
+                    "GROUP BY MAMONHOC, TENMONHOC, SOTINCHI, NAM, MUA";
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -719,5 +721,80 @@ public class DAO_GiangVien {
         ps.close();
         connection.close();
         return ketQua;
+    }
+    
+    //Lấy ra mã lớp học theo tên lớp học
+    public MonHoc getMaMHByTenMH(String tenMH) throws Exception{
+        MonHoc monHoc = new MonHoc();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT MAMONHOC FROM dbo.MONHOC WHERE TENMONHOC = ?\n" +
+                    "GROUP BY MAMONHOC";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, tenMH);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            String ma = rs.getString("MAMONHOC");
+            monHoc.setMaMonHoc(ma);
+            System.out.println("Get Mã môn học: "+ monHoc);
+        }
+        return monHoc;
+    }
+    
+    public Integer GuiBaoCao(BaoCao baoCao) throws Exception{
+        Integer ketQua = -1;
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "INSERT INTO BAOCAO (TIEUDE, NOIDUNG, MAMONHOC, MALOPHOC, MAGV) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, baoCao.getTieuDe());
+        ps.setString(2, baoCao.getNoiDung());
+        ps.setString(3, baoCao.getMaMonHoc());
+        ps.setString(4, baoCao.getMaLopHoc());
+        ps.setString(5, baoCao.getMaGV());
+        
+        ketQua = ps.executeUpdate();
+        ps.close();
+        connection.close();
+        return ketQua;
+    }
+    
+    public List<BaoCao> getLichSuBaoCaoTheoMaGV(String maGV) throws Exception{
+        List<BaoCao> lstBaoCao = new ArrayList<>();
+        Connection connection = DBConnectorGV.getConnection();
+        String sql = "SELECT BC.MAGV AS 'MAGV', MH.MAMONHOC AS 'MAMONHOC', MH.TENMONHOC AS 'TENMONHOC', LH.MALOPHOC AS 'MALOPHOC', LH.TENLOPHOC AS 'TENLOPHOC', TIEUDE AS 'TIEUDE', NOIDUNG AS 'NOIDUNG' FROM dbo.BAOCAO BC JOIN dbo.MONHOC MH\n" +
+                    "ON MH.MAMONHOC = BC.MAMONHOC JOIN dbo.LOPHOC LH\n" +
+                    "ON LH.MALOPHOC = MH.MALOPHOC\n" +
+                    "WHERE BC.MAGV = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, maGV);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            String maGv = rs.getString("MAGV");
+            String maMH = rs.getString("MAMONHOC");
+            String tenMH = rs.getString("TENMONHOC");
+            String maLH = rs.getString("MALOPHOC");
+            String tenLH = rs.getString("TENLOPHOC");
+            String tieuDe = rs.getString("TIEUDE");
+            String noiDung = rs.getString("NOIDUNG");
+            
+            MonHoc monHoc = new MonHoc();
+            monHoc.setMaMonHoc(maMH);
+            monHoc.setTenMonHoc(tenMH);
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setMaLopHoc(maLH);
+            lopHoc.setTenLopHoc(tenLH);
+            
+            BaoCao baoCao = new BaoCao();
+            baoCao.setMaGV(maGv);
+            baoCao.setMaMonHoc(monHoc+"");
+            baoCao.setMaLopHoc(lopHoc+"");
+            baoCao.setTieuDe(tieuDe);
+            baoCao.setNoiDung(noiDung);
+            
+            lstBaoCao.add(baoCao);
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return lstBaoCao;
     }
 }
