@@ -26,9 +26,9 @@ public class WalletForm extends javax.swing.JPanel {
         card2.setColor2(new java.awt.Color(167, 94, 236));
         card3.setColor1(new java.awt.Color(241, 208, 62));
         card3.setColor2(new java.awt.Color(211, 184, 61));
-        card1.setData(new Model_Card(new ImageIcon(dir + "stock.png"), "Số dư ví học phí", "200000 VNĐ", ""));
-        card2.setData(new Model_Card(new ImageIcon(dir + "profit.png"), "Số dư ví học lại", "15000 VNĐ", ""));
-        card3.setData(new Model_Card(new ImageIcon(dir + "flag.png"), "Khác", "300000 VNĐ", ""));
+        card1.setData(new Model_Card(new ImageIcon(dir + "stock.png"), "Số tiền đã thu", "2000000000 VNĐ", ""));
+        card2.setData(new Model_Card(new ImageIcon(dir + "profit.png"), "Số tiền còn lại phải thu", "2000000 VNĐ", ""));
+        card3.setData(new Model_Card(new ImageIcon(dir + "flag.png"), "Khác", "0 VNĐ", ""));
         //  add row table
         spTable.setVerticalScrollBar(new ScrollBar());
         spTable.getVerticalScrollBar().setBackground(Color.WHITE);
@@ -83,11 +83,11 @@ public class WalletForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Mã SV", "Số Tiền", "Thời Gian", "Nội Dung", "Chú Thích "
+                "Mã Hóa Đơn", "Họ tên", "Mã SV", "Số Tiền", "Thời Gian", "Nội Dung", "Chú Thích "
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

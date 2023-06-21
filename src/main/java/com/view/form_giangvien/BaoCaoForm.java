@@ -4,6 +4,7 @@ import com.view.main.MessageFrame;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -108,7 +109,7 @@ public class BaoCaoForm extends javax.swing.JPanel {
                 }
             }
         });
-
+        
         LoadTableLichSuBaoCao();
     }
 

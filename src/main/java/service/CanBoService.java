@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -250,6 +251,12 @@ public class CanBoService {
         return lstLichFull;
     }
 
+    public ArrayList<LichFull> selectLichFullByMultipleCondition(String maSv, String hoTenSv, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String hoTenGV, String tenMonHoc, Date ngayHoc,String  thoiGian, String loaiLich){
+        ArrayList<LichFull> lstLichFull = new ArrayList<>();
+        lstLichFull =  lichFullRepo.selectByMultipleCondition(maSv, hoTenSv, maMonHoc, maLopHoc, maPhongHoc, maGiangVien, hoTenGV, tenMonHoc, ngayHoc,thoiGian, loaiLich);
+        return lstLichFull;
+    }
+    
     public Lich selectLichFullByIdSV(String id) {
         Lich lh = new Lich();
         lh = lichRepo.findByIdSV(id);

@@ -4,6 +4,8 @@
  */
 package com.view.form_canbo;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +31,18 @@ public class FormLichHoc extends javax.swing.JPanel {
     GiangVienService gvService = new GiangVienService();
     int count = -1;
     ArrayList<LichFull> lstLichFull = new ArrayList<>();
+
+    ArrayList<LopHoc> lstLopHoc = new ArrayList<>();
+    ArrayList<MonHoc> lstMonHoc = new ArrayList<>();
+    ArrayList<PhongHoc> lstPhongHoc = new ArrayList<>();
+    ArrayList<String> lstNgayHoc = new ArrayList<>();
+    ArrayList<String> lstThoiGianHoc = new ArrayList<>();
+
+    ArrayList<LopHoc> lstLopThi = new ArrayList<>();
+    ArrayList<MonHoc> lstMonThi = new ArrayList<>();
+    ArrayList<PhongHoc> lstPhongThi = new ArrayList<>();
+    ArrayList<String> lstNgayThi = new ArrayList<>();
+    ArrayList<String> lstThoiGianThi = new ArrayList<>();
 
     /**
      * Creates new form FormLichHoc
@@ -96,11 +110,11 @@ public class FormLichHoc extends javax.swing.JPanel {
         DefaultComboBoxModel modelOfCBOlopHocThi = new DefaultComboBoxModel();
         modelOfCBOlopHocThi = (DefaultComboBoxModel) cboLopHocThi.getModel();
         modelOfCBOlopHocThi.removeAllElements();
-        ArrayList<LopHoc> lstLopHoc = new ArrayList<>();
-        lstLopHoc = cbService.selectLopHoc();
-        for (LopHoc lopHoc : lstLopHoc) {
+        lstLopThi = cbService.selectLopHoc();
+        modelOfCBOlopHocThi.addElement("Tất cả");
+        for (LopHoc lopThi : lstLopThi) {
             System.out.println("test cbo");
-            modelOfCBOlopHocThi.addElement(lopHoc.getMaLopHoc());
+            modelOfCBOlopHocThi.addElement(lopThi.getMaLopHoc());
         }
     }
 
@@ -108,11 +122,11 @@ public class FormLichHoc extends javax.swing.JPanel {
         DefaultComboBoxModel modelOfCBOMaMon = new DefaultComboBoxModel();
         modelOfCBOMaMon = (DefaultComboBoxModel) cboMaMonThi.getModel();
         modelOfCBOMaMon.removeAllElements();
-        ArrayList<MonHoc> lstMonHoc = new ArrayList<>();
-        lstMonHoc = cbService.selectMonHoc();
-        for (MonHoc monHoc : lstMonHoc) {
+        lstMonThi = cbService.selectMonHoc();
+        modelOfCBOMaMon.addElement("Tất cả");
+        for (MonHoc monThi : lstMonThi) {
             System.out.println("test cbo");
-            String mh = monHoc.getMaMonHoc() + "-" + monHoc.getTenMonHoc();
+            String mh = monThi.getMaMonHoc() + "-" + monThi.getTenMonHoc();
             modelOfCBOMaMon.addElement(mh);
         }
     }
@@ -121,11 +135,11 @@ public class FormLichHoc extends javax.swing.JPanel {
         DefaultComboBoxModel modelOfCBOPhongThi = new DefaultComboBoxModel();
         modelOfCBOPhongThi = (DefaultComboBoxModel) cboPhongThi.getModel();
         modelOfCBOPhongThi.removeAllElements();
-        ArrayList<PhongHoc> lstPhongHoc = new ArrayList<>();
-        lstPhongHoc = cbService.selectPhongHoc();
-        for (PhongHoc phongHoc : lstPhongHoc) {
+        lstPhongThi = cbService.selectPhongHoc();
+        modelOfCBOPhongThi.addElement("Tất cả");
+        for (PhongHoc phongThi : lstPhongThi) {
             System.out.println("test cbo");
-            modelOfCBOPhongThi.addElement(phongHoc.getMaPhongHoc());
+            modelOfCBOPhongThi.addElement(phongThi.getMaPhongHoc());
         }
     }
 
@@ -135,6 +149,7 @@ public class FormLichHoc extends javax.swing.JPanel {
         modelOfCBONgayThi.removeAllElements();
         ArrayList<String> lstNgayThi = new ArrayList<>();
         lstNgayThi = cbService.getDay();
+        modelOfCBONgayThi.addElement("Tất cả");
         for (String ngayThi : lstNgayThi) {
             modelOfCBONgayThi.addElement(ngayThi.toString());
         }
@@ -144,9 +159,9 @@ public class FormLichHoc extends javax.swing.JPanel {
         DefaultComboBoxModel modelOfCBOThoiGian = new DefaultComboBoxModel();
         modelOfCBOThoiGian = (DefaultComboBoxModel) cboThoiGianThi.getModel();
         modelOfCBOThoiGian.removeAllElements();
-        ArrayList<String> lstThoiGian = new ArrayList<>();
-        lstThoiGian = cbService.getTime();
-        for (String ngayThi : lstThoiGian) {
+        lstThoiGianThi = cbService.getTime();
+        modelOfCBOThoiGian.addElement("Tất cả");
+        for (String ngayThi : lstThoiGianThi) {
             modelOfCBOThoiGian.addElement(ngayThi.toString());
         }
     }
@@ -170,50 +185,51 @@ public class FormLichHoc extends javax.swing.JPanel {
 
 ///////////////////////////////////cboLichHoc///////////////////////// 
     public void loadToCboLopHocHoc() {
-        DefaultComboBoxModel modelOfCBOlopHocThi = new DefaultComboBoxModel();
-        modelOfCBOlopHocThi = (DefaultComboBoxModel) cboLopHocHoc.getModel();
-        modelOfCBOlopHocThi.removeAllElements();
-        ArrayList<LopHoc> lstLopHoc = new ArrayList<>();
+        DefaultComboBoxModel modelOfCBOlopHoc = new DefaultComboBoxModel();
+        modelOfCBOlopHoc = (DefaultComboBoxModel) cboLopHocHoc.getModel();
+        modelOfCBOlopHoc.removeAllElements();
         lstLopHoc = cbService.selectLopHoc();
+        modelOfCBOlopHoc.addElement("Tất cả");
         for (LopHoc lopHoc : lstLopHoc) {
             System.out.println("test cbo");
-            modelOfCBOlopHocThi.addElement(lopHoc.getMaLopHoc());
+            modelOfCBOlopHoc.addElement(lopHoc.getMaLopHoc());
         }
     }
 
     public void loadToCboMaMonHoc() {
-        DefaultComboBoxModel modelOfCBOMaMon = new DefaultComboBoxModel();
-        modelOfCBOMaMon = (DefaultComboBoxModel) cboMaMonHoc.getModel();
-        modelOfCBOMaMon.removeAllElements();
-        ArrayList<MonHoc> lstMonHoc = new ArrayList<>();
+        DefaultComboBoxModel modelOfCBOMaMonHoc = new DefaultComboBoxModel();
+        modelOfCBOMaMonHoc = (DefaultComboBoxModel) cboMaMonHoc.getModel();
+        modelOfCBOMaMonHoc.removeAllElements();
         lstMonHoc = cbService.selectMonHoc();
+        modelOfCBOMaMonHoc.addElement("Tất cả");
         for (MonHoc monHoc : lstMonHoc) {
             System.out.println("test cbo");
             String mh = monHoc.getMaMonHoc() + "-" + monHoc.getTenMonHoc();
-            modelOfCBOMaMon.addElement(mh);
+            modelOfCBOMaMonHoc.addElement(mh);
         }
     }
 
     public void loadToCboPhongHoc() {
-        DefaultComboBoxModel modelOfCBOPhongThi = new DefaultComboBoxModel();
-        modelOfCBOPhongThi = (DefaultComboBoxModel) cboPhongHoc.getModel();
-        modelOfCBOPhongThi.removeAllElements();
-        ArrayList<PhongHoc> lstPhongHoc = new ArrayList<>();
+        DefaultComboBoxModel modelOfCBOPhongHoc = new DefaultComboBoxModel();
+        modelOfCBOPhongHoc = (DefaultComboBoxModel) cboPhongHoc.getModel();
+        modelOfCBOPhongHoc.removeAllElements();
         lstPhongHoc = cbService.selectPhongHoc();
+        modelOfCBOPhongHoc.addElement("Tất cả");
         for (PhongHoc phongHoc : lstPhongHoc) {
             System.out.println("test cbo");
-            modelOfCBOPhongThi.addElement(phongHoc.getMaPhongHoc());
+            modelOfCBOPhongHoc.addElement(phongHoc.getMaPhongHoc());
         }
     }
 
     public void loadToCboNgayHoc() {
-        DefaultComboBoxModel modelOfCBONgayThi = new DefaultComboBoxModel();
-        modelOfCBONgayThi = (DefaultComboBoxModel) cboNgayHoc.getModel();
-        modelOfCBONgayThi.removeAllElements();
-        ArrayList<String> lstNgayThi = new ArrayList<>();
-        lstNgayThi = cbService.getDay();
-        for (String ngayThi : lstNgayThi) {
-            modelOfCBONgayThi.addElement(ngayThi.toString());
+        DefaultComboBoxModel modelOfCBONgayHoc = new DefaultComboBoxModel();
+        modelOfCBONgayHoc = (DefaultComboBoxModel) cboNgayHoc.getModel();
+        modelOfCBONgayHoc.removeAllElements();
+
+        lstNgayHoc = cbService.getDay();
+        modelOfCBONgayHoc.addElement("Tất cả");
+        for (String ngayThi : lstNgayHoc) {
+            modelOfCBONgayHoc.addElement(ngayThi.toString());
         }
     }
 
@@ -221,9 +237,10 @@ public class FormLichHoc extends javax.swing.JPanel {
         DefaultComboBoxModel modelOfCBOThoiGian = new DefaultComboBoxModel();
         modelOfCBOThoiGian = (DefaultComboBoxModel) cboThoiGianHoc.getModel();
         modelOfCBOThoiGian.removeAllElements();
-        ArrayList<String> lstThoiGian = new ArrayList<>();
-        lstThoiGian = cbService.getTime();
-        for (String ngayThi : lstThoiGian) {
+
+        lstThoiGianHoc = cbService.getTime();
+        modelOfCBOThoiGian.addElement("Tất cả");
+        for (String ngayThi : lstThoiGianHoc) {
             modelOfCBOThoiGian.addElement(ngayThi.toString());
         }
     }
@@ -286,6 +303,26 @@ public class FormLichHoc extends javax.swing.JPanel {
         cbService.updateLich(lh, maSv, maMonHoc, maLopHoc);
     }
 
+    public void findByTxtLichHoc(String maSv, String hoTenSv, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String hoTenGV, String tenMonHoc, Date ngayHoc, String thoiGian, String loaiLich) {
+        ArrayList<LichFull> lstLichHocFulls = cbService.selectLichFullByMultipleCondition(maSv, hoTenSv, maMonHoc, maLopHoc, maPhongHoc, maGiangVien, hoTenGV, tenMonHoc, ngayHoc, thoiGian, loaiLich);
+        DefaultTableModel modelOfLH = new DefaultTableModel();
+        modelOfLH = (DefaultTableModel) tblLichHoc.getModel();
+        modelOfLH.setRowCount(0);
+        for (LichFull lichObj : lstLichHocFulls) {
+            modelOfLH.addRow(new Object[]{lichObj.getMaSV(), lichObj.getHoTenSv(), lichObj.getMaGiangVien(), lichObj.getHoTenGV(), lichObj.getMaMonHoc(), lichObj.getTenMonHoc(), lichObj.getMaLopHoc(), lichObj.getNgayHoc(), lichObj.getMaPhongHoc(), lichObj.getThoiGian()});
+        }
+    }
+
+     public void findByTxtLichThi(String maSv, String hoTenSv, String maMonHoc, String maLopHoc, String maPhongHoc, String maGiangVien, String hoTenGV, String tenMonHoc, Date ngayHoc, String thoiGian, String loaiLich) {
+        ArrayList<LichFull> lstLichThiFulls = cbService.selectLichFullByMultipleCondition(maSv, hoTenSv, maMonHoc, maLopHoc, maPhongHoc, maGiangVien, hoTenGV, tenMonHoc, ngayHoc, thoiGian, loaiLich);
+        DefaultTableModel modelOfLT = new DefaultTableModel();
+        modelOfLT = (DefaultTableModel) tblLichThi.getModel();
+        modelOfLT.setRowCount(0);
+        for (LichFull lichObj : lstLichThiFulls) {
+            modelOfLT.addRow(new Object[]{lichObj.getMaSV(), lichObj.getHoTenSv(), lichObj.getMaGiangVien(), lichObj.getHoTenGV(), lichObj.getMaMonHoc(), lichObj.getTenMonHoc(), lichObj.getMaLopHoc(), lichObj.getNgayHoc(), lichObj.getMaPhongHoc(), lichObj.getThoiGian()});
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -309,9 +346,8 @@ public class FormLichHoc extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtHoTenGVLichThi = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        btnSearchLichThi = new javax.swing.JButton();
         btnUpdateLichThi = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         txtMaSVLichThi = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -337,9 +373,8 @@ public class FormLichHoc extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtMaGVLichHoc = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSearchOnLichHoc = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         cboMaMonHoc = new javax.swing.JComboBox<>();
         cboLopHocHoc = new javax.swing.JComboBox<>();
@@ -402,10 +437,15 @@ public class FormLichHoc extends javax.swing.JPanel {
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Thời gian");
 
-        jButton5.setBackground(new java.awt.Color(0, 102, 255));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Tìm kiếm");
+        btnSearchLichThi.setBackground(new java.awt.Color(0, 102, 255));
+        btnSearchLichThi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSearchLichThi.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchLichThi.setText("Tìm kiếm");
+        btnSearchLichThi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchLichThiActionPerformed(evt);
+            }
+        });
 
         btnUpdateLichThi.setBackground(new java.awt.Color(0, 102, 255));
         btnUpdateLichThi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -417,12 +457,6 @@ public class FormLichHoc extends javax.swing.JPanel {
                 btnUpdateLichThiActionPerformed(evt);
             }
         });
-
-        jButton8.setBackground(new java.awt.Color(0, 102, 255));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Xóa");
-        jButton8.setPreferredSize(new java.awt.Dimension(79, 23));
 
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Mã SV");
@@ -445,10 +479,16 @@ public class FormLichHoc extends javax.swing.JPanel {
             }
         });
 
+        cboNgayThi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNgayThiActionPerformed(evt);
+            }
+        });
+
         btnClearLichThi.setBackground(new java.awt.Color(0, 102, 255));
         btnClearLichThi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClearLichThi.setForeground(new java.awt.Color(255, 255, 255));
-        btnClearLichThi.setText("Clear");
+        btnClearLichThi.setText("Làm mới");
         btnClearLichThi.setPreferredSize(new java.awt.Dimension(79, 23));
         btnClearLichThi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,12 +535,12 @@ public class FormLichHoc extends javax.swing.JPanel {
                                     .addComponent(jLabel16)
                                     .addComponent(jLabel21)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(271, 271, 271)
-                                        .addComponent(jLabel9))
-                                    .addComponent(jLabel13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 497, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel9)
+                                .addGap(21, 21, 21)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -511,14 +551,13 @@ public class FormLichHoc extends javax.swing.JPanel {
                             .addComponent(cboThoiGianThi, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(89, 89, 89)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSearchLichThi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnUpdateLichThi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnClearLichThi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(683, 683, 683))))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnUpdateLichThi, jButton5, jButton8});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSearchLichThi, btnUpdateLichThi});
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboLopHocThi, cboMaMonThi, cboPhongThi, txtHoTenSVLichThi, txtMaSVLichThi});
 
@@ -527,11 +566,11 @@ public class FormLichHoc extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel9)
-                .addGap(59, 59, 59)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSearchLichThi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtMaSVLichThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel21)
@@ -550,15 +589,14 @@ public class FormLichHoc extends javax.swing.JPanel {
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(txtTenMonLichThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClearLichThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel14)
                     .addComponent(cboLopHocThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboNgayThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClearLichThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(cboNgayThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(cboPhongThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -566,7 +604,7 @@ public class FormLichHoc extends javax.swing.JPanel {
                     .addComponent(cboThoiGianThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lịch thi", jPanel3);
@@ -617,10 +655,15 @@ public class FormLichHoc extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Thời gian");
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Tìm kiếm");
+        btnSearchOnLichHoc.setBackground(new java.awt.Color(0, 102, 255));
+        btnSearchOnLichHoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSearchOnLichHoc.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchOnLichHoc.setText("Tìm kiếm");
+        btnSearchOnLichHoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchOnLichHocActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(0, 102, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -632,12 +675,6 @@ public class FormLichHoc extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-
-        jButton4.setBackground(new java.awt.Color(0, 102, 255));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Xóa");
-        jButton4.setPreferredSize(new java.awt.Dimension(79, 23));
 
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Mã SV");
@@ -651,7 +688,7 @@ public class FormLichHoc extends javax.swing.JPanel {
         btnClearLichHoc.setBackground(new java.awt.Color(0, 102, 255));
         btnClearLichHoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClearLichHoc.setForeground(new java.awt.Color(255, 255, 255));
-        btnClearLichHoc.setText("Clear");
+        btnClearLichHoc.setText("Làm mới");
         btnClearLichHoc.setPreferredSize(new java.awt.Dimension(79, 23));
         btnClearLichHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -704,26 +741,22 @@ public class FormLichHoc extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboThoiGianHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(cboNgayHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnClearLichHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtHoTenGVLichHoc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtMonHocLichHoc)
-                                        .addComponent(txtMaGVLichHoc))
-                                    .addGap(93, 93, 93)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(cboNgayHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtHoTenGVLichHoc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMonHocLichHoc)
+                                    .addComponent(txtMaGVLichHoc))
+                                .addGap(93, 93, 93)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSearchOnLichHoc)
+                                    .addComponent(btnClearLichHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(671, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton3, jButton4});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClearLichHoc, btnSearchOnLichHoc, jButton3});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboLopHocHoc, cboMaMonHoc, cboNgayHoc, cboPhongHoc, cboThoiGianHoc, txtHoTenGVLichHoc, txtHoTenSVLichHoc, txtMaGVLichHoc, txtMaSVLichHoc, txtMonHocLichHoc});
 
@@ -734,7 +767,7 @@ public class FormLichHoc extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSearchOnLichHoc)
                     .addComponent(jLabel17)
                     .addComponent(jLabel7)
                     .addComponent(txtMaGVLichHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -752,15 +785,14 @@ public class FormLichHoc extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(cboMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClearLichHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel4)
                     .addComponent(cboLopHocHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboNgayHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClearLichHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(cboNgayHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel8)
@@ -770,6 +802,8 @@ public class FormLichHoc extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(140, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClearLichHoc, btnSearchOnLichHoc, jButton3});
 
         jTabbedPane1.addTab("Lịch học", jPanel1);
 
@@ -813,11 +847,6 @@ public class FormLichHoc extends javax.swing.JPanel {
         clearOLichThi();
     }//GEN-LAST:event_btnClearLichThiActionPerformed
 
-    private void btnClearLichHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearLichHocActionPerformed
-        // TODO add your handling code here:
-        clearOLichHoc();
-    }//GEN-LAST:event_btnClearLichHocActionPerformed
-
     private void btnUpdateLichThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateLichThiActionPerformed
         // TODO add your handling code here:
         count = tblLichThi.getSelectedRow();
@@ -827,10 +856,192 @@ public class FormLichHoc extends javax.swing.JPanel {
         cbService.updateLich(lich, lstLichFull.get(count).getMaSV(), lstLichFull.get(count).getMaMonHoc(), lstLichFull.get(count).getMaLopHoc());
     }//GEN-LAST:event_btnUpdateLichThiActionPerformed
 
+    private void cboNgayThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNgayThiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboNgayThiActionPerformed
+
+    private void btnSearchOnLichHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchOnLichHocActionPerformed
+        // TODO add your handling code here:
+        String maSv = null;
+        String hotenSV = null;
+        String maMonHoc = null;
+        String maLopHoc = null;
+        String maPhongHoc = null;
+        String day = null;
+
+        String maGv = null;
+        String hoTenGV = null;
+        String tenMonHoc = null;
+        Date ngayHoc = null;
+        String thoiGian = null;
+
+        if (txtMaSVLichHoc.getText().equalsIgnoreCase(null)) {
+            maSv = null;
+
+        } else {
+            maSv = txtMaSVLichHoc.getText();
+        }
+        if (txtHoTenSVLichHoc.getText().equalsIgnoreCase(null)) {
+            hotenSV = null;
+        } else {
+            hotenSV = txtHoTenSVLichHoc.getText();
+        }
+
+        if (cboMaMonHoc.getSelectedIndex() != 0) {
+            int count = cboMaMonHoc.getSelectedIndex();
+            maMonHoc = lstMonHoc.get(count - 1).getMaMonHoc();
+        } else {
+            maMonHoc = null;
+        }
+        if (cboLopHocHoc.getSelectedIndex() != 0) {
+            maLopHoc = cboLopHocHoc.getSelectedItem().toString();
+        } else {
+            maLopHoc = null;
+        }
+
+        if (cboPhongHoc.getSelectedIndex() != 0) {
+            maPhongHoc = cboPhongHoc.getSelectedItem().toString();
+        } else {
+            maPhongHoc = null;
+        }
+
+        if (txtMaGVLichHoc.getText().equalsIgnoreCase(null)) {
+            maGv = null;
+        } else {
+            maGv = txtMaGVLichHoc.getText();
+        }
+
+        if (txtHoTenGVLichHoc.getText().equalsIgnoreCase(null)) {
+            hoTenGV = null;
+        } else {
+            hoTenGV = txtHoTenGVLichHoc.getText();
+        }
+
+        if (txtMonHocLichHoc.getText().equalsIgnoreCase(null)) {
+            tenMonHoc = null;
+        } else {
+            tenMonHoc = txtMonHocLichHoc.getText();
+        }
+
+        if (cboNgayHoc.getSelectedIndex() != 0) {
+            int count = cboNgayHoc.getSelectedIndex();
+            ngayHoc = Date.valueOf(lstNgayHoc.get(count - 1));
+        } else {
+            ngayHoc = null;
+        }
+        if (cboThoiGianHoc.getSelectedIndex() != 0) {
+            thoiGian = String.valueOf(cboThoiGianHoc.getSelectedItem());
+        } else {
+            thoiGian = null;
+        }
+        try {
+            System.out.println("masv=" + maSv);
+            System.out.println("day" + day);
+//            System.out.println(maSv + hotenSV + maMonHoc + maLopHoc + maPhongHoc + maGv + hoTenGV + tenMonHoc + ngayHoc + thoiGian + "Lich Hoc");
+            findByTxtLichHoc(maSv, hotenSV, maMonHoc, maLopHoc, maPhongHoc, maGv, hoTenGV, tenMonHoc, ngayHoc, thoiGian, "Lịch học");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSearchOnLichHocActionPerformed
+
+    private void btnClearLichHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearLichHocActionPerformed
+        // TODO add your handling code here:
+        clearOLichHoc();
+        loadToTblLichHocFaster();
+    }//GEN-LAST:event_btnClearLichHocActionPerformed
+
+    private void btnSearchLichThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchLichThiActionPerformed
+        // TODO add your handling code here:
+        String maSv = null;
+        String hotenSV = null;
+        String maMonHoc = null;
+        String maLopHoc = null;
+        String maPhongHoc = null;
+        String day = null;
+
+        String maGv = null;
+        String hoTenGV = null;
+        String tenMonHoc = null;
+        Date ngayHoc = null;
+        String thoiGian = null;
+
+        if (txtMaSVLichThi.getText().equalsIgnoreCase(null)) {
+            maSv = null;
+
+        } else {
+            maSv = txtMaSVLichThi.getText();
+        }
+        if (txtHoTenSVLichThi.getText().equalsIgnoreCase(null)) {
+            hotenSV = null;
+        } else {
+            hotenSV = txtHoTenSVLichThi.getText();
+        }
+
+        if (cboMaMonThi.getSelectedIndex() != 0) {
+            int count = cboMaMonThi.getSelectedIndex();
+            maMonHoc = lstMonThi.get(count - 1).getMaMonHoc();
+        } else {
+            maMonHoc = null;
+        }
+        if (cboLopHocThi.getSelectedIndex() != 0) {
+            maLopHoc = cboLopHocThi.getSelectedItem().toString();
+        } else {
+            maLopHoc = null;
+        }
+
+        if (cboPhongThi.getSelectedIndex() != 0) {
+            maPhongHoc = cboPhongThi.getSelectedItem().toString();
+        } else {
+            maPhongHoc = null;
+        }
+
+        if (txtMaGVLichThi.getText().equalsIgnoreCase(null)) {
+            maGv = null;
+        } else {
+            maGv = txtMaGVLichThi.getText();
+        }
+
+        if (txtHoTenGVLichThi.getText().equalsIgnoreCase(null)) {
+            hoTenGV = null;
+        } else {
+            hoTenGV = txtHoTenGVLichThi.getText();
+        }
+
+        if (txtTenMonLichThi.getText().equalsIgnoreCase(null)) {
+            tenMonHoc = null;
+        } else {
+            tenMonHoc = txtTenMonLichThi.getText();
+        }
+
+        if (cboNgayThi.getSelectedIndex() != 0) {
+            int count = cboNgayThi.getSelectedIndex();
+            ngayHoc = Date.valueOf(lstNgayThi.get(count - 1));
+        } else {
+            ngayHoc = null;
+        }
+        if (cboThoiGianThi.getSelectedIndex() != 0) {
+            thoiGian = String.valueOf(cboThoiGianThi.getSelectedItem());
+        } else {
+            thoiGian = null;
+        }
+        try {
+            System.out.println("masv=" + maSv);
+            System.out.println("day" + day);
+//            System.out.println(maSv + hotenSV + maMonHoc + maLopHoc + maPhongHoc + maGv + hoTenGV + tenMonHoc + ngayHoc + thoiGian + "Lich Hoc");
+            findByTxtLichThi(maSv, hotenSV, maMonHoc, maLopHoc, maPhongHoc, maGv, hoTenGV, tenMonHoc, ngayHoc, thoiGian, "Lịch học");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSearchLichThiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClearLichHoc;
     private javax.swing.JButton btnClearLichThi;
+    private javax.swing.JButton btnSearchLichThi;
+    private javax.swing.JButton btnSearchOnLichHoc;
     private javax.swing.JButton btnUpdateLichThi;
     private javax.swing.JComboBox<String> cboLopHocHoc;
     private javax.swing.JComboBox<String> cboLopHocThi;
@@ -842,11 +1053,7 @@ public class FormLichHoc extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboPhongThi;
     private javax.swing.JComboBox<String> cboThoiGianHoc;
     private javax.swing.JComboBox<String> cboThoiGianThi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
